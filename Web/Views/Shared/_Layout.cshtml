@@ -1,0 +1,180 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>@ViewData["Title"] - TITLE</title>
+    @* LINKS *@
+        <!-- FAVICON -->
+        <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+        <!-- GOOGLE FONTS -->
+        <link href="https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i%7CMontserrat:600,800" rel="stylesheet">
+        <!-- FONT AWESOME -->
+        <link rel="stylesheet" href="~/Template1/css/fontawesome-all.min.css">
+        <link rel="stylesheet" href="~/Template1/css/fontawesome-5-all.min.css">
+        <link rel="stylesheet" href="~/Template1/css/font-awesome.min.css">
+        <!-- ARCHIVES CSS -->
+        <link rel="stylesheet" href="~/Template1/css/animate.css">
+        <link rel="stylesheet" href="~/Template1/css/magnific-popup.css">
+        <link rel="stylesheet" href="~/Template1/css/lightcase.css">
+        <link rel="stylesheet" href="~/Template1/css/owl.carousel.min.css">
+        <link rel="stylesheet" href="~/Template1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="~/Template1/css/menu.css">
+        <link rel="stylesheet" href="~/Template1/css/slick.css">
+        <link rel="stylesheet" href="~/Template1/css/styles.css">
+        <link rel="stylesheet" id="color" href="~/Template1/css/default.css">
+</head>
+<body>
+@* HEADER *@
+        <!-- Header Container
+        ================================================== -->
+        <header id="header-container" class="header head-tr" style="line-height: unset;font-weight: 700;">
+            <!-- Header -->
+            <div id="header" class="head-tr bottom">
+                <div class="container container-header">
+                    <!-- Left Side Content -->
+                    <div class="left-side">
+                        <!-- Logo -->
+                        <div id="logo">
+                            <a href="~/"><img src="~/Template1/images/logo-white-1.svg" 
+                                                      data-sticky-logo="images/logo-red.svg"
+                                                      alt=""></a>
+                        </div>
+                        <!-- Mobile Navigation -->
+                        <div class="mmenu-trigger">
+                            <button class="hamburger hamburger--collapse" type="button">
+                                <span class="hamburger-box">
+							<span class="hamburger-inner"></span>
+                                </span>
+                            </button>
+                        </div>
+                        <!-- Main Navigation -->
+                        <nav id="navigation" class="style-1 head-tr">
+                            <ul id="responsive">
+                                <li><a href="~/" style="color: @(ViewBag.NavBarLinkColor ?? "#fff")">Anasayfa</a>
+                                    <li><a href="~/list" style="color: @(ViewBag.NavBarLinkColor ?? "#fff")">İlanlar</a></li>
+                                <li><a href="~/contactus" style="color: @(ViewBag.NavBarLinkColor ?? "#fff")">Hakkımızda</a></li>
+                                <li><a href="~/contactusnew" style="color: @(ViewBag.NavBarLinkColor ?? "#fff")">Bize Ulaşın</a></li>
+                                    </ul>
+                        </nav>
+                        <!-- Main Navigation / End -->
+                    </div>
+                    <!-- Left Side Content / End -->
+
+                    <div class="right-side d-none d-none d-lg-none d-xl-flex sign ml-0">
+                        <!-- Header Widget -->
+                        <div class="header-widget sign-in">
+                            <div class="show-reg-form modal-open"><a href="#" style="font-size: 15px;color: @ViewBag.RightSideColor">+550 690 50 50</a></div>
+                        </div>
+                        <!-- Header Widget / End -->
+                    </div>
+                    <!-- Right Side Content / End -->
+                    <div class="right-side d-none d-none d-lg-none d-xl-flex sign ml-0" style="margin-right:0px;border-right:unset;">
+                                            <!-- Header Widget -->
+                                            <div class="header-widget sign-in">
+                                                <div class="show-reg-form modal-open"><a href="#" style="color: @ViewBag.RightSideColor">Admin Girişi</a></div>
+                                            </div>
+                                            <!-- Header Widget / End -->
+                                        </div>
+                    <!-- Right Side Content / End -->
+
+              
+                </div>
+            </div>
+            <!-- Header / End -->
+
+        </header>
+        <div class="clearfix"></div>
+        <!-- Header Container / End -->
+@RenderBody()
+    <!-- START FOOTER -->
+   <footer class="first-footer">
+                  <div class="top-footer">
+                      <div class="container">
+                          <div class="row">
+                              <div class="col-lg-9 col-md-6">
+                                  <div class="netabout">
+                                      <a href="index.html" class="logo">
+                                          <img src="/Template1/images/logo-footer.svg" alt="netcom">
+                                      </a>
+                                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                          Accusamus adipisci aliquam cumque dolore eum expedita facere in
+                                          ventore, labore libero molestias natus necessitatibus quam quas sint ull
+                                          am veritatis voluptates. Cupiditate ipsa quam similique. Aliquam aliqui
+                                          d architecto dolore est exercitationem laborum laudantium nihil pariatur perferendis, quo sed, voluptas? Esse illo necessitatibus praese
+                                          ntium quas saepe tenetur vero, voluptates.</p>
+                                  </div>
+                                  @* <div class="contactus"> *@
+                                  @*     <ul> *@
+                                  @*         <li> *@
+                                  @*             <div class="info"> *@
+                                  @*                 <i class="fa fa-map-marker" aria-hidden="true"></i> *@
+                                  @*                 <p class="in-p">95 South Park Avenue, USA</p> *@
+                                  @*             </div> *@
+                                  @*         </li> *@
+                                  @*         <li> *@
+                                  @*             <div class="info"> *@
+                                  @*                 <i class="fa fa-phone" aria-hidden="true"></i> *@
+                                  @*                 <p class="in-p">+456 875 369 208</p> *@
+                                  @*             </div> *@
+                                  @*         </li> *@
+                                  @*         <li> *@
+                                  @*             <div class="info"> *@
+                                  @*                 <i class="fa fa-envelope" aria-hidden="true"></i> *@
+                                  @*                 <p class="in-p ti">supportfindhouses.com</p> *@
+                                  @*             </div> *@
+                                  @*         </li> *@
+                                  @*     </ul> *@
+                                  @* </div> *@
+                              </div>
+                              
+                              
+                              
+                          <div class="col-lg-3 col-md-6 d-flex justify-content-center align-items-center">
+                                  <div class="netabout">
+                                      
+                                      @* <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum incidunt architecto soluta laboriosam, perspiciatis, aspernatur officiis esse.</p> *@
+                                  </div>
+                                  <div class="contactus">
+                                      <ul>
+                                          <li>
+                                              <div class="info">
+                                                  <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                                  <p class="in-p">95 South Park Avenue, USA</p>
+                                              </div>
+                                          </li>
+                                          <li>
+                                              <div class="info">
+                                                  <i class="fa fa-phone" aria-hidden="true"></i>
+                                                  <p class="in-p">+456 875 369 208</p>
+                                              </div>
+                                          </li>
+                                          <li>
+                                              <div class="info">
+                                                  <i class="fa fa-envelope" aria-hidden="true"></i>
+                                                  <p class="in-p ti">supportfindhouses.com</p>
+                                              </div>
+                                          </li>
+                                      </ul>
+                                  </div>
+                              </div></div>
+                      </div>
+                  </div>
+                  <div class="second-footer">
+                      <div class="container">
+                          <p>2021 © Copyright - All Rights Reserved.</p>
+                          <ul class="netsocials">
+                              <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                              <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                              <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                              <li><a href="#"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>
+                          </ul>
+                      </div>
+                  </div>
+              </footer>
+        <a data-scroll href="#wrapper" class="go-up"><i class="fa fa-angle-double-up" aria-hidden="true"></i></a>
+        <!-- END FOOTER -->
+
+@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
