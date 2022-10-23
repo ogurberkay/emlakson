@@ -1,5 +1,4 @@
 ﻿using System.Diagnostics;
-using Business.Service.Abstract;
 using Microsoft.AspNetCore.Mvc;
 using Web.Models;
 
@@ -7,13 +6,12 @@ namespace Web.Controllers;
 
 public class HomeController : Controller
 {
-    private readonly  IAdvertService _advertService;
+    
     
     private readonly ILogger<HomeController> _logger;
 
-    public HomeController(ILogger<HomeController> logger,IAdvertService advertService)
+    public HomeController(ILogger<HomeController> logger)
     {
-        _advertService = advertService;
         _logger = logger;
     }
 
@@ -36,13 +34,10 @@ public class HomeController : Controller
         return View();
     }
     
-    [HttpGet("ilanlar")]
-    public async Task<IActionResult> List()
+    [HttpGet("List")]
+    public IActionResult List()
     {
-        
-        var data = await _advertService.GetAllAdverts();
-        
-        return View(data.Data);
+        return View();
     }
     
     [HttpGet("404")]
@@ -62,6 +57,20 @@ public class HomeController : Controller
     {
         return View();
     }
+    
+    
+    [HttpGet("Gallery")]
+    public IActionResult Gallery()
+    {
+        return View();
+    }
+    
+    [HttpGet("Takim")]
+    public IActionResult Takım()
+    {
+        return View();
+    }
+    
     
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()

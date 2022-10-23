@@ -944,11 +944,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\MERT\\Desktop\\myDevLog\\test5\\EmlakBackend\\DataAccess\\DataAccess.csproj",
+      "projectUniqueName": "C:\\Users\\MERT\\Desktop\\myDevLog\\test5\\EmlakBackend\\2\\DataAccess\\DataAccess.csproj",
       "projectName": "DataAccess",
-      "projectPath": "C:\\Users\\MERT\\Desktop\\myDevLog\\test5\\EmlakBackend\\DataAccess\\DataAccess.csproj",
+      "projectPath": "C:\\Users\\MERT\\Desktop\\myDevLog\\test5\\EmlakBackend\\2\\DataAccess\\DataAccess.csproj",
       "packagesPath": "C:\\Users\\MERT\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\MERT\\Desktop\\myDevLog\\test5\\EmlakBackend\\DataAccess\\obj\\",
+      "outputPath": "C:\\Users\\MERT\\Desktop\\myDevLog\\test5\\EmlakBackend\\2\\DataAccess\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\MERT\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -965,11 +965,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\MERT\\Desktop\\myDevLog\\test5\\EmlakBackend\\Core\\Core.csproj": {
-              "projectPath": "C:\\Users\\MERT\\Desktop\\myDevLog\\test5\\EmlakBackend\\Core\\Core.csproj"
+            "C:\\Users\\MERT\\Desktop\\myDevLog\\test5\\EmlakBackend\\2\\Core\\Core.csproj": {
+              "projectPath": "C:\\Users\\MERT\\Desktop\\myDevLog\\test5\\EmlakBackend\\2\\Core\\Core.csproj"
             },
-            "C:\\Users\\MERT\\Desktop\\myDevLog\\test5\\EmlakBackend\\Data\\Data.csproj": {
-              "projectPath": "C:\\Users\\MERT\\Desktop\\myDevLog\\test5\\EmlakBackend\\Data\\Data.csproj"
+            "C:\\Users\\MERT\\Desktop\\myDevLog\\test5\\EmlakBackend\\2\\Data\\Data.csproj": {
+              "projectPath": "C:\\Users\\MERT\\Desktop\\myDevLog\\test5\\EmlakBackend\\2\\Data\\Data.csproj"
             }
           }
         }

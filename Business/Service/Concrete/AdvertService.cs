@@ -27,6 +27,7 @@ public class AdvertService:BaseService, IAdvertService
             
         }
         return new DataResult<IList<AdvertGetDto>?>(ResultStatusEnum.Success, adverts);
+        
     }
 
     public async Task<IDataResult<AdvertGetDto?>> UpdateAdvert(UpdateAdvertRequestDto model)
