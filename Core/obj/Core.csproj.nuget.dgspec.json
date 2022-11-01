@@ -1,35 +1,44 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\MERT\\Desktop\\myDevLog\\test5\\EmlakBackend\\2\\Core\\Core.csproj": {}
+    "C:\\Users\\berkay.ogur\\source\\repos\\emlakson\\Core\\Core.csproj": {}
   },
   "projects": {
-    "C:\\Users\\MERT\\Desktop\\myDevLog\\test5\\EmlakBackend\\2\\Core\\Core.csproj": {
+    "C:\\Users\\berkay.ogur\\source\\repos\\emlakson\\Core\\Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\MERT\\Desktop\\myDevLog\\test5\\EmlakBackend\\2\\Core\\Core.csproj",
+        "projectUniqueName": "C:\\Users\\berkay.ogur\\source\\repos\\emlakson\\Core\\Core.csproj",
         "projectName": "Core",
-        "projectPath": "C:\\Users\\MERT\\Desktop\\myDevLog\\test5\\EmlakBackend\\2\\Core\\Core.csproj",
-        "packagesPath": "C:\\Users\\MERT\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\MERT\\Desktop\\myDevLog\\test5\\EmlakBackend\\2\\Core\\obj\\",
+        "projectPath": "C:\\Users\\berkay.ogur\\source\\repos\\emlakson\\Core\\Core.csproj",
+        "packagesPath": "C:\\Users\\berkay.ogur\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\berkay.ogur\\source\\repos\\emlakson\\Core\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\DevExpress 21.2\\Components\\Offline Packages",
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\MERT\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\berkay.ogur\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 21.2.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\DevExpress 21.2\\Components\\System\\Components\\Packages": {},
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.devexpress.com/b9daLUMqXXICjaMK8UnQAWO3OHbLgQmwBH1XnWPITVFfA9FiBD/api": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\MERT\\Desktop\\myDevLog\\test5\\EmlakBackend\\2\\Data\\Data.csproj": {
-                "projectPath": "C:\\Users\\MERT\\Desktop\\myDevLog\\test5\\EmlakBackend\\2\\Data\\Data.csproj"
+              "C:\\Users\\berkay.ogur\\source\\repos\\emlakson\\Data\\Data.csproj": {
+                "projectPath": "C:\\Users\\berkay.ogur\\source\\repos\\emlakson\\Data\\Data.csproj"
               }
             }
           }
@@ -61,7 +70,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -70,29 +80,38 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\MERT\\Desktop\\myDevLog\\test5\\EmlakBackend\\2\\Data\\Data.csproj": {
+    "C:\\Users\\berkay.ogur\\source\\repos\\emlakson\\Data\\Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\MERT\\Desktop\\myDevLog\\test5\\EmlakBackend\\2\\Data\\Data.csproj",
+        "projectUniqueName": "C:\\Users\\berkay.ogur\\source\\repos\\emlakson\\Data\\Data.csproj",
         "projectName": "Data",
-        "projectPath": "C:\\Users\\MERT\\Desktop\\myDevLog\\test5\\EmlakBackend\\2\\Data\\Data.csproj",
-        "packagesPath": "C:\\Users\\MERT\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\MERT\\Desktop\\myDevLog\\test5\\EmlakBackend\\2\\Data\\obj\\",
+        "projectPath": "C:\\Users\\berkay.ogur\\source\\repos\\emlakson\\Data\\Data.csproj",
+        "packagesPath": "C:\\Users\\berkay.ogur\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\berkay.ogur\\Source\\Repos\\emlakson\\Data\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\DevExpress 21.2\\Components\\Offline Packages",
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\MERT\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\berkay.ogur\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 21.2.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\DevExpress 21.2\\Components\\System\\Components\\Packages": {},
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.devexpress.com/b9daLUMqXXICjaMK8UnQAWO3OHbLgQmwBH1XnWPITVFfA9FiBD/api": {}
         },
         "frameworks": {
           "net6.0": {
@@ -135,7 +154,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -144,7 +164,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     }
