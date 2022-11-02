@@ -1175,6 +1175,7 @@
           "Data": "1.0.0",
           "DataAccess": "1.0.0",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.7",
+          "Microsoft.AspNetCore.WebUtilities": "2.2.0",
           "Microsoft.EntityFrameworkCore": "6.0.7",
           "Newtonsoft.Json": "13.0.1"
         },

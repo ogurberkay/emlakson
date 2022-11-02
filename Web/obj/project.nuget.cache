@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "hZdJRPcqAJRxJVQu93jvKzQs1z4lru36X8MwzEB9HcUdVwIcx/u8+NYE1RJ2IV5pesWWHBDjxk06g7e+9xmrEg==",
+  "dgSpecHash": "A4jUW+X8Dc/zgpoCyyHnkIc677RLsoou6PlvzrrbhMR6AiL6Zch1E70s55lZTpiRq7Keu8vPst6zSIsqKDFfWw==",
   "success": true,
   "projectFilePath": "C:\\Users\\berkay.ogur\\source\\repos\\emlakson\\Web\\Web.csproj",
   "expectedPackageFiles": [
@@ -10,6 +10,7 @@
     "C:\\Users\\berkay.ogur\\.nuget\\packages\\microsoft.aspnetcore.mvc.razor.extensions\\6.0.10\\microsoft.aspnetcore.mvc.razor.extensions.6.0.10.nupkg.sha512",
     "C:\\Users\\berkay.ogur\\.nuget\\packages\\microsoft.aspnetcore.mvc.razor.runtimecompilation\\6.0.10\\microsoft.aspnetcore.mvc.razor.runtimecompilation.6.0.10.nupkg.sha512",
     "C:\\Users\\berkay.ogur\\.nuget\\packages\\microsoft.aspnetcore.razor.language\\6.0.10\\microsoft.aspnetcore.razor.language.6.0.10.nupkg.sha512",
+    "C:\\Users\\berkay.ogur\\.nuget\\packages\\microsoft.aspnetcore.webutilities\\2.2.0\\microsoft.aspnetcore.webutilities.2.2.0.nupkg.sha512",
     "C:\\Users\\berkay.ogur\\.nuget\\packages\\microsoft.codeanalysis.analyzers\\3.3.2\\microsoft.codeanalysis.analyzers.3.3.2.nupkg.sha512",
     "C:\\Users\\berkay.ogur\\.nuget\\packages\\microsoft.codeanalysis.common\\4.0.0\\microsoft.codeanalysis.common.4.0.0.nupkg.sha512",
     "C:\\Users\\berkay.ogur\\.nuget\\packages\\microsoft.codeanalysis.csharp\\4.0.0\\microsoft.codeanalysis.csharp.4.0.0.nupkg.sha512",
@@ -30,6 +31,7 @@
     "C:\\Users\\berkay.ogur\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\6.0.0\\microsoft.extensions.logging.abstractions.6.0.0.nupkg.sha512",
     "C:\\Users\\berkay.ogur\\.nuget\\packages\\microsoft.extensions.options\\6.0.0\\microsoft.extensions.options.6.0.0.nupkg.sha512",
     "C:\\Users\\berkay.ogur\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
+    "C:\\Users\\berkay.ogur\\.nuget\\packages\\microsoft.net.http.headers\\2.2.0\\microsoft.net.http.headers.2.2.0.nupkg.sha512",
     "C:\\Users\\berkay.ogur\\.nuget\\packages\\microsoft.netcore.platforms\\2.1.2\\microsoft.netcore.platforms.2.1.2.nupkg.sha512",
     "C:\\Users\\berkay.ogur\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
     "C:\\Users\\berkay.ogur\\.nuget\\packages\\npgsql\\6.0.5\\npgsql.6.0.5.nupkg.sha512",

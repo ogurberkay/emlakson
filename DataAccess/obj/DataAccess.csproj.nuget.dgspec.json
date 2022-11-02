@@ -184,7 +184,7 @@
         "projectName": "Data",
         "projectPath": "C:\\Users\\berkay.ogur\\source\\repos\\emlakson\\Data\\Data.csproj",
         "packagesPath": "C:\\Users\\berkay.ogur\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\berkay.ogur\\Source\\Repos\\emlakson\\Data\\obj\\",
+        "outputPath": "C:\\Users\\berkay.ogur\\source\\repos\\emlakson\\Data\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\DevExpress 21.2\\Components\\Offline Packages",

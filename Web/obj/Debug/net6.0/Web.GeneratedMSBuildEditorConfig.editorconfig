@@ -23,6 +23,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDb250YWN0VXNOZXcuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/berkay.ogur/source/repos/emlakson/Web/Views/Home/Gallery.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxHYWxsZXJ5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/berkay.ogur/source/repos/emlakson/Web/Views/Home/index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxpbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -41,6 +45,14 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/berkay.ogur/source/repos/emlakson/Web/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/berkay.ogur/source/repos/emlakson/Web/Views/Home/Takım.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxUYWvEsW0uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/berkay.ogur/source/repos/emlakson/Web/Views/Home/test.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVx0ZXN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/berkay.ogur/source/repos/emlakson/Web/Views/Shared/Error.cshtml]
