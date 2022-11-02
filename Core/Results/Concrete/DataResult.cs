@@ -5,6 +5,10 @@ namespace Core.Results.Concrete;
 
 public class DataResult<T> : IDataResult<T>
 {
+    public ResultStatusEnum ResultStatus { get; }
+    public string Message { get; }
+    public Exception Exception { get; set; }
+    public T Data { get; }
 
     public DataResult(ResultStatusEnum resultStatusEnum, T data)
     {
@@ -26,8 +30,5 @@ public class DataResult<T> : IDataResult<T>
         Data = data;
         Exception = exception;
     }
-    public ResultStatusEnum ResultStatus { get; }
-    public string Message { get; }
-    public Exception Exception { get; set; }
-    public T Data { get; }
+
 }

@@ -1,4 +1,7 @@
 ﻿using System.Diagnostics;
+using Business.Service.Abstract;
+using Core.Results.Filter;
+using Data.DataTransferObjects.Request;
 using Microsoft.AspNetCore.Mvc;
 using Web.Models;
 
@@ -7,12 +10,10 @@ namespace Web.Controllers;
 public class HomeController : Controller
 {
     
-    
-    private readonly ILogger<HomeController> _logger;
-
-    public HomeController(ILogger<HomeController> logger)
+    private readonly IAdvertService _advertService;
+    public HomeController(IAdvertService advertService)
     {
-        _logger = logger;
+        _advertService = advertService;
     }
 
     public IActionResult Index()
@@ -76,5 +77,15 @@ public class HomeController : Controller
     public IActionResult Error()
     {
         return View(new ErrorViewModel {RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier});
+    }
+    [HttpPost("AdvertsPaginated")]
+    public async Task<IActionResult> AdvertsPaginated([FromForm]SearchAdvertRequest model,[FromQuery] PaginationFilter filter, string orderBy)
+    {
+        var data = await _advertService.GetAdvertsPaginated(model,filter,orderBy);
+        
+        
+        
+        // return new ApiResponse(200, data.Data);
+        return View("List",data);
     }
 }

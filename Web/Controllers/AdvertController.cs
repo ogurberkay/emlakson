@@ -1,7 +1,9 @@
 using Business.Misc;
 using Business.Service.Abstract;
+using Core.Results.Filter;
 using Data.DataTransferObjects.Request;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace Web.Controllers;
 
@@ -58,4 +60,5 @@ public class AdvertController : Controller
             return new ApiResponse(400, "Invalid Operation");
         return new ApiResponse(200, data.Data);
     }
+    
 }
