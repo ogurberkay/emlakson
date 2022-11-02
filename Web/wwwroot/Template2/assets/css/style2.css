@@ -45,7 +45,7 @@ Version: 1.0.0
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Poppins:200,300,400,400i,500,600,700i&amp;display=swap");
 
 :root {
-    --main-color-one: #FDA94F;
+    --main-color-one: #60c3d0;
     --main-color-two: #FF6E63;
     --heading-color: #101425;
     --paragraph-color: #666;
@@ -714,7 +714,7 @@ ul {
 }
 
 .btn-yellow {
-    background: var(--main-color-one) !important;
+    background: #60c3d0 !important;
     color: #fff !important;
 }
 
@@ -3013,14 +3013,11 @@ ul {
 }
 
 .single-contact-info {
-    margin-bottom: 30px;
-}
-
-.single-contact-info p i {
+  margin-bottom: 30px; }
+  .single-contact-info p i {
     margin-right: 10px;
     color: var(--main-color-one);
-    font-size: 18px;
-}
+    font-size: 18px; }
 
 .register-page-area {
     margin-top: -50px;
@@ -3658,6 +3655,7 @@ ul {
 }
 
 .single-feature .details .info-list li img,
+
 .single-feature .details .info-list li i {
     margin-right: 4px;
     color: var(--main-color-one);
@@ -3696,7 +3694,7 @@ ul {
 }
 
 .single-feature .details .contact-list li i {
-    color: var(--main-color-one);
+    color: #60c3d0;
 }
 
 .single-feature .details .contact-list li .phone,

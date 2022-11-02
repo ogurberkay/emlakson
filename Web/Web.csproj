@@ -671,6 +671,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Folder Include="obj\Debug\net6.0" />
       <Folder Include="wwwroot\Template1\css" />
       <Folder Include="wwwroot\Template2\assets" />
       <Folder Include="wwwroot\Template3" />

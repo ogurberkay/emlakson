@@ -6,7 +6,7 @@ public class SearchAdvertRequest
     public string? HouseType { get; set; }
     public string? Lokasyon { get; set; }
     public string? AdvertType { get; set; }
-    public int BedroomNumber { get; set; }
+    public int BedrsoomNumber { get; set; }
     public int BathroomNumber { get; set; }
     public int metresStartValue { get; set; }
     public int metresEndValue { get; set; }
