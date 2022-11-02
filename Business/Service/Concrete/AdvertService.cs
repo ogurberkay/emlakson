@@ -97,11 +97,10 @@ public class AdvertService : BaseService, IAdvertService
                                    ||string.Equals(x.Description,model.SearchKeyWord,StringComparison.OrdinalIgnoreCase));
         if (!string.IsNullOrEmpty(model.HouseType))
         {
-            model.HouseType switch
-            {
-                ""
-            }
-            
+            // model.HouseType switch
+            // {
+            // }
+            //
                 
             
         }
