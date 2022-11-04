@@ -99,8 +99,9 @@ public class AdvertService : BaseService, IAdvertService
         {
             // model.HouseType switch
             // {
+            // _ => String.Empty
             // }
-            //
+            
                 
             
         }
