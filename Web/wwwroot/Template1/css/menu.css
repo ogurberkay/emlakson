@@ -504,8 +504,8 @@ a.button.border, a.button {
     border-radius: 3px;
 }
 #navigation.style-1 ul li:hover {
-    background-color: #FF385C;
-    color: #FF385C;
+    background-color: #60c3d0;
+    color: #60c3d0;
 }
 #navigation.style-1 ul li:hover a {
     color: #fff;

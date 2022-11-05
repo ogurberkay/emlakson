@@ -28,7 +28,7 @@
 @* HEADER *@
         <!-- Header Container
         ================================================== -->
-        <header id="header-container" class="header head-tr" style="line-height: unset;font-weight: 700;">
+        <header id="header-container" class="header head-tr" style="line-height: unset;font-weight: 700;position: unset">
             <!-- Header -->
             <div id="header" class="head-tr bottom">
                 <div class="container container-header">
@@ -51,12 +51,12 @@
                         <!-- Main Navigation -->
                         <nav id="navigation" class="style-1 head-tr">
                             <ul id="responsive">
-                                <li><a href="~/" style="color: @(ViewBag.NavBarLinkColor ?? "#fff")">Anasayfa</a>
-                                    <li><a href="~/list" style="color: @(ViewBag.NavBarLinkColor ?? "#fff")">İlanlar</a></li>
-                                <li><a href="~/contactus" style="color: @(ViewBag.NavBarLinkColor ?? "#fff")">Hakkımızda</a></li>
-                                <li><a href="~/contactusnew" style="color: @(ViewBag.NavBarLinkColor ?? "#fff")">Bize Ulaşın</a></li>
-                                <li><a href="~/gallery" style="color: @(ViewBag.NavBarLinkColor ?? "#fff")">Galeri</a></li>
-                                <li><a href="~/takim" style="color: @(ViewBag.NavBarLinkColor ?? "#fff")">Takım</a></li>
+                                <li><a href="~/" style="color: @(ViewBag.NavBarLinkColor ?? "black !important")">Anasayfa</a>
+                                    <li><a href="~/list" style="color: @(ViewBag.NavBarLinkColor ?? "black !important")">İlanlar</a></li>
+                                <li><a href="~/contactus" style="color: @(ViewBag.NavBarLinkColor ?? "black !important")">Hakkımızda</a></li>
+                                <li><a href="~/contactusnew" style="color: @(ViewBag.NavBarLinkColor ?? "black !important")">Bize Ulaşın</a></li>
+                                <li><a href="~/gallery" style="color: @(ViewBag.NavBarLinkColor ?? "black !important")">Galeri</a></li>
+                                <li><a href="~/takim" style="color: @(ViewBag.NavBarLinkColor ?? "black !important")">Takım</a></li>
 
                                     </ul>
                         </nav>
@@ -67,7 +67,7 @@
                     <div class="right-side d-none d-none d-lg-none d-xl-flex sign ml-0">
                         <!-- Header Widget -->
                         <div class="header-widget sign-in">
-                            <div class="show-reg-form modal-open"><a href="#" style="font-size: 15px;color: @ViewBag.RightSideColor">+550 690 50 50</a></div>
+                            <div class="show-reg-form modal-open"><a href="#" style="font-size: 15px;color: black !important;">+550 690 50 50</a></div>
                         </div>
                         <!-- Header Widget / End -->
                     </div>
@@ -75,7 +75,7 @@
                     <div class="right-side d-none d-none d-lg-none d-xl-flex sign ml-0" style="margin-right:0px;border-right:unset;">
                                             <!-- Header Widget -->
                                             <div class="header-widget sign-in">
-                                                <div class="show-reg-form modal-open"><a href="#" style="color: @ViewBag.RightSideColor">Admin Girişi</a></div>
+                                                <div class="show-reg-form modal-open"><a href="#" style="color: @(ViewBag.RightSideColor ?? "black !important") ">Admin Girişi</a></div>
                                             </div>
                                             <!-- Header Widget / End -->
                                         </div>
