@@ -2,7 +2,7 @@
 <html lang="zxx">
 
 @{
-    Layout = null;
+    Layout = "_LayoutList";
 }
 <!-- Mirrored from code-theme.com/html/findhouses/index-4.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 24 Aug 2022 19:00:19 GMT -->
 <head>
@@ -52,69 +52,7 @@
     <!-- Wrapper -->
     <div id="wrapper">
         <!-- START SECTION HEADINGS -->
-        <!-- Header Container
-        ================================================== -->
-        <header id="header-container" class="header head-tr">
-            <!-- Header -->
-            <div id="header" class="head-tr bottom">
-                <div class="container container-header">
-                    <!-- Left Side Content -->
-                    <div class="left-side">
-                        <!-- Logo -->
-                        <div id="logo">
-                            <a href="~/"><img src="~/Template1/images/logo-white-1.svg" 
-                                                      data-sticky-logo="images/logo-red.svg"
-                                                      alt=""></a>
-                        </div>
-                        <!-- Mobile Navigation -->
-                        <div class="mmenu-trigger">
-                            <button class="hamburger hamburger--collapse" type="button">
-                                <span class="hamburger-box">
-							<span class="hamburger-inner"></span>
-                                </span>
-                            </button>
-                        </div>
-                        <!-- Main Navigation -->
-                        <nav id="navigation" class="style-1 head-tr">
-                            <ul id="responsive">
-                                <li><a href="~/">Anasayfa</a>
-                                    <li><a href="~/list">İlanlar</a></li>
-                                    <li><a href="~/contactus">Bize Ulaşın</a></li>
-                                    <li><a href="~/contactusnew">Hakkımızda</a></li>
-                                <li><a href="~/gallery" style="color: @(ViewBag.NavBarLinkColor ?? "#fff")">Galeri</a></li>
-                                <li><a href="~/takim" style="color: @(ViewBag.NavBarLinkColor ?? "#fff")">Takım</a></li>
-                                    </ul>
-                        </nav>
-                        <!-- Main Navigation / End -->
-                    </div>
-                    <!-- Left Side Content / End -->
-
-                    <div class="right-side d-none d-none d-lg-none d-xl-flex sign ml-0">
-                        <!-- Header Widget -->
-                        <div class="header-widget sign-in">
-                            <div class=""><a href="https://api.whatsapp.com/send?phone=05536905025">+90 553 690 50 50</a></div>
-                        </div>
-                        <!-- Header Widget / End -->
-                    </div>
-                    <!-- Right Side Content / End -->
-                    <div class="right-side d-none d-none d-lg-none d-xl-flex sign ml-0" style="margin-right:0px;border-right:unset">
-                                            <!-- Header Widget -->
-                                            <div class="header-widget sign-in">
-                                                <div class="show-reg-form modal-open"><a href="#">Admin girişi</a></div>
-                                            </div>
-                                            <!-- Header Widget / End -->
-                                        </div>
-                    <!-- Right Side Content / End -->
-
-              
-                </div>
-            </div>
-            <!-- Header / End -->
-
-        </header>
-        <div class="clearfix"></div>
-        <!-- Header Container / End -->
-
+    
         <!-- SLIDER START -->
             <div id="rev_slider_26_1_wrapper " class="rev_slider_wrapper fullscreen-container home-rev-slider" data-alias="mask-showcase" data-source="gallery">
                 <!-- START REVOLUTION SLIDER 5.4.1 fullscreen mode -->
@@ -758,93 +696,7 @@
         </section>
         <!-- END SECTION TESTIMONIALS -->
         
-        <!-- START FOOTER -->
-   <footer class="first-footer">
-                  <div class="top-footer">
-                      <div class="container">
-                          <div class="row">
-                              <div class="col-lg-9 col-md-6">
-                                  <div class="netabout">
-                                      <a href="index.html" class="logo">
-                                          <img src="/Template1/images/logo-footer.svg" alt="netcom">
-                                      </a>
-                                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                          Accusamus adipisci aliquam cumque dolore eum expedita facere in
-                                          ventore, labore libero molestias natus necessitatibus quam quas sint ull
-                                          am veritatis voluptates. Cupiditate ipsa quam similique. Aliquam aliqui
-                                          d architecto dolore est exercitationem laborum laudantium nihil pariatur perferendis, quo sed, voluptas? Esse illo necessitatibus praese
-                                          ntium quas saepe tenetur vero, voluptates.</p>
-                                  </div>
-                                  @* <div class="contactus"> *@
-                                  @*     <ul> *@
-                                  @*         <li> *@
-                                  @*             <div class="info"> *@
-                                  @*                 <i class="fa fa-map-marker" aria-hidden="true"></i> *@
-                                  @*                 <p class="in-p">95 South Park Avenue, USA</p> *@
-                                  @*             </div> *@
-                                  @*         </li> *@
-                                  @*         <li> *@
-                                  @*             <div class="info"> *@
-                                  @*                 <i class="fa fa-phone" aria-hidden="true"></i> *@
-                                  @*                 <p class="in-p">+456 875 369 208</p> *@
-                                  @*             </div> *@
-                                  @*         </li> *@
-                                  @*         <li> *@
-                                  @*             <div class="info"> *@
-                                  @*                 <i class="fa fa-envelope" aria-hidden="true"></i> *@
-                                  @*                 <p class="in-p ti">supportfindhouses.com</p> *@
-                                  @*             </div> *@
-                                  @*         </li> *@
-                                  @*     </ul> *@
-                                  @* </div> *@
-                              </div>
-                              
-                              
-                              
-                          <div class="col-lg-3 col-md-6 d-flex justify-content-center align-items-center">
-                                  <div class="netabout">
-                                      
-                                      @* <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum incidunt architecto soluta laboriosam, perspiciatis, aspernatur officiis esse.</p> *@
-                                  </div>
-                                  <div class="contactus">
-                                      <ul>
-                                          <li>
-                                              <div class="info">
-                                                  <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                                  <p class="in-p">95 South Park Avenue, USA</p>
-                                              </div>
-                                          </li>
-                                          <li>
-                                              <div class="info">
-                                                  <i class="fa fa-phone" aria-hidden="true"></i>
-                                                  <p class="in-p">+456 875 369 208</p>
-                                              </div>
-                                          </li>
-                                          <li>
-                                              <div class="info">
-                                                  <i class="fa fa-envelope" aria-hidden="true"></i>
-                                                  <p class="in-p ti">supportfindhouses.com</p>
-                                              </div>
-                                          </li>
-                                      </ul>
-                                  </div>
-                              </div></div>
-                      </div>
-                  </div>
-                  <div class="second-footer">
-                      <div class="container">
-                          <p>2021 © Copyright - All Rights Reserved.</p>
-                          <ul class="netsocials">
-                              <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                              <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                              <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                              <li><a href="#"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>
-                          </ul>
-                      </div>
-                  </div>
-              </footer>
-        <a data-scroll href="#wrapper" class="go-up"><i class="fa fa-angle-double-up" aria-hidden="true"></i></a>
-        <!-- END FOOTER -->
+     
 
         <!--register form -->
         <div class="login-and-register-form modal">
@@ -1036,7 +888,7 @@
                                 fullScreenAutoWidth: "off",
                                 fullScreenAlignForce: "off",
                                 fullScreenOffsetContainer: ".site-header",
-                                fullScreenOffset: "0px",
+                                fullScreenOffset: "14%",
                                 hideThumbsOnMobile: "off",
                                 hideSliderAtLimit: 0,
                                 hideCaptionAtLimit: 0,
