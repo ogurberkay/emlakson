@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "SFPYkFRzHjti3fVyoqble7YJRCaGDBYkZAh6co79YlA=",
+  "Hash": "7FFSlK41sKPsv73hC6Km++56ZRNaYS8w9/GcpllB16Y=",
   "Source": "Web",
   "BasePath": "_content/Web",
   "Mode": "Default",
@@ -3655,6 +3655,23 @@
       "OriginalItemSpec": "wwwroot\\Template1\\images\\icons\\icon-15.svg"
     },
     {
+      "Identity": "C:\\Users\\berkay.ogur\\source\\repos\\emlakson\\Web\\wwwroot\\Template1\\images\\icons\\icon-2.png",
+      "SourceId": "Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\berkay.ogur\\source\\repos\\emlakson\\Web\\wwwroot\\",
+      "BasePath": "_content/Web",
+      "RelativePath": "Template1/images/icons/icon-2.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Template1\\images\\icons\\icon-2.png"
+    },
+    {
       "Identity": "C:\\Users\\berkay.ogur\\source\\repos\\emlakson\\Web\\wwwroot\\Template1\\images\\icons\\icon-2.svg",
       "SourceId": "Web",
       "SourceType": "Discovered",
@@ -3689,6 +3706,23 @@
       "OriginalItemSpec": "wwwroot\\Template1\\images\\icons\\icon-3.svg"
     },
     {
+      "Identity": "C:\\Users\\berkay.ogur\\source\\repos\\emlakson\\Web\\wwwroot\\Template1\\images\\icons\\icon-4.png",
+      "SourceId": "Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\berkay.ogur\\source\\repos\\emlakson\\Web\\wwwroot\\",
+      "BasePath": "_content/Web",
+      "RelativePath": "Template1/images/icons/icon-4.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Template1\\images\\icons\\icon-4.png"
+    },
+    {
       "Identity": "C:\\Users\\berkay.ogur\\source\\repos\\emlakson\\Web\\wwwroot\\Template1\\images\\icons\\icon-4.svg",
       "SourceId": "Web",
       "SourceType": "Discovered",
@@ -3704,6 +3738,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Template1\\images\\icons\\icon-4.svg"
+    },
+    {
+      "Identity": "C:\\Users\\berkay.ogur\\source\\repos\\emlakson\\Web\\wwwroot\\Template1\\images\\icons\\icon-5.png",
+      "SourceId": "Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\berkay.ogur\\source\\repos\\emlakson\\Web\\wwwroot\\",
+      "BasePath": "_content/Web",
+      "RelativePath": "Template1/images/icons/icon-5.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Template1\\images\\icons\\icon-5.png"
     },
     {
       "Identity": "C:\\Users\\berkay.ogur\\source\\repos\\emlakson\\Web\\wwwroot\\Template1\\images\\icons\\quoe.png",
