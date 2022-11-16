@@ -21,7 +21,10 @@ public class ApplicationDbContext : IdentityDbContext<User>
         modelBuilder.ApplyConfiguration(new AdvertConfiguration());
         modelBuilder.ApplyConfiguration(new RoleConfiguration());
     }
-        
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        optionsBuilder.UseNpgsql("Server=localhost;Port=5432;Database=test;User Id=postgres;Password=123123;");
+    }   
     /*
 
 Further Updates

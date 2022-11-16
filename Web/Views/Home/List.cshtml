@@ -90,8 +90,9 @@
                                                     <div class="form-group categories">
                                                         <div class="nice-select form-control wide" tabindex="0"><span class="current"><i class="fa fa-home"></i>İlan Tipi</span>
                                                             <ul class="list" id="AdvertType">
-                                                                <li data-value="1" class="option selected ">Satılık</li>
-                                                                <li data-value="2" class="option">Kiralık</li>
+                                                                <li data-value="1" class="option selected ">İlan tipi seçiniz</li>
+                                                                <li data-value="2" class="option ">Satılık</li>
+                                                                <li data-value="3" class="option">Kiralık</li>
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -1010,14 +1011,15 @@
                         var data = new FormData();
                         data.append("SearchKeyWord", searchText);
                         data.append("HouseType",houseType );
-                        data.append("Lokasyon", locationType);
+                        data.append("Location", locationType);
                         data.append("AdvertType", advertType);
                         data.append("BedroomNumber", bedroomNumber);
                         data.append("BathroomNumber", bathroomNumber);
-                        data.append("metresStartValue",metresStartValue );
-                        data.append("metresEndValue", metresEndValue );
-                        data.append("pricesStartValue", pricesStartValue.replace(',',''));
-                        data.append("pricesEndValue", pricesEndValue.replace(',',''));
+                        data.append("MetresStartValue",metresStartValue );
+                        data.append("MetresEndValue", metresEndValue );
+                        data.append("PricesStartValue", pricesStartValue.replace(',',''));
+                        data.append("PricesEndValue", pricesEndValue.replace(',',''));
+                        data.append("ExtraAttributes", extraAttributes);
                         $.ajax({
                             type: "POST",
                             enctype: 'multipart/form-data',

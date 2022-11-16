@@ -14,27 +14,41 @@ public class Advert : BaseEntity
     public int? BathroomNumber { get; set; }
     public int? Meters { get; set; }
     public int? Price { get; set; }
-    public List<string>? ExtraAttributes { get; set; }
+    public List<ExtraAttributeEnum>? ExtraAttributes { get; set; }
     public string AdvertDescription { get; set; }
+}
+
+public enum ExtraAttributeEnum
+{
+    Kombi,
+    Havuz,
+    MerkeziIsıtma,
+    Alarm,
+    Wifi,
+    Garaj,
+    Jakuzi,
+    Somine,
+    EbeveynBanyosu,
+    CocukOdasi
 }
 
 public enum AdvertTypeEnum
 {
-    Satilik = 1,
-    Kiralik = 2
+    Satilik = 2,
+    Kiralik = 3
 }
 
 public enum LocationEnum
 {
-    Istanbul = 1,
-    Izmir = 2,
-    Mersin = 3,
+    Istanbul = 2,
+    Izmir = 3,
+    Mersin = 4,
 }
 
 public enum HouseTypeEnum
 {
-    Mustakil = 1,
-    Apartman = 2
+    Mustakil = 2,
+    Apartman = 3
 }
 
 /*
