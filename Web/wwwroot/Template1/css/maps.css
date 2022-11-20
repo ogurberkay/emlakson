@@ -516,7 +516,7 @@
 	position: absolute;
 	display: block;
 	bottom: 60px;
-	top: auto;
+	top: 40vh;
 	transform: none;
 	padding-bottom: 0;
 	z-index: 9999;

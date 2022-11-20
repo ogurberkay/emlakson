@@ -13,9 +13,10 @@ public class Advert : BaseEntity
     public int? BedroomNumber { get; set; }
     public int? BathroomNumber { get; set; }
     public int? Meters { get; set; }
-    public int? Price { get; set; }
+    public decimal? Price { get; set; }
     public List<ExtraAttributeEnum>? ExtraAttributes { get; set; }
-    public string AdvertDescription { get; set; }
+    public bool IsFeatured { get; set; } = false;
+
 }
 
 public enum ExtraAttributeEnum

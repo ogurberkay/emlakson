@@ -16,6 +16,19 @@ public class HomeController : Controller
         _advertService = advertService;
     }
 
+    [HttpGet("Asis")]
+    public IActionResult Asis()
+	{
+        return View();
+	}
+
+    [HttpGet("Video")]
+    public IActionResult Video()
+    {
+        return View();
+    }
+
+
     public IActionResult Index()
     {
         return View();
@@ -36,17 +49,26 @@ public class HomeController : Controller
     }
     
     [HttpGet("List")]
-    public IActionResult List()
+    public async Task<IActionResult> List()
+    {
+        var data = await _advertService.GetAllAdverts();
+
+        return View(data.Data);
+    }
+    
+    [HttpGet("404")]
+    public IActionResult Admin()
     {
         return View();
     }
-    
     [HttpGet("404")]
     public IActionResult NotFound()
     {
         return View();
     }
-    
+
+
+
     [HttpGet("kayar")]
     public IActionResult kayar()
     {

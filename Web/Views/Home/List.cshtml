@@ -220,6 +220,87 @@
                 </section>
                 <!-- Block heading end -->
                 <div class="row featured portfolio-items">
+                   
+                    @foreach(var item in Model){
+                     <div class="item col-lg-4 col-md-6 col-xs-12 people landscapes sale">
+                        <div class="project-single" data-aos="fade-up">
+                            <div class="project-inner project-head">
+                                <div class="project-bottom">
+                                    <h4><a href="properties-details.html">İlanı Görüntüle</a><span class="category">Tunca Emlak</span></h4>
+                                </div>
+                                <div class="homes">
+                                    <!-- homes img -->
+                                    <a href="single-property-1.html" class="homes-img">
+                                        @if(item.IsFeatured){
+                                        <div class="homes-tag button alt featured">Öne Çıkan</div>
+                                        }
+                                        @if(item.AdvertType ==Data.Entities.Models.AdvertTypeEnum.Satilik){
+                                        <div class="homes-tag button alt sale">Satılık</div>
+                                        }
+                                        else{
+                                        <div class="homes-tag button sale rent">Kiralık</div>
+                                            }
+
+                                        <div class="homes-price">@item.HouseType</div>
+                                        <img src="~/Template1/images/feature-properties/fp-3.jpg" alt="home-1" class="img-responsive">
+                                    </a>
+                                </div>
+                                <div class="button-effect">
+                                    <a href="single-property-1.html" class="btn"><i class="fa fa-link"></i></a>
+                                    <a href="https://www.youtube.com/watch?v=2xHQqYRcrx4" class="btn popup-video popup-youtube"><i class="fas fa-video"></i></a>
+                                    <a href="single-property-2.html" class="img-poppu btn"><i class="fa fa-photo"></i></a>
+                                </div>
+                            </div>
+                            <!-- homes content -->
+                            <div class="homes-content">
+                                <!-- homes address -->
+                                <h3><a href="single-property-1.html">@item.HouseType</a></h3>
+                                <p class="homes-address mb-3">
+                                    <a href="single-property-1.html">
+                                        <i class="fa fa-map-marker"></i><span>@($"{item.Location}/{item.District}")</span>
+                                    </a>
+                                </p>
+                                <!-- homes List -->
+                                <ul class="homes-list clearfix pb-3">
+                                    <li class="the-icons">
+                                        <i class="flaticon-bed mr-2" aria-hidden="true"></i>
+                                        <span>@item.BedroomNumber Yatak Odası</span>
+                                    </li>
+                                    <li class="the-icons" style="float:right">
+                                        <i class="flaticon-bathtub mr-2" aria-hidden="true"></i>
+                                        <span>@item.BathroomNumber Banyo</span>
+                                    </li>
+                                    <li class="the-icons">
+                                        <i class="flaticon-square mr-2" aria-hidden="true"></i>
+                                        <span>@item.Meters m²</span>
+                                    </li>
+                                </ul>
+                                <!-- Price -->
+                                <div class="price-properties">
+                                    <h3 class="title mt-3">
+                                <a href="single-property-1.html">@($"{item.Price?.ToString("#,##0.###")}₺")</a>
+                                </h3>
+                                    <div class="compare">
+                                       
+                                        <a href="#" title="Share">
+                                            <i class="fas fa-share-alt"></i>
+                                        </a>
+                                        
+                                    </div>
+                                </div>
+                                <div class="footer">
+                                    <a href="agent-details.html">
+                                        <i class="fa fa-user"></i> Tunca Emlak
+                                    </a>
+                                    <span>
+                                <i class="fa fa-calendar"></i> 1 Ay Önce
+                            </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    }
+                   @*
                     <div class="item col-lg-4 col-md-6 col-xs-12 landscapes sale">
                         <div class="project-single" data-aos="fade-up">
                             <div class="project-inner project-head">
@@ -365,8 +446,8 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="item col-lg-4 col-md-6 col-xs-12 people landscapes sale">
+                    </div>    
+                   <div class="item col-lg-4 col-md-6 col-xs-12 people landscapes sale">
                         <div class="project-single" data-aos="fade-up">
                             <div class="project-inner project-head">
                                 <div class="project-bottom">
@@ -876,7 +957,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div>*@
                 </div>
                 <nav aria-label="..." class="pt-3">
                     <ul class="pagination grid-3">

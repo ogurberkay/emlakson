@@ -42,7 +42,7 @@ public class AdvertService : BaseService, IAdvertService
             return new DataResult<AdvertGetDto?>(ResultStatusEnum.Error, "Advert not found", null);
         }
 
-        advert.AdvertDescription = model.AdvertDescription;
+        //advert.AdvertDescription = model.AdvertDescription;
         UnitOfWork.Adverts.Update(advert);
         await UnitOfWork.SaveAsync();
         return new DataResult<AdvertGetDto>(ResultStatusEnum.Success, "Advert deleted successfully", advert.ToDto());
@@ -57,7 +57,17 @@ public class AdvertService : BaseService, IAdvertService
 
         var advert = await UnitOfWork.Adverts.InsertAsync(new Advert()
         {
-            AdvertDescription = model.AdvertDescription
+            Title = model.Title,
+            Price = model.Price,
+            Meters = model.Meters,
+            Location = model.Location,
+            HouseType = model.HouseType,
+            ExtraAttributes = model.ExtraAttributes,
+            District = model.District,
+            Description = model.Description,
+            BedroomNumber = model.BedroomNumber,
+            BathroomNumber = model.BathroomNumber,
+            AdvertType = model.AdvertType,
         });
         await UnitOfWork.SaveAsync();
         return new DataResult<AdvertGetDto>(ResultStatusEnum.Success, "Advert deleted successfully", advert.ToDto());
@@ -180,7 +190,18 @@ public class AdvertService : BaseService, IAdvertService
 
         var advertGetDtos = data.Select(x => new AdvertGetDto()
         {
-            AdvertDescription = x.AdvertDescription,
+            AdvertType = x.AdvertType,
+            BathroomNumber = x.BathroomNumber,
+            BedroomNumber = x.BedroomNumber,
+            Description = x.Description,
+            District = x.District,
+            ExtraAttributes = x.ExtraAttributes,
+            HouseType = x.HouseType,
+            Location = x.Location,
+            Meters = x.Meters,
+            Price = x.Price,
+            Title = x.Title,
+            IsFeatured = x.IsFeatured,
         });
 
 

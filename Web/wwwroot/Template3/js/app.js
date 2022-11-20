@@ -433,24 +433,8 @@ $(function () {
             .toggleClass('fa-minus fa-plus');
     }
 
-    $('.panel-group').on('shown.bs.collapse', toggleChevron);
-    $('.panel-group').on('hidden.bs.collapse', toggleChevron);
+   
 
-    // Switching Color schema
-    $('.color-plate').on('click', function () {
-        var name = $(this).attr('data-color');
-        $('link[id="style_sheet"]').attr('href', 'css/skins/' + name + '.css');
-        if (name == 'default') {
-            $('.logo img').attr('src', 'img/logos/logo.png');
-        }
-        else {
-            $('.logo img').attr('src', 'img/logos/' + name + '-logo.png');
-        }
-    });
-
-    $('.setting-button').on('click', function () {
-        $('.option-panel').toggleClass('option-panel-collased');
-    });
 
     $(window).resize(function () {
         resizeModalsContent();
