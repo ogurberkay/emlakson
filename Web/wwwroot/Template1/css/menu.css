@@ -69,7 +69,7 @@ header.fullwidth .container {
 }
 .left-side {
     float: left;
-    width: 100%;
+    width: 820px;
     display: inline-block;
 }
 .right-side {
@@ -346,7 +346,6 @@ a.button.border, a.button {
     position: relative;
     display: block;
     margin-top: 9px;
-    margin-right: 100px;
 }
 #navigation ul {
     list-style: none;
