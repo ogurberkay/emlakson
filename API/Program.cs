@@ -19,15 +19,7 @@ builder.Services.ConfigureSqlContext(builder.Configuration);
 builder.Services.ConfigureServiceManager();
 builder.Services.ConfigureUnitOfWork();
 
-builder.Services.AddIdentity<User,IdentityRole>(opt =>
-    {
-        opt.Password.RequiredLength = 3;
-        opt.Password.RequireNonAlphanumeric = false;
-        opt.Password.RequireDigit = false;
-        opt.Password.RequireUppercase = false;
-        opt.Password.RequireLowercase = false;
-    })
-    .AddEntityFrameworkStores<ApplicationDbContext>();
+
 builder.Services.AddScoped<JwtHandler>();
 
 var jwtSettings = builder.Configuration.GetSection(("JwtSettings"));

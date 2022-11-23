@@ -1,21 +1,24 @@
+using Data.Entities.Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Data.Entities.Configuration;
 
-public class RoleConfiguration: IEntityTypeConfiguration<IdentityRole>
+public class RoleConfiguration: IEntityTypeConfiguration<IdentityRoleEntity>
 {
-    public void Configure(EntityTypeBuilder<IdentityRole> builder)
+    public void Configure(EntityTypeBuilder<IdentityRoleEntity> builder)
     {
         builder.HasData(
-            new IdentityRole()
+            new IdentityRoleEntity()
             {
+                Id = 1,
                 Name = "Admin",
                 NormalizedName = "ADMIN"
             },
-            new IdentityRole()
+            new IdentityRoleEntity()
             {
+                Id=2,
                 Name = "SuperAdmin",
                 NormalizedName = "SUPER_ADMIN"
             });

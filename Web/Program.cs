@@ -8,7 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.ConfigureSqlContext(builder.Configuration);
 builder.Services.ConfigureServiceManager();
 builder.Services.ConfigureUnitOfWork();
-
+builder.Services.ConfigureIdentity();
 // Add services to the container.
 builder.Services.AddRazorPages().AddRazorRuntimeCompilation();  
 builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();

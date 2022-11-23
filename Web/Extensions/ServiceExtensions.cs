@@ -1,8 +1,10 @@
 ﻿using Business.Service.Abstract;
 using Business.Service.Concrete;
+using Data.Entities.Models;
 using DataAccess.Context;
 using DataAccess.Repositories.Abstract;
 using DataAccess.Repositories.Concrete;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace Web.Extensions
@@ -36,6 +38,9 @@ namespace Web.Extensions
         public static void ConfigureUnitOfWork(this IServiceCollection services)
         {
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+        }
+        public static void ConfigureIdentity(this IServiceCollection services)
+        {
         }
 
     }

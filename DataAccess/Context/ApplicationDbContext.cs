@@ -1,12 +1,16 @@
 using Data.Entities.Configuration;
+using Data.Entities.Identity;
 using Data.Entities.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace DataAccess.Context;
 
-public class ApplicationDbContext : IdentityDbContext<User>
+public class ApplicationDbContext : IdentityDbContext<UserEntity, IdentityRoleEntity, int, IdentityUserClaimEntity,
+        IdentityUserRoleEntity,
+        IdentityUserLoginEntity, IdentityRoleClaimEntity, IdentityUserTokenEntity>
 {
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
         : base(options)
@@ -20,11 +24,15 @@ public class ApplicationDbContext : IdentityDbContext<User>
         base.OnModelCreating(modelBuilder);
         modelBuilder.ApplyConfiguration(new AdvertConfiguration());
         modelBuilder.ApplyConfiguration(new RoleConfiguration());
+        modelBuilder.Entity<UserEntity>().ToTable("Users", "aid");
+        modelBuilder.Entity<IdentityUserClaimEntity>().ToTable("UserClaims", "aid");
+        modelBuilder.Entity<IdentityRoleEntity>().ToTable("UserRoles", "aid");
+        modelBuilder.Entity<IdentityUserLoginEntity>().ToTable("UserLogins", "aid");
+        modelBuilder.Entity<IdentityRoleClaimEntity>().ToTable("RoleClaims", "aid");
+        modelBuilder.Entity<IdentityUserTokenEntity>().ToTable("UserTokens", "aid");
+        modelBuilder.Entity<IdentityUserRoleEntity>().ToTable("UserUserRoles", "aid");
+
     }
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        optionsBuilder.UseNpgsql("Server=localhost;Port=5432;Database=test;User Id=postgres;Password=123123;");
-    }   
     /*
 
 Further Updates
