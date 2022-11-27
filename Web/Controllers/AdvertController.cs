@@ -60,5 +60,14 @@ public class AdvertController : Controller
             return new ApiResponse(400, "Invalid Operation");
         return new ApiResponse(200, data.Data);
     }
-    
+
+    [HttpGet("GetAdvertsApi")]
+    public async Task<ApiResponse> GetAdvertsApi(int Id)
+    {
+        var data = await _advertService.GetAllAdverts();
+        if (data.Data == null)
+            return new ApiResponse(400, "Invalid Operation");
+        return new ApiResponse(200, data.Data);
+    }
+
 }

@@ -11,7 +11,7 @@ public class JwtHandler
 {
     private readonly IConfiguration _configuration;
     private readonly IConfiguration _jwtSettings;
-    private readonly UserManager<User> _userManager;
+    private readonly UserManager<UserEntity> _userManager;
 
     public JwtHandler(IConfiguration configuration, IConfiguration jwtSettings, UserManager<User> userManager)
     {
@@ -28,7 +28,7 @@ public class JwtHandler
         return new SigningCredentials(secret, SecurityAlgorithms.HmacSha256);
     }
 
-    public async Task<List<Claim>> GetClaims(User user)
+    public async Task<List<Claim>> GetClaims(UserEntity user)
     {
         var claims = new List<Claim>();
         {

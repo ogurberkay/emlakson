@@ -1,3 +1,4 @@
+using Data.Common;
 using Data.Entities.Configuration;
 using Data.Entities.Identity;
 using Data.Entities.Models;
@@ -12,6 +13,10 @@ public class ApplicationDbContext : IdentityDbContext<UserEntity, IdentityRoleEn
         IdentityUserRoleEntity,
         IdentityUserLoginEntity, IdentityRoleClaimEntity, IdentityUserTokenEntity>
 {
+    public ApplicationDbContext()
+    {
+    }
+
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
         : base(options)
     {
@@ -32,6 +37,27 @@ public class ApplicationDbContext : IdentityDbContext<UserEntity, IdentityRoleEn
         modelBuilder.Entity<IdentityUserTokenEntity>().ToTable("UserTokens", "aid");
         modelBuilder.Entity<IdentityUserRoleEntity>().ToTable("UserUserRoles", "aid");
 
+    }
+    public override int SaveChanges()
+    {
+        var entries = ChangeTracker
+            .Entries()
+            .Where(e => e.Entity is IEntity && (
+                    e.State == EntityState.Added
+                    || e.State == EntityState.Modified));
+
+        foreach (var entityEntry in entries)
+        {
+            ((IEntity)entityEntry.Entity).UpdatedDate = DateTime.Now;
+
+            if (entityEntry.State == EntityState.Added)
+            {
+                ((IEntity)entityEntry.Entity).CreatedDate = DateTime.Now;
+                ((IEntity)entityEntry.Entity).IsDeleted = false;
+            }
+        }
+
+        return base.SaveChanges();
     }
     /*
 

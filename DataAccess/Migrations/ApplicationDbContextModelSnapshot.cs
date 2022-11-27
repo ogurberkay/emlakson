@@ -83,14 +83,14 @@ namespace DataAccess.Migrations
                         new
                         {
                             Id = 1,
-                            ConcurrencyStamp = "e25d5bf5-1042-453b-9a97-f6507ab619ad",
+                            ConcurrencyStamp = "ae634538-66a6-4ddf-9583-2a6be072e24d",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = 2,
-                            ConcurrencyStamp = "8ed35e80-953a-4896-954b-648bfe1d30d4",
+                            ConcurrencyStamp = "7399fd16-8dca-4bdd-b571-0ca051639d44",
                             Name = "SuperAdmin",
                             NormalizedName = "SUPER_ADMIN"
                         });
@@ -198,13 +198,10 @@ namespace DataAccess.Migrations
                     b.Property<int?>("BedroomNumber")
                         .HasColumnType("integer");
 
-                    b.Property<int?>("CreatedByImpId")
+                    b.Property<int?>("CreatedById")
                         .HasColumnType("integer");
 
-                    b.Property<DateTime>("DateCreated")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<DateTime?>("DateModified")
+                    b.Property<DateTime>("CreatedDate")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Description")
@@ -231,10 +228,7 @@ namespace DataAccess.Migrations
                     b.Property<int?>("Meters")
                         .HasColumnType("integer");
 
-                    b.Property<int>("ModifiedById")
-                        .HasColumnType("integer");
-
-                    b.Property<int?>("ModifiedByImpId")
+                    b.Property<int?>("ModifiedById")
                         .HasColumnType("integer");
 
                     b.Property<decimal?>("Price")
@@ -242,6 +236,9 @@ namespace DataAccess.Migrations
 
                     b.Property<string>("Title")
                         .HasColumnType("text");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
 
@@ -254,7 +251,7 @@ namespace DataAccess.Migrations
                             AdvertType = 3,
                             BathroomNumber = 2,
                             BedroomNumber = 1,
-                            DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "testtest",
                             District = "District",
                             ExtraAttributes = new[] { 0, 1, 2 },
@@ -263,7 +260,6 @@ namespace DataAccess.Migrations
                             IsFeatured = false,
                             Location = 2,
                             Meters = 500,
-                            ModifiedById = 0,
                             Price = 230000m,
                             Title = "Ev title"
                         },
@@ -273,7 +269,7 @@ namespace DataAccess.Migrations
                             AdvertType = 3,
                             BathroomNumber = 2,
                             BedroomNumber = 1,
-                            DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "testtest",
                             District = "District",
                             ExtraAttributes = new[] { 0, 1, 2 },
@@ -282,7 +278,6 @@ namespace DataAccess.Migrations
                             IsFeatured = false,
                             Location = 2,
                             Meters = 500,
-                            ModifiedById = 0,
                             Price = 230000m,
                             Title = "Ev title"
                         },
@@ -292,7 +287,7 @@ namespace DataAccess.Migrations
                             AdvertType = 3,
                             BathroomNumber = 2,
                             BedroomNumber = 1,
-                            DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "testtest",
                             District = "District",
                             ExtraAttributes = new[] { 0, 1, 2 },
@@ -301,7 +296,6 @@ namespace DataAccess.Migrations
                             IsFeatured = false,
                             Location = 2,
                             Meters = 500,
-                            ModifiedById = 0,
                             Price = 230000m,
                             Title = "Ev title"
                         },
@@ -311,7 +305,7 @@ namespace DataAccess.Migrations
                             AdvertType = 3,
                             BathroomNumber = 2,
                             BedroomNumber = 1,
-                            DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "testtest",
                             District = "District",
                             ExtraAttributes = new[] { 0, 1, 2 },
@@ -320,7 +314,6 @@ namespace DataAccess.Migrations
                             IsFeatured = false,
                             Location = 2,
                             Meters = 500,
-                            ModifiedById = 0,
                             Price = 230000m,
                             Title = "Ev title"
                         },
@@ -330,7 +323,7 @@ namespace DataAccess.Migrations
                             AdvertType = 3,
                             BathroomNumber = 2,
                             BedroomNumber = 1,
-                            DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "testtest",
                             District = "District",
                             ExtraAttributes = new[] { 0, 1, 2 },
@@ -339,7 +332,6 @@ namespace DataAccess.Migrations
                             IsFeatured = false,
                             Location = 2,
                             Meters = 500,
-                            ModifiedById = 0,
                             Price = 230000m,
                             Title = "Ev title"
                         },
@@ -349,7 +341,7 @@ namespace DataAccess.Migrations
                             AdvertType = 3,
                             BathroomNumber = 2,
                             BedroomNumber = 1,
-                            DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "testtest",
                             District = "District",
                             ExtraAttributes = new[] { 0, 1, 2 },
@@ -358,7 +350,6 @@ namespace DataAccess.Migrations
                             IsFeatured = false,
                             Location = 2,
                             Meters = 500,
-                            ModifiedById = 0,
                             Price = 230000m,
                             Title = "Ev title"
                         },
@@ -368,7 +359,7 @@ namespace DataAccess.Migrations
                             AdvertType = 3,
                             BathroomNumber = 2,
                             BedroomNumber = 1,
-                            DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "testtest",
                             District = "District",
                             ExtraAttributes = new[] { 0, 1, 2 },
@@ -377,7 +368,6 @@ namespace DataAccess.Migrations
                             IsFeatured = false,
                             Location = 2,
                             Meters = 500,
-                            ModifiedById = 0,
                             Price = 230000m,
                             Title = "Ev title"
                         },
@@ -387,7 +377,7 @@ namespace DataAccess.Migrations
                             AdvertType = 3,
                             BathroomNumber = 2,
                             BedroomNumber = 1,
-                            DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "testtest",
                             District = "District",
                             ExtraAttributes = new[] { 0, 1, 2 },
@@ -396,7 +386,6 @@ namespace DataAccess.Migrations
                             IsFeatured = false,
                             Location = 2,
                             Meters = 500,
-                            ModifiedById = 0,
                             Price = 230000m,
                             Title = "Ev title"
                         });
@@ -417,6 +406,12 @@ namespace DataAccess.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("text");
 
+                    b.Property<int?>("CreatedById")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<string>("Email")
                         .HasMaxLength(256)
                         .HasColumnType("character varying(256)");
@@ -424,11 +419,21 @@ namespace DataAccess.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("boolean");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("boolean");
+
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("boolean");
 
                     b.Property<DateTimeOffset?>("LockoutEnd")
                         .HasColumnType("timestamp with time zone");
+
+                    b.Property<int>("ModifiedById")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)
@@ -450,8 +455,15 @@ namespace DataAccess.Migrations
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("text");
 
+                    b.Property<string>("Surname")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("boolean");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("UserName")
                         .HasMaxLength(256)

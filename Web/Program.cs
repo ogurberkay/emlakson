@@ -1,7 +1,11 @@
 using Business.Service.Abstract;
 using Business.Service.Concrete;
+using Data.Entities.Identity;
+using Data.Entities.Models;
+using DataAccess.Context;
 using DataAccess.Repositories.Abstract;
 using DataAccess.Repositories.Concrete;
+using Microsoft.AspNetCore.Identity;
 using Web.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,6 +13,19 @@ builder.Services.ConfigureSqlContext(builder.Configuration);
 builder.Services.ConfigureServiceManager();
 builder.Services.ConfigureUnitOfWork();
 builder.Services.ConfigureIdentity();
+
+
+builder.Services.AddIdentity<UserEntity, IdentityRoleEntity>(opt =>
+{
+    opt.Password.RequiredLength = 8;
+    opt.Password.RequireNonAlphanumeric = false;
+    opt.Password.RequireUppercase = false;
+    opt.Password.RequireDigit = false;
+
+})
+    .AddDefaultTokenProviders()
+    .AddEntityFrameworkStores<ApplicationDbContext>();
+
 // Add services to the container.
 builder.Services.AddRazorPages().AddRazorRuntimeCompilation();  
 builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();

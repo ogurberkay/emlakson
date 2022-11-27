@@ -33,7 +33,6 @@ var KTSigninGeneral = function () {
                 n.preventDefault(), i.validate().then((function (i) {
                     "Valid" == i ? (e.setAttribute("data-kt-indicator", "on"), e.disabled = !0,
 
-                        alert("test")
                         setTimeout((function () {
                         e.removeAttribute("data-kt-indicator"), e.disabled = !1, 
                             Swal.fire({

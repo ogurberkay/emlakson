@@ -1,0 +1,126 @@
+﻿@{
+    Layout = "_LayoutAdmin";
+}
+
+<!DOCTYPE html>
+<html >
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="html 5 template">
+    <meta name="author" content="">
+    <title>Find Houses - HTML5 Template</title>
+    <!-- FAVICON -->
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+</head>
+
+<body>
+   
+    <div class="app-content content ">
+        <div class="content-overlay"></div>
+        <div class="header-navbar-shadow"></div>
+        <div class="content-wrapper container-xxl p-0">
+            <div class="content-header row">
+                <div class="content-header-left col-md-9 col-12 mb-2">
+                    <div class="row breadcrumbs-top">
+                        <div class="col-12">
+                            <h2 class="content-header-title float-start mb-0">İlanlar</h2>
+                            <div class="breadcrumb-wrapper">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="index.html">Anasayfa</a>
+                                    </li>
+                                    <li class="breadcrumb-item active">İlanlar
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+            </div>
+            <div class="content-body">
+                <!-- Kick start -->
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">İlanlar Tablosu</h4>
+                    </div>
+                    <div class="card-body">
+                        <table id="example" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>Başlığı</th>
+                <th>Açıklaması</th>
+                <th>Ev tipi</th>
+                <th>İli</th>
+                <th>İlçesi</th>
+                <th>İlan tipi</th>
+                <th>Metrekare</th>
+                <th>Fiyat</th>
+                <th>Diğer özellikleri</th>
+                <th>Öne Çıkarılan?</th>
+                <th>Eylemler</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Tiger Nixon</td>
+                <td>Tiger Nixon</td>
+                <td>Tiger Nixon</td>
+                <td>Tiger Nixon</td>
+                <td>Tiger Nixon</td>
+                <td>System Architect</td>
+                <td>Edinburgh</td>
+                <td>Edinburgh</td>
+                <td>61</td>
+                <td>2011-04-25</td>
+                <td></td>
+            </tr>
+           
+        </tfoot>
+    </table>
+                    </div>
+                </div>
+                <!--/ Kick start -->
+
+            </div>
+        </div>
+    </div>
+
+    @section Scripts {
+
+       <script>
+            $(document).ready(function() {
+    var table = $('#example').DataTable( {
+         destroy: true,
+        dom: 'Bfrtip',
+        buttons: [
+          {extend: 'copy', className: 'copyButton'},
+                {extend: 'csv', className: 'csvButton'},
+                {extend: 'excel', className: 'excelButton'},
+                {extend: 'print', className: 'printButton'}
+        ],
+         columnDefs: [
+            {
+                targets: 10,
+                data: null,
+                defaultContent: '<button>Click!</button>',
+            },
+         ],
+         language: {
+            url: 'https://cdn.datatables.net/plug-ins/1.13.1/i18n/tr.json',
+        },
+    } );
+    $('#example tbody').on('click', 'button', function () {
+        var data = table.row($(this).parents('tr')).data();
+        alert(data[0] + "'s salary is: " + data[5]);
+    });
+} );
+</script>
+
+}
+ 
+</body>
+
+</html>

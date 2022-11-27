@@ -12,11 +12,11 @@ namespace API.Controllers;
 
 public class AccountController : BaseController
 {
-    private readonly UserManager<User> _userManager;
+    private readonly UserManager<UserEntity> _userManager;
     private readonly JwtHandler _jwtHandler;
     private readonly RoleManager<IdentityRole> _roleManager;
 
-    public AccountController(UserManager<User> userManager, JwtHandler jwtHandler, RoleManager<IdentityRole> roleManager)
+    public AccountController(UserManager<UserEntity> userManager, JwtHandler jwtHandler, RoleManager<IdentityRole> roleManager)
     {
         _userManager = userManager;
         _jwtHandler = jwtHandler;
@@ -29,7 +29,7 @@ public class AccountController : BaseController
         if (model is null || !ModelState.IsValid)
             return new ApiResponse(400);
 
-        var user = new User()
+        var user = new UserEntity()
         {
             Email = model.Email,
             UserName = model.Email,
