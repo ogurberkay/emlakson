@@ -1,38 +1,49 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\MERT\\Desktop\\myDevLog\\test5\\EmlakBackend\\2\\DataAccess\\DataAccess.csproj": {}
+    "C:\\Users\\berkay.ogur\\source\\repos\\emlakson\\DataAccess\\DataAccess.csproj": {}
   },
   "projects": {
-    "C:\\Users\\MERT\\Desktop\\myDevLog\\test5\\EmlakBackend\\2\\Core\\Core.csproj": {
+    "C:\\Users\\berkay.ogur\\source\\repos\\emlakson\\Core\\Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\MERT\\Desktop\\myDevLog\\test5\\EmlakBackend\\2\\Core\\Core.csproj",
+        "projectUniqueName": "C:\\Users\\berkay.ogur\\source\\repos\\emlakson\\Core\\Core.csproj",
         "projectName": "Core",
-        "projectPath": "C:\\Users\\MERT\\Desktop\\myDevLog\\test5\\EmlakBackend\\2\\Core\\Core.csproj",
-        "packagesPath": "C:\\Users\\MERT\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\MERT\\Desktop\\myDevLog\\test5\\EmlakBackend\\2\\Core\\obj\\",
+        "projectPath": "C:\\Users\\berkay.ogur\\source\\repos\\emlakson\\Core\\Core.csproj",
+        "packagesPath": "C:\\Users\\berkay.ogur\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\berkay.ogur\\source\\repos\\emlakson\\Core\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\DevExpress 20.2\\Components\\Offline Packages",
+          "C:\\Program Files (x86)\\DevExpress 21.2\\Components\\Offline Packages",
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\MERT\\NuGet.Config",
-          "C:\\Users\\MERT\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\berkay.ogur\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 19.1.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 20.2.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 21.2.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          " https://www.myget.org/F/abp-nightly/api/v3/index.json": {},
+          "C:\\Program Files (x86)\\DevExpress 19.1\\Components\\System\\Components\\Packages": {},
+          "C:\\Program Files (x86)\\DevExpress 20.2\\Components\\System\\Components\\Packages": {},
+          "C:\\Program Files (x86)\\DevExpress 21.2\\Components\\System\\Components\\Packages": {},
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {},
-          "https://www.myget.org/F/blazorise/api/v3/index.json": {},
-          "https://www.nuget.org/api/v2": {}
+          "https://nuget.devexpress.com/b9daLUMqXXICjaMK8UnQAWO3OHbLgQmwBH1XnWPITVFfA9FiBD/api": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\MERT\\Desktop\\myDevLog\\test5\\EmlakBackend\\2\\Data\\Data.csproj": {
-                "projectPath": "C:\\Users\\MERT\\Desktop\\myDevLog\\test5\\EmlakBackend\\2\\Data\\Data.csproj"
+              "C:\\Users\\berkay.ogur\\source\\repos\\emlakson\\Data\\Data.csproj": {
+                "projectPath": "C:\\Users\\berkay.ogur\\source\\repos\\emlakson\\Data\\Data.csproj"
               }
             }
           }
@@ -64,7 +75,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -73,42 +85,53 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\MERT\\Desktop\\myDevLog\\test5\\EmlakBackend\\2\\DataAccess\\DataAccess.csproj": {
+    "C:\\Users\\berkay.ogur\\source\\repos\\emlakson\\DataAccess\\DataAccess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\MERT\\Desktop\\myDevLog\\test5\\EmlakBackend\\2\\DataAccess\\DataAccess.csproj",
+        "projectUniqueName": "C:\\Users\\berkay.ogur\\source\\repos\\emlakson\\DataAccess\\DataAccess.csproj",
         "projectName": "DataAccess",
-        "projectPath": "C:\\Users\\MERT\\Desktop\\myDevLog\\test5\\EmlakBackend\\2\\DataAccess\\DataAccess.csproj",
-        "packagesPath": "C:\\Users\\MERT\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\MERT\\Desktop\\myDevLog\\test5\\EmlakBackend\\2\\DataAccess\\obj\\",
+        "projectPath": "C:\\Users\\berkay.ogur\\source\\repos\\emlakson\\DataAccess\\DataAccess.csproj",
+        "packagesPath": "C:\\Users\\berkay.ogur\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\berkay.ogur\\source\\repos\\emlakson\\DataAccess\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\DevExpress 20.2\\Components\\Offline Packages",
+          "C:\\Program Files (x86)\\DevExpress 21.2\\Components\\Offline Packages",
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\MERT\\NuGet.Config",
-          "C:\\Users\\MERT\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\berkay.ogur\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 19.1.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 20.2.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 21.2.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          " https://www.myget.org/F/abp-nightly/api/v3/index.json": {},
+          "C:\\Program Files (x86)\\DevExpress 19.1\\Components\\System\\Components\\Packages": {},
+          "C:\\Program Files (x86)\\DevExpress 20.2\\Components\\System\\Components\\Packages": {},
+          "C:\\Program Files (x86)\\DevExpress 21.2\\Components\\System\\Components\\Packages": {},
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {},
-          "https://www.myget.org/F/blazorise/api/v3/index.json": {},
-          "https://www.nuget.org/api/v2": {}
+          "https://nuget.devexpress.com/b9daLUMqXXICjaMK8UnQAWO3OHbLgQmwBH1XnWPITVFfA9FiBD/api": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\MERT\\Desktop\\myDevLog\\test5\\EmlakBackend\\2\\Core\\Core.csproj": {
-                "projectPath": "C:\\Users\\MERT\\Desktop\\myDevLog\\test5\\EmlakBackend\\2\\Core\\Core.csproj"
+              "C:\\Users\\berkay.ogur\\source\\repos\\emlakson\\Core\\Core.csproj": {
+                "projectPath": "C:\\Users\\berkay.ogur\\source\\repos\\emlakson\\Core\\Core.csproj"
               },
-              "C:\\Users\\MERT\\Desktop\\myDevLog\\test5\\EmlakBackend\\2\\Data\\Data.csproj": {
-                "projectPath": "C:\\Users\\MERT\\Desktop\\myDevLog\\test5\\EmlakBackend\\2\\Data\\Data.csproj"
+              "C:\\Users\\berkay.ogur\\source\\repos\\emlakson\\Data\\Data.csproj": {
+                "projectPath": "C:\\Users\\berkay.ogur\\source\\repos\\emlakson\\Data\\Data.csproj"
               }
             }
           }
@@ -150,7 +173,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -159,32 +183,43 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\MERT\\Desktop\\myDevLog\\test5\\EmlakBackend\\2\\Data\\Data.csproj": {
+    "C:\\Users\\berkay.ogur\\source\\repos\\emlakson\\Data\\Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\MERT\\Desktop\\myDevLog\\test5\\EmlakBackend\\2\\Data\\Data.csproj",
+        "projectUniqueName": "C:\\Users\\berkay.ogur\\source\\repos\\emlakson\\Data\\Data.csproj",
         "projectName": "Data",
-        "projectPath": "C:\\Users\\MERT\\Desktop\\myDevLog\\test5\\EmlakBackend\\2\\Data\\Data.csproj",
-        "packagesPath": "C:\\Users\\MERT\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\MERT\\Desktop\\myDevLog\\test5\\EmlakBackend\\2\\Data\\obj\\",
+        "projectPath": "C:\\Users\\berkay.ogur\\source\\repos\\emlakson\\Data\\Data.csproj",
+        "packagesPath": "C:\\Users\\berkay.ogur\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\berkay.ogur\\source\\repos\\emlakson\\Data\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\DevExpress 20.2\\Components\\Offline Packages",
+          "C:\\Program Files (x86)\\DevExpress 21.2\\Components\\Offline Packages",
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\MERT\\NuGet.Config",
-          "C:\\Users\\MERT\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\berkay.ogur\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 19.1.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 20.2.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 21.2.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          " https://www.myget.org/F/abp-nightly/api/v3/index.json": {},
+          "C:\\Program Files (x86)\\DevExpress 19.1\\Components\\System\\Components\\Packages": {},
+          "C:\\Program Files (x86)\\DevExpress 20.2\\Components\\System\\Components\\Packages": {},
+          "C:\\Program Files (x86)\\DevExpress 21.2\\Components\\System\\Components\\Packages": {},
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {},
-          "https://www.myget.org/F/blazorise/api/v3/index.json": {},
-          "https://www.nuget.org/api/v2": {}
+          "https://nuget.devexpress.com/b9daLUMqXXICjaMK8UnQAWO3OHbLgQmwBH1XnWPITVFfA9FiBD/api": {}
         },
         "frameworks": {
           "net6.0": {
@@ -219,12 +254,6 @@
             "Npgsql.EntityFrameworkCore.PostgreSQL": {
               "target": "Package",
               "version": "[6.0.5, )"
-            },
-            "NuGet.CommandLine": {
-              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[6.3.1, )"
             }
           },
           "imports": [
@@ -233,7 +262,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -242,7 +272,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     }
