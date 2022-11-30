@@ -1,6 +1,8 @@
 using Data.DataTransferObjects.Request;
+using Data.DataTransferObjects.Response;
 using Data.Entities.DataTransferObjects.Response;
 using Data.Entities.Models;
+using System.Xml.Linq;
 
 namespace Business.Extensions;
 
@@ -21,6 +23,18 @@ public static class MappingExtensions
             Meters = entity.Meters,
             Price = entity.Price,
             Title = entity.Title
+        };
+    }
+    public static UserGetDto ToDto(this UserEntity entity)
+    {
+        return new UserGetDto()
+        {
+            Name = entity.Name,
+            UserName = entity.UserName,
+            Surname = entity.Surname,
+            Email= entity.Email,
+            PhoneNumber= entity.PhoneNumber,
+            CreatedDate= entity.CreatedDate,
         };
     }
 }

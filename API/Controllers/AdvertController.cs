@@ -1,6 +1,7 @@
 using Business.Misc;
 using Business.Service.Abstract;
 using Data.DataTransferObjects.Request;
+using Data.Entities.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers;
@@ -23,7 +24,7 @@ public class AdvertController : BaseController
     }
 
     [HttpPost("AddAdvert")]
-    public async Task<ApiResponse> UpdateAdvert(AddAdvertRequestDto model)
+    public async Task<ApiResponse> AddAdvert(Advert model)
     {
         var data = await _advertService.AddAdvert(model);
         if (data.Data == null)
@@ -32,7 +33,7 @@ public class AdvertController : BaseController
     }
     
     [HttpPost("UpdateAdvert/{Id}")]
-    public async Task<ApiResponse> UpdateAdvert(UpdateAdvertRequestDto model)
+    public async Task<ApiResponse> UpdateAdvert(Advert model)
     {
         var data = await _advertService.UpdateAdvert(model);
         if (data.Data == null)

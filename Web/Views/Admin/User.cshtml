@@ -6,7 +6,7 @@
 }
 
 <!DOCTYPE html>
-<html >
+<html>
 
 <head>
     <meta charset="UTF-8">
@@ -20,9 +20,8 @@
 </head>
 
 <body>
-   
+
     <div class="app-content content ">
-        <button type="button" class="btn btn-outline-primary waves-effect" id="confirm-text">Confirm Text</button>
         <div class="content-overlay"></div>
         <div class="header-navbar-shadow"></div>
         <div class="content-wrapper container-xxl p-0">
@@ -33,58 +32,61 @@
                             <h2 class="content-header-title float-start mb-0">İlanlar</h2>
                             <div class="breadcrumb-wrapper">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="index.html">Anasayfa</a>
+                                    <li class="breadcrumb-item">
+                                        <a href="index.html">Anasayfa</a>
                                     </li>
-                                    <li class="breadcrumb-item active">İlanlar
+                                    <li class="breadcrumb-item active">
+                                        İlanlar
                                     </li>
                                 </ol>
                             </div>
                         </div>
                     </div>
                 </div>
-            
+
             </div>
             <div class="content-body">
                 <!-- Kick start -->
                 <div class="card">
                     <div class="card-header">
-                       
+
                         <h4 class="card-title">İlanlar Tablosu</h4>
                     </div>
                     <div class="card-body">
-                        <table id="example" class="display" style="width:100%">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Kullanıcı Adı</th>
-                <th>İsim</th>
-                <th>Soyisim</th>
-                <th>Email</th>
-                <th>Telefon Numarası</th>
-                <th>Onaylandı mı?</th>
-                <th>Oluşturulma Tarihi</th>
-                <th>Eylemler</th>
-            </tr>
-        </thead>
-        <tbody>
-             @foreach(var item in Model)
-                {
-                    <tr>
-                        <td>@item.Id</td>
-                        <td>@item.UserName</td>
-                        <td>@item.Name</td>
-                        <td>@item.Surname</td>
-                        <td>@item.Email</td>
-                        <td>@item.Email</td>
-                        <td>@item.PhoneNumber</td>
-                        <td><button type="button" class="btn btn-outline-primary waves-effect" id="confirm-text">Confirm Text</button></td>
 
-                        <td></td>
-                    </tr>
-                }
-           
-        </tfoot>
-    </table>
+                        <table id="example" class="display" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Kullanıcı Adı</th>
+                                    <th>İsim</th>
+                                    <th>Soyisim</th>
+                                    <th>Email</th>
+                                    <th>Telefon Numarası</th>
+                                    <th>Onaylandı mı?</th>
+                                    <th>Oluşturulma Tarihi</th>
+                                    <th>Eylemler</th>
+                                </tr>
+                            </thead>
+                            @*       <tbody>
+                            @foreach(var item in Model)
+                            {
+                            <tr>
+                            <td>@item.Id</td>
+                            <td>@item.UserName</td>
+                            <td>@item.Name</td>
+                            <td>@item.Surname</td>
+                            <td>@item.Email</td>
+                            <td>@item.Email</td>
+                            <td>@item.PhoneNumber</td>
+                            <td><button type="button" class="btn btn-outline-primary waves-effect" id="confirm-text">Confirm Text</button></td>
+
+                            <td></td>
+                            </tr>
+                            }
+
+                            </tfoot>*@
+                        </table>
                     </div>
                 </div>
                 <!--/ Kick start -->
@@ -92,69 +94,270 @@
             </div>
         </div>
     </div>
+    <!--MODAL-->
+    <div>
+        <div class="modal fade text-start" id="editUserForm" tabindex="-1" aria-labelledby="myModalLabel33" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myModalLabel33">Kullanıcı</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form action="/admin/EditUserApi" method="POST">
+                        <div class="modal-body">
+                            <input id="EditUserId" type="hidden" placeholder="Kullanıcı Adı" class="form-control" name="Id">
 
+                            <label>Kullanıcı Adı: </label>
+                            <div class="mb-1">
+                                <input id="EditUsername" type="text" placeholder="Kullanıcı Adı" class="form-control" name="UserName">
+                            </div>
+                            <label>İsim: </label>
+                            <div class="mb-1">
+                                <input id="EditName" type="text" placeholder="İsim" class="form-control" name="Name">
+                            </div>
+                            <label>Soyisim: </label>
+                            <div class="mb-1">
+                                <input id="EditSurname" type="text" placeholder="Soyisim" class="form-control" name="Surname">
+                            </div>
+                            <label>Email: </label>
+                            <div class="mb-1">
+                                <input id="EditEmail" type="text" placeholder="Email" class="form-control" name="Email">
+                            </div>
+
+                            <label>Telefon Numarası: </label>
+                            <div class="mb-1">
+                                <input id="EditPhoneNumber" type="password" placeholder="Telefon Numarası" class="form-control" name="PhoneNumber">
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-around">
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary waves-effect waves-float waves-light" data-bs-dismiss="modal">Düzenle</button>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger waves-effect waves-float waves-light" data-bs-dismiss="modal">İptal</button>
+                            </div>
+                        </div>
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
     @section Scripts {
 
-       <script>
-          $(document).ready(function() {
-    var table = $('#example').DataTable({
-        destroy: true,
-        select: true,
+        <script>
+            $(document).ready(function () {
+                var table = $('#example').DataTable({
+                    ajax: {
+                        url: '/admin/getusersapi',
+                        type: "GET",
+                        contentType: "application/json; charset=utf-8"
+                    },
+                    columns: [
+                        { data: "id" },
+                        { data: "userName" },
+                        { data: "name" },
+                        { data: "surname" },
+                        { data: "email" },
+                        { data: "phoneNumber" },
+                        { data: "emailConfirmed" },
+                        { data: "createdDate" },
 
-        dom: 'Bfrtip',
-        buttons: [{
-                extend: 'copy',
-                className: 'copyButton'
-            },
-            {
-                extend: 'csv',
-                className: 'csvButton'
-            },
-            {
-                extend: 'excel',
-                className: 'excelButton'
-            },
-            {
-                extend: 'print',
-                className: 'printButton'
+                        {
+                            data: "id", render: function (data, type, row, meta) {
+                                return '<button onclick=Approve(' + JSON.stringify(row) + ') type="button" class="btn btn-outline-primary waves-effect"  style="padding:1.5px 2.5px">' +
+                                    '<span> Onayla</span>' +
+                                    '</button>' +
+                                    '<button type="button" onclick=Edit(' + JSON.stringify(row) + ') data-bs-toggle="modal" data-bs-target="#editUserForm"  class="btn btn-outline-primary waves-effect" style="padding:1.5px 2.5px">' +
+                                    '<span>Düzenle</span>' +
+                                    '</button>' +
+                                    '<button id="confirm-text" onclick=Delete(' + JSON.stringify(row) + ') type="button" class="btn btn-outline-primary waves-effect" style="padding:1.5px 2.5px">' +
+                                    '<span>Sil</span>' +
+                                    '</button>'
+                            }
+                        }
+                    ],
+                    dom: 'Bfrtip',
+                    buttons: [{
+                        extend: 'copy',
+                        className: 'copyButton'
+                    },
+                    {
+                        extend: 'csv',
+                        className: 'csvButton'
+                    },
+                    {
+                        extend: 'excel',
+                        className: 'excelButton'
+                    },
+                    {
+                        extend: 'print',
+                        className: 'printButton'
+                    }
+                    ],
+                    columnDefs: [{
+                        target: 0,
+                        visible: false,
+                        searchable: false,
+                    },
+
+                    ],
+                    language: {
+                        url: 'https://cdn.datatables.net/plug-ins/1.13.1/i18n/tr.json',
+                    },
+                });
+                //Selection table
+                //$('#example tbody').on('click', 'tr', function () {
+                //    $(this).toggleClass('selected');
+                //});
+
+                //$('#button').click(function () {
+                //    alert(table.rows('.selected').data().length + ' row(s) selected');
+                //});
+            });
+
+            function ReloadTable() {
+                $('#example').DataTable().clear();
+                $('#example').DataTable().ajax.reload();
             }
-        ],
-        columnDefs: [{
-                target: 0,
-                visible: false,
-                searchable: false,
-            },
-            {
-                targets: 8,
-                data: null,
-                defaultContent: '<button id="confirm-text" type="button" class="btn btn-outline-primary waves-effect"  style="padding:1.5px 2.5px">' +
-                    '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shield"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>' +
-                    '<span> Onayla</span>' +
-                    '</button>' +
-                    '<button type="button" class="btn btn-outline-primary waves-effect" style="padding:1.5px 2.5px">' +
-                    '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-grid"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>' +
-                    '<span>Düzenle</span>' +
-                    '</button>' +
-                    '<button id="confirm-text" type="button" class="btn btn-outline-primary waves-effect" style="padding:1.5px 2.5px">' +
-                    '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home me-25"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>' +
-                    '<span>Sil</span>' +
-                    '</button>' +
-                    '<button type="button" class="btn btn-outline-primary waves-effect" id="confirm-text">Confirm Text</button>'
-            },
-        ],
-        language: {
-            url: 'https://cdn.datatables.net/plug-ins/1.13.1/i18n/tr.json',
-        },
-    });
-});
-</script>
-    <!-- BEGIN: Page Vendor JS-->
-    <script src="~/AdminTemplate2/vendors/js/extensions/sweetalert2.all.min.js"></script>
-    <script src="~/AdminTemplate2/vendors/js/extensions/polyfill.min.js"></script>
-    <!-- END: Page Vendor JS-->
 
-}
- 
+
+            function Delete(user) {
+                console.log(user)
+                Swal.fire({
+                    title: 'Emin misiniz ?',
+                    text: "Bu işlemi geri alamazsınız, Emin misiniz ?",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Evet, Sil!',
+                    customClass: {
+                        confirmButton: 'btn btn-primary',
+                        cancelButton: 'btn btn-outline-danger ms-1'
+                    },
+                    buttonsStyling: false
+                }).then(function (result) {
+                    if (result.value) {
+                        $.ajax({
+
+                            url: '/admin/DeleteUserApi?id=' + user.id,
+                            type: 'Post',
+                            success: function (data) {
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Silindi!',
+                                    text: 'Kullanıcı başarı ile silindi.',
+                                    customClass: {
+                                        confirmButton: 'btn btn-success'
+                                    }
+                                });
+                            },
+                            error: function (request, error) {
+                                Swal.fire({
+                                    title: 'Hata oluştu!',
+                                    text: 'İşlem sırasında bir hata ile karşılaşıldı, lütfen daha sonra tekrar deneyiniz.',
+                                    icon: 'error',
+                                    customClass: {
+                                        confirmButton: 'btn btn-success'
+                                    }
+                                });
+                            }
+                        });
+
+                    } else if (result.dismiss === Swal.DismissReason.cancel) {
+                        Swal.fire({
+                            title: 'İptal edildi',
+                            text: 'Kullanıcı güvende :)',
+                            icon: 'error',
+                            customClass: {
+                                confirmButton: 'btn btn-success'
+                            }
+                        });
+                    }
+                });
+
+            }
+
+
+            function Edit(user) {
+                
+                $('#EditUserId').val(user.id)
+                $('#EditUsername').val(user.userName)
+                $('#EditName').val(user.name)
+                $('#EditSurname').val(user.surname)
+                $('#EditEmail').val(user.email)
+                $('#EditPhoneNumber').val(user.phoneNumber)
+
+                //$.ajax({
+                
+                //    url: '/admin/deleteUser?id=' + user.id,
+                //    type: 'Post',
+                //    success: function (data) {
+                //        alert('Data: ' + data);
+                //    },
+                //    error: function (request, error) {
+                //        alert("Request: " + JSON.stringify(request));
+                //    }
+                //});
+            }
+            function Approve(user) {
+                Swal.fire({
+                    title: 'Emin misiniz ?',
+                    text: "Kullanıcıyı onaylamak istediğinize emin misiniz ?",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Evet, Onayla!',
+                    customClass: {
+                        confirmButton: 'btn btn-primary',
+                        cancelButton: 'btn btn-outline-danger ms-1'
+                    },
+                    buttonsStyling: false
+                }).then(function (result) {
+                    if (result.value) {
+                        $.ajax({
+
+                            url: '/admin/ApproveUserApi?id=' + user.id,
+                            type: 'Post',
+                            success: function (data) {
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Onaylandı!',
+                                    text: 'Kullanıcı başarı ile onaylandı.',
+                                    customClass: {
+                                        confirmButton: 'btn btn-success'
+                                    }
+                                });
+                            },
+                            error: function (request, error) {
+                                Swal.fire({
+                                    title: 'Hata oluştu!',
+                                    text: 'İşlem sırasında bir hata ile karşılaşıldı, lütfen daha sonra tekrar deneyiniz.',
+                                    icon: 'error',
+                                    customClass: {
+                                        confirmButton: 'btn btn-success'
+                                    }
+                                });
+                            }
+                        });
+
+                    } else if (result.dismiss === Swal.DismissReason.cancel) {
+                        Swal.fire({
+                            title: 'İptal edildi',
+                            text: 'Kullanıcı onaylanmadı :)',
+                            icon: 'error',
+                            customClass: {
+                                confirmButton: 'btn btn-success'
+                            }
+                        });
+                    }
+                });
+            }
+        </script>
+        <!-- BEGIN: Page Vendor JS-->
+        <script src="~/AdminTemplate2/vendors/js/extensions/sweetalert2.all.min.js"></script>
+        <script src="~/AdminTemplate2/vendors/js/extensions/polyfill.min.js"></script>
+        <!-- END: Page Vendor JS-->
+    }
+
 </body>
 
 </html>

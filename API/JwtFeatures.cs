@@ -13,7 +13,7 @@ public class JwtHandler
     private readonly IConfiguration _jwtSettings;
     private readonly UserManager<UserEntity> _userManager;
 
-    public JwtHandler(IConfiguration configuration, IConfiguration jwtSettings, UserManager<User> userManager)
+    public JwtHandler(IConfiguration configuration, IConfiguration jwtSettings, UserManager<UserEntity> userManager)
     {
         _configuration = configuration;
         _userManager = userManager;

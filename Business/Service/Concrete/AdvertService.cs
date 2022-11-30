@@ -23,36 +23,36 @@ public class AdvertService : BaseService, IAdvertService
     {
     }
 
-    public async Task<IDataResult<IList<AdvertGetDto>?>> GetAllAdverts()
+    public async Task<IDataResult<IList<Advert>>> GetAllAdverts()
     {
-        var adverts = await UnitOfWork.Adverts.FindBy().Select(x => x.ToDto()).ToListAsync();
+        var adverts = await UnitOfWork.Adverts.FindBy().ToListAsync();
         if (adverts is null)
         {
-            return new DataResult<IList<AdvertGetDto>?>(ResultStatusEnum.Error, "Adverts not found", null);
+            return new DataResult<IList<Advert>>(ResultStatusEnum.Error, "Adverts not found", null);
         }
 
-        return new DataResult<IList<AdvertGetDto>?>(ResultStatusEnum.Success, adverts);
+        return new DataResult<IList<Advert>>(ResultStatusEnum.Success, adverts);
     }
 
-    public async Task<IDataResult<AdvertGetDto?>> UpdateAdvert(UpdateAdvertRequestDto model)
+    public async Task<IDataResult<Advert>> UpdateAdvert(Advert model)
     {
         var advert = await UnitOfWork.Adverts.FindBy(x => x.Id == model.Id).FirstOrDefaultAsync();
         if (advert is null)
         {
-            return new DataResult<AdvertGetDto?>(ResultStatusEnum.Error, "Advert not found", null);
+            return new DataResult<Advert>(ResultStatusEnum.Error, "Advert not found", null);
         }
 
         //advert.AdvertDescription = model.AdvertDescription;
         UnitOfWork.Adverts.Update(advert);
         await UnitOfWork.SaveAsync();
-        return new DataResult<AdvertGetDto>(ResultStatusEnum.Success, "Advert deleted successfully", advert.ToDto());
+        return new DataResult<Advert>(ResultStatusEnum.Success, "Advert deleted successfully", advert);
     }
 
-    public async Task<IDataResult<AdvertGetDto?>> AddAdvert(AddAdvertRequestDto model)
+    public async Task<IDataResult<Advert>> AddAdvert(Advert model)
     {
         if (model is null)
         {
-            return new DataResult<AdvertGetDto?>(ResultStatusEnum.Error, "Advert cannot be found", null);
+            return new DataResult<Advert>(ResultStatusEnum.Error, "Advert cannot be found", null);
         }
 
         var advert = await UnitOfWork.Adverts.InsertAsync(new Advert()
@@ -70,7 +70,7 @@ public class AdvertService : BaseService, IAdvertService
             AdvertType = model.AdvertType,
         });
         await UnitOfWork.SaveAsync();
-        return new DataResult<AdvertGetDto>(ResultStatusEnum.Success, "Advert deleted successfully", advert.ToDto());
+        return new DataResult<Advert>(ResultStatusEnum.Success, "Advert deleted successfully", advert);
     }
 
     public async Task<IDataResult<bool>> DeleteAdvert(int id)
@@ -87,16 +87,16 @@ public class AdvertService : BaseService, IAdvertService
         return new DataResult<bool>(ResultStatusEnum.Success, "Advert deleted successfully", true);
     }
 
-    public async Task<IDataResult<AdvertGetDto?>> GetAdvertById(int id)
+    public async Task<IDataResult<Advert>> GetAdvertById(int id)
     {
         var advert = await UnitOfWork.Adverts.FindBy(x => x.Id == id).FirstOrDefaultAsync();
 
         if (advert is null)
         {
-            return new DataResult<AdvertGetDto?>(ResultStatusEnum.Error, "Advert not found", null);
+            return new DataResult<Advert>(ResultStatusEnum.Error, "Advert not found", null);
         }
 
-        return new DataResult<AdvertGetDto?>(ResultStatusEnum.Success, advert.ToDto());
+        return new DataResult<Advert>(ResultStatusEnum.Success, advert);
     }
 
     public async Task<PagedList<AdvertGetDto>> GetAdvertsPaginated(SearchAdvertRequest model, PaginationFilter filter,

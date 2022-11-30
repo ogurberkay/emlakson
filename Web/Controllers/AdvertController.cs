@@ -2,6 +2,7 @@ using Business.Misc;
 using Business.Service.Abstract;
 using Core.Results.Filter;
 using Data.DataTransferObjects.Request;
+using Data.Entities.Models;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
@@ -25,7 +26,7 @@ public class AdvertController : Controller
     }
 
     [HttpPost("AddAdvert")]
-    public async Task<ApiResponse> UpdateAdvert(AddAdvertRequestDto model)
+    public async Task<ApiResponse> AddAdvert(Advert model)
     {
         var data = await _advertService.AddAdvert(model);
         if (data.Data == null)
@@ -34,7 +35,7 @@ public class AdvertController : Controller
     }
     
     [HttpPost("UpdateAdvert/{Id}")]
-    public async Task<ApiResponse> UpdateAdvert(UpdateAdvertRequestDto model)
+    public async Task<ApiResponse> UpdateAdvert(Advert model)
     {
         var data = await _advertService.UpdateAdvert(model);
         if (data.Data == null)

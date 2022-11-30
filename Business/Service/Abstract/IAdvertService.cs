@@ -11,10 +11,10 @@ namespace Business.Service.Abstract;
 
 public interface IAdvertService
 {
-    public Task<IDataResult<IList<AdvertGetDto>?>> GetAllAdverts();
-    public Task<IDataResult<AdvertGetDto?>> GetAdvertById(int id);
-    public Task<IDataResult<AdvertGetDto?>> UpdateAdvert(UpdateAdvertRequestDto model);
-    public Task<IDataResult<AdvertGetDto?>> AddAdvert(AddAdvertRequestDto model);
+    public Task<IDataResult<IList<Advert>>> GetAllAdverts();
+    public Task<IDataResult<Advert>> GetAdvertById(int id);
+    public Task<IDataResult<Advert>> UpdateAdvert(Advert model);
+    public Task<IDataResult<Advert>> AddAdvert(Advert model);
     public Task<IDataResult<bool>> DeleteAdvert(int id);
     public Task<PagedList<AdvertGetDto>> GetAdvertsPaginated(SearchAdvertRequest model,PaginationFilter filter,string orderBy);
 

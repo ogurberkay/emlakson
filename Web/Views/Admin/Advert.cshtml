@@ -64,21 +64,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>Tiger Nixon</td>
-                <td>Tiger Nixon</td>
-                <td>Tiger Nixon</td>
-                <td>Tiger Nixon</td>
-                <td>Tiger Nixon</td>
-                <td>System Architect</td>
-                <td>Edinburgh</td>
-                <td>Edinburgh</td>
-                <td>61</td>
-                <td>2011-04-25</td>
-                <td></td>
-            </tr>
-           
-        </tfoot>
+          
     </table>
                     </div>
                 </div>
@@ -91,32 +77,166 @@
     @section Scripts {
 
        <script>
-            $(document).ready(function() {
-    var table = $('#example').DataTable( {
-         destroy: true,
-        dom: 'Bfrtip',
-        buttons: [
-          {extend: 'copy', className: 'copyButton'},
-                {extend: 'csv', className: 'csvButton'},
-                {extend: 'excel', className: 'excelButton'},
-                {extend: 'print', className: 'printButton'}
-        ],
-         columnDefs: [
-            {
-                targets: 10,
-                data: null,
-                defaultContent: '<button>Click!</button>',
-            },
-         ],
-         language: {
-            url: 'https://cdn.datatables.net/plug-ins/1.13.1/i18n/tr.json',
-        },
-    } );
-    $('#example tbody').on('click', 'button', function () {
-        var data = table.row($(this).parents('tr')).data();
-        alert(data[0] + "'s salary is: " + data[5]);
-    });
-} );
+            $(document).ready(function () {
+                var table = $('#example').DataTable({
+                    ajax: {
+                        url: '/admin/getadvertsapi',
+                        type: "GET",
+                        contentType: "application/json; charset=utf-8"
+                    },
+                    columns: [
+                        { data: "title" },
+                        { data: "description" },
+                        { data: "houseType" },
+                        { data: "location" },
+                        { data: "district" },
+                        { data: "advertType" },
+                        { data: "meters" },
+                        { data: "price" },
+                        { data: "extraAttributes" },
+                        { data: "isFeatured" },
+                        {
+                            data: "id", render: function (data, type, row, meta) {
+                                return '<button onclick=Approve(' + JSON.stringify(row) + ') type="button" class="btn btn-outline-primary waves-effect"  style="padding:1.5px 2.5px">' +
+                                    '<span> Onayla</span>' +
+                                    '</button>' +
+                                    '<button type="button" onclick=Edit(' + JSON.stringify(row) + ') data-bs-toggle="modal" data-bs-target="#editUserForm"  class="btn btn-outline-primary waves-effect" style="padding:1.5px 2.5px">' +
+                                    '<span>Düzenle</span>' +
+                                    '</button>' +
+                                    '<button id="confirm-text" onclick=Delete(' + JSON.stringify(row) + ') type="button" class="btn btn-outline-primary waves-effect" style="padding:1.5px 2.5px">' +
+                                    '<span>Sil</span>' +
+                                    '</button>'
+                            }
+                        }
+                    ],
+                    dom: 'Bfrtip',
+                    buttons: [{
+                        extend: 'copy',
+                        className: 'copyButton'
+                    },
+                    {
+                        extend: 'csv',
+                        className: 'csvButton'
+                    },
+                    {
+                        extend: 'excel',
+                        className: 'excelButton'
+                    },
+                    {
+                        extend: 'print',
+                        className: 'printButton'
+                    },
+                    {
+                        text: 'Yeni İlan Ekle',
+                        action: function (e, dt, node, config) {
+                            alert('Button activated');
+                        }
+                    }
+                    ],
+                    columnDefs: [{
+                        target: 0,
+                        visible: false,
+                        searchable: false,
+                    },
+
+                    ],
+                    language: {
+                        url: 'https://cdn.datatables.net/plug-ins/1.13.1/i18n/tr.json',
+                    },
+                });
+                //Selection table
+                //$('#example tbody').on('click', 'tr', function () {
+                //    $(this).toggleClass('selected');
+                //});
+
+                //$('#button').click(function () {
+                //    alert(table.rows('.selected').data().length + ' row(s) selected');
+                //});
+            });
+
+            function ReloadTable() {
+                $('#example').DataTable().clear();
+                $('#example').DataTable().ajax.reload();
+            }
+
+
+            function Delete(advert) {
+                console.log(advert)
+                Swal.fire({
+                    title: 'Emin misiniz ?',
+                    text: "Bu işlemi geri alamazsınız, Emin misiniz ?",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Evet, Sil!',
+                    customClass: {
+                        confirmButton: 'btn btn-primary',
+                        cancelButton: 'btn btn-outline-danger ms-1'
+                    },
+                    buttonsStyling: false
+                }).then(function (result) {
+                    if (result.value) {
+                        $.ajax({
+
+                            url: '/admin/DeleteAdvertApi?id=' + advert.id,
+                            type: 'Post',
+                            success: function (data) {
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Silindi!',
+                                    text: 'Kullanıcı başarı ile silindi.',
+                                    customClass: {
+                                        confirmButton: 'btn btn-success'
+                                    }
+                                });
+                            },
+                            error: function (request, error) {
+                                Swal.fire({
+                                    title: 'Hata oluştu!',
+                                    text: 'İşlem sırasında bir hata ile karşılaşıldı, lütfen daha sonra tekrar deneyiniz.',
+                                    icon: 'error',
+                                    customClass: {
+                                        confirmButton: 'btn btn-success'
+                                    }
+                                });
+                            }
+                        });
+
+                    } else if (result.dismiss === Swal.DismissReason.cancel) {
+                        Swal.fire({
+                            title: 'İptal edildi',
+                            text: 'Kullanıcı güvende :)',
+                            icon: 'error',
+                            customClass: {
+                                confirmButton: 'btn btn-success'
+                            }
+                        });
+                    }
+                });
+
+            }
+
+
+            function Edit(user) {
+                
+                $('#EditUserId').val(user.id)
+                $('#EditUsername').val(user.userName)
+                $('#EditName').val(user.name)
+                $('#EditSurname').val(user.surname)
+                $('#EditEmail').val(user.email)
+                $('#EditPhoneNumber').val(user.phoneNumber)
+
+                //$.ajax({
+                
+                //    url: '/admin/deleteUser?id=' + user.id,
+                //    type: 'Post',
+                //    success: function (data) {
+                //        alert('Data: ' + data);
+                //    },
+                //    error: function (request, error) {
+                //        alert("Request: " + JSON.stringify(request));
+                //    }
+                //});
+            }
 </script>
 
 }
