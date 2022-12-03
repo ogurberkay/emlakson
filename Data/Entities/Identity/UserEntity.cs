@@ -6,6 +6,7 @@ namespace Data.Entities.Models;
 
 public class UserEntity:IdentityUser<int>, IEntity
 {
+    //TODO make nullable
     [Required] public string Name { get; set; }
     [Required] public string Surname { get; set; }
     public int ModifiedById { get; set; }

@@ -10,10 +10,10 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using System.Security.Claims;
 using System.Text;
 using System.Text.Encodings.Web;
-using System.Text.Json;
 
 namespace Web.Controllers
 {
@@ -240,7 +240,8 @@ namespace Web.Controllers
         {
             try { 
             var data = _advertService.GetAllAdverts().Result.Data;
-            return Ok(new { data = data,status = 200 });
+
+                return Ok(new { data = data, status = 200 });
             }
             catch (Exception e) {
                 Console.WriteLine(e);
