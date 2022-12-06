@@ -1,4 +1,8 @@
 using Data.Common;
+using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel;
 
 namespace Data.Entities.Models;
 
@@ -16,7 +20,7 @@ public class Advert : BaseEntity
     public decimal? Price { get; set; }
     public List<ExtraAttributeEnum>? ExtraAttributes { get; set; }
     public bool IsFeatured { get; set; } = false;
-
+    public Image ImageFile { get; set; }
 }
 
 public enum ExtraAttributeEnum

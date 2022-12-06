@@ -673,6 +673,7 @@
 
     <ItemGroup>
       <Folder Include="obj\Debug\net6.0" />
+      <Folder Include="Uploads\img\" />
       <Folder Include="wwwroot\Template1\css" />
       <Folder Include="wwwroot\Template2\assets" />
       <Folder Include="wwwroot\Template3" />
@@ -681,6 +682,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Business\Business.csproj" />
+      <ProjectReference Include="..\Data\Data.csproj" />
     </ItemGroup>
 
     <ItemGroup>

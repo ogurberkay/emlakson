@@ -83,14 +83,14 @@ namespace DataAccess.Migrations
                         new
                         {
                             Id = 1,
-                            ConcurrencyStamp = "ae634538-66a6-4ddf-9583-2a6be072e24d",
+                            ConcurrencyStamp = "648099de-ba8d-4ede-8ad1-691acaff940b",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = 2,
-                            ConcurrencyStamp = "7399fd16-8dca-4bdd-b571-0ca051639d44",
+                            ConcurrencyStamp = "c3de45c2-1223-4bcd-8405-30d63a9a871d",
                             Name = "SuperAdmin",
                             NormalizedName = "SUPER_ADMIN"
                         });
@@ -216,6 +216,9 @@ namespace DataAccess.Migrations
                     b.Property<int?>("HouseType")
                         .HasColumnType("integer");
 
+                    b.Property<int>("ImageFileImageId")
+                        .HasColumnType("integer");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("boolean");
 
@@ -242,153 +245,9 @@ namespace DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Adverts");
+                    b.HasIndex("ImageFileImageId");
 
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            AdvertType = 3,
-                            BathroomNumber = 2,
-                            BedroomNumber = 1,
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "testtest",
-                            District = "District",
-                            ExtraAttributes = new[] { 0, 1, 2 },
-                            HouseType = 2,
-                            IsDeleted = false,
-                            IsFeatured = false,
-                            Location = 2,
-                            Meters = 500,
-                            Price = 230000m,
-                            Title = "Ev title"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            AdvertType = 3,
-                            BathroomNumber = 2,
-                            BedroomNumber = 1,
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "testtest",
-                            District = "District",
-                            ExtraAttributes = new[] { 0, 1, 2 },
-                            HouseType = 2,
-                            IsDeleted = false,
-                            IsFeatured = false,
-                            Location = 2,
-                            Meters = 500,
-                            Price = 230000m,
-                            Title = "Ev title"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            AdvertType = 3,
-                            BathroomNumber = 2,
-                            BedroomNumber = 1,
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "testtest",
-                            District = "District",
-                            ExtraAttributes = new[] { 0, 1, 2 },
-                            HouseType = 2,
-                            IsDeleted = false,
-                            IsFeatured = false,
-                            Location = 2,
-                            Meters = 500,
-                            Price = 230000m,
-                            Title = "Ev title"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            AdvertType = 3,
-                            BathroomNumber = 2,
-                            BedroomNumber = 1,
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "testtest",
-                            District = "District",
-                            ExtraAttributes = new[] { 0, 1, 2 },
-                            HouseType = 2,
-                            IsDeleted = false,
-                            IsFeatured = false,
-                            Location = 2,
-                            Meters = 500,
-                            Price = 230000m,
-                            Title = "Ev title"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            AdvertType = 3,
-                            BathroomNumber = 2,
-                            BedroomNumber = 1,
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "testtest",
-                            District = "District",
-                            ExtraAttributes = new[] { 0, 1, 2 },
-                            HouseType = 2,
-                            IsDeleted = false,
-                            IsFeatured = false,
-                            Location = 2,
-                            Meters = 500,
-                            Price = 230000m,
-                            Title = "Ev title"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            AdvertType = 3,
-                            BathroomNumber = 2,
-                            BedroomNumber = 1,
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "testtest",
-                            District = "District",
-                            ExtraAttributes = new[] { 0, 1, 2 },
-                            HouseType = 2,
-                            IsDeleted = false,
-                            IsFeatured = false,
-                            Location = 2,
-                            Meters = 500,
-                            Price = 230000m,
-                            Title = "Ev title"
-                        },
-                        new
-                        {
-                            Id = 7,
-                            AdvertType = 3,
-                            BathroomNumber = 2,
-                            BedroomNumber = 1,
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "testtest",
-                            District = "District",
-                            ExtraAttributes = new[] { 0, 1, 2 },
-                            HouseType = 2,
-                            IsDeleted = false,
-                            IsFeatured = false,
-                            Location = 2,
-                            Meters = 500,
-                            Price = 230000m,
-                            Title = "Ev title"
-                        },
-                        new
-                        {
-                            Id = 8,
-                            AdvertType = 3,
-                            BathroomNumber = 2,
-                            BedroomNumber = 1,
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "testtest",
-                            District = "District",
-                            ExtraAttributes = new[] { 0, 1, 2 },
-                            HouseType = 2,
-                            IsDeleted = false,
-                            IsFeatured = false,
-                            Location = 2,
-                            Meters = 500,
-                            Price = 230000m,
-                            Title = "Ev title"
-                        });
+                    b.ToTable("Adverts");
                 });
 
             modelBuilder.Entity("Data.Entities.Models.UserEntity", b =>
@@ -481,6 +340,27 @@ namespace DataAccess.Migrations
                     b.ToTable("Users", "aid");
                 });
 
+            modelBuilder.Entity("Image", b =>
+                {
+                    b.Property<int>("ImageId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("ImageId"));
+
+                    b.Property<string>("ImageName")
+                        .IsRequired()
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("varchar(50)");
+
+                    b.HasKey("ImageId");
+
+                    b.ToTable("Image");
+                });
+
             modelBuilder.Entity("Data.Entities.Identity.IdentityRoleClaimEntity", b =>
                 {
                     b.HasOne("Data.Entities.Identity.IdentityRoleEntity", null)
@@ -538,6 +418,17 @@ namespace DataAccess.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Data.Entities.Models.Advert", b =>
+                {
+                    b.HasOne("Image", "ImageFile")
+                        .WithMany()
+                        .HasForeignKey("ImageFileImageId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ImageFile");
                 });
 #pragma warning restore 612, 618
         }

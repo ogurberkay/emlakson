@@ -6,7 +6,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace DataAccess.Migrations
 {
-    public partial class initial : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -14,33 +14,17 @@ namespace DataAccess.Migrations
                 name: "aid");
 
             migrationBuilder.CreateTable(
-                name: "Adverts",
+                name: "Image",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
+                    ImageId = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Title = table.Column<string>(type: "text", nullable: true),
-                    Description = table.Column<string>(type: "text", nullable: true),
-                    HouseType = table.Column<int>(type: "integer", nullable: true),
-                    Location = table.Column<int>(type: "integer", nullable: true),
-                    District = table.Column<string>(type: "text", nullable: true),
-                    AdvertType = table.Column<int>(type: "integer", nullable: true),
-                    BedroomNumber = table.Column<int>(type: "integer", nullable: true),
-                    BathroomNumber = table.Column<int>(type: "integer", nullable: true),
-                    Meters = table.Column<int>(type: "integer", nullable: true),
-                    Price = table.Column<decimal>(type: "numeric", nullable: true),
-                    ExtraAttributes = table.Column<int[]>(type: "integer[]", nullable: true),
-                    IsFeatured = table.Column<bool>(type: "boolean", nullable: false),
-                    ModifiedById = table.Column<int>(type: "integer", nullable: false),
-                    CreatedByImpId = table.Column<int>(type: "integer", nullable: true),
-                    ModifiedByImpId = table.Column<int>(type: "integer", nullable: true),
-                    DateCreated = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    DateModified = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
-                    IsDeleted = table.Column<bool>(type: "boolean", nullable: false)
+                    Title = table.Column<string>(type: "varchar(50)", nullable: false),
+                    ImageName = table.Column<string>(type: "varchar(100)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Adverts", x => x.Id);
+                    table.PrimaryKey("PK_Image", x => x.ImageId);
                 });
 
             migrationBuilder.CreateTable(
@@ -66,6 +50,13 @@ namespace DataAccess.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Name = table.Column<string>(type: "text", nullable: false),
+                    Surname = table.Column<string>(type: "text", nullable: false),
+                    ModifiedById = table.Column<int>(type: "integer", nullable: false),
+                    CreatedById = table.Column<int>(type: "integer", nullable: true),
+                    CreatedDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    UpdatedDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "boolean", nullable: false),
                     UserName = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
@@ -84,6 +75,42 @@ namespace DataAccess.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Users", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Adverts",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Title = table.Column<string>(type: "text", nullable: true),
+                    Description = table.Column<string>(type: "text", nullable: true),
+                    HouseType = table.Column<int>(type: "integer", nullable: true),
+                    Location = table.Column<int>(type: "integer", nullable: true),
+                    District = table.Column<string>(type: "text", nullable: true),
+                    AdvertType = table.Column<int>(type: "integer", nullable: true),
+                    BedroomNumber = table.Column<int>(type: "integer", nullable: true),
+                    BathroomNumber = table.Column<int>(type: "integer", nullable: true),
+                    Meters = table.Column<int>(type: "integer", nullable: true),
+                    Price = table.Column<decimal>(type: "numeric", nullable: true),
+                    ExtraAttributes = table.Column<int[]>(type: "integer[]", nullable: true),
+                    IsFeatured = table.Column<bool>(type: "boolean", nullable: false),
+                    ImageFileImageId = table.Column<int>(type: "integer", nullable: false),
+                    ModifiedById = table.Column<int>(type: "integer", nullable: true),
+                    CreatedById = table.Column<int>(type: "integer", nullable: true),
+                    CreatedDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    UpdatedDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "boolean", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Adverts", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Adverts_Image_ImageFileImageId",
+                        column: x => x.ImageFileImageId,
+                        principalTable: "Image",
+                        principalColumn: "ImageId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -214,29 +241,19 @@ namespace DataAccess.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "Adverts",
-                columns: new[] { "Id", "AdvertType", "BathroomNumber", "BedroomNumber", "CreatedByImpId", "DateCreated", "DateModified", "Description", "District", "ExtraAttributes", "HouseType", "IsDeleted", "IsFeatured", "Location", "Meters", "ModifiedById", "ModifiedByImpId", "Price", "Title" },
-                values: new object[,]
-                {
-                    { 1, 3, 2, 1, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "testtest", "District", new[] { 0, 1, 2 }, 2, false, false, 2, 500, 0, null, 230000m, "Ev title" },
-                    { 2, 3, 2, 1, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "testtest", "District", new[] { 0, 1, 2 }, 2, false, false, 2, 500, 0, null, 230000m, "Ev title" },
-                    { 3, 3, 2, 1, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "testtest", "District", new[] { 0, 1, 2 }, 2, false, false, 2, 500, 0, null, 230000m, "Ev title" },
-                    { 4, 3, 2, 1, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "testtest", "District", new[] { 0, 1, 2 }, 2, false, false, 2, 500, 0, null, 230000m, "Ev title" },
-                    { 5, 3, 2, 1, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "testtest", "District", new[] { 0, 1, 2 }, 2, false, false, 2, 500, 0, null, 230000m, "Ev title" },
-                    { 6, 3, 2, 1, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "testtest", "District", new[] { 0, 1, 2 }, 2, false, false, 2, 500, 0, null, 230000m, "Ev title" },
-                    { 7, 3, 2, 1, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "testtest", "District", new[] { 0, 1, 2 }, 2, false, false, 2, 500, 0, null, 230000m, "Ev title" },
-                    { 8, 3, 2, 1, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "testtest", "District", new[] { 0, 1, 2 }, 2, false, false, 2, 500, 0, null, 230000m, "Ev title" }
-                });
-
-            migrationBuilder.InsertData(
                 schema: "aid",
                 table: "UserRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { 1, "e25d5bf5-1042-453b-9a97-f6507ab619ad", "Admin", "ADMIN" },
-                    { 2, "8ed35e80-953a-4896-954b-648bfe1d30d4", "SuperAdmin", "SUPER_ADMIN" }
+                    { 1, "648099de-ba8d-4ede-8ad1-691acaff940b", "Admin", "ADMIN" },
+                    { 2, "c3de45c2-1223-4bcd-8405-30d63a9a871d", "SuperAdmin", "SUPER_ADMIN" }
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Adverts_ImageFileImageId",
+                table: "Adverts",
+                column: "ImageFileImageId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_RoleClaims_RoleId",
@@ -313,6 +330,9 @@ namespace DataAccess.Migrations
             migrationBuilder.DropTable(
                 name: "UserUserRoles",
                 schema: "aid");
+
+            migrationBuilder.DropTable(
+                name: "Image");
 
             migrationBuilder.DropTable(
                 name: "UserRoles",

@@ -14,24 +14,35 @@ using Core.Results.Filter;
 using Core.Utilities;
 using Data.DataTransferObjects;
 using Data.DataTransferObjects.Request;
+using Newtonsoft.Json;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
+using System;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Business.Service.Concrete;
 
 public class AdvertService : BaseService, IAdvertService
 {
-    public AdvertService(IUnitOfWork unitOfWork) : base(unitOfWork)
+    private readonly IWebHostEnvironment _hostEnvironment;
+
+    public AdvertService(IUnitOfWork unitOfWork, IWebHostEnvironment hostEnvironment) : base(unitOfWork)
     {
+        this._hostEnvironment = hostEnvironment;
+
     }
 
-    public async Task<IDataResult<IList<Advert>>> GetAllAdverts()
+    public async Task<IDataResult<IList<AdvertGetDto>>> GetAllAdverts()
     {
-        var adverts = await UnitOfWork.Adverts.FindBy().ToListAsync();
+        var adverts = await UnitOfWork.Adverts.FindBy().Select(x => x.ToDto()).ToListAsync();
         if (adverts is null)
         {
-            return new DataResult<IList<Advert>>(ResultStatusEnum.Error, "Adverts not found", null);
+            return new DataResult<IList<AdvertGetDto>>(ResultStatusEnum.Error, "Adverts not found", null);
         }
 
-        return new DataResult<IList<Advert>>(ResultStatusEnum.Success, adverts);
+        return new DataResult<IList<AdvertGetDto>>(ResultStatusEnum.Success, adverts);
     }
 
     public async Task<IDataResult<Advert>> UpdateAdvert(Advert model)
@@ -54,23 +65,52 @@ public class AdvertService : BaseService, IAdvertService
         {
             return new DataResult<Advert>(ResultStatusEnum.Error, "Advert cannot be found", null);
         }
-
-        var advert = await UnitOfWork.Adverts.InsertAsync(new Advert()
+        try
         {
-            Title = model.Title,
-            Price = model.Price,
-            Meters = model.Meters,
-            Location = model.Location,
-            HouseType = model.HouseType,
-            ExtraAttributes = model.ExtraAttributes,
-            District = model.District,
-            Description = model.Description,
-            BedroomNumber = model.BedroomNumber,
-            BathroomNumber = model.BathroomNumber,
-            AdvertType = model.AdvertType,
-        });
-        await UnitOfWork.SaveAsync();
-        return new DataResult<Advert>(ResultStatusEnum.Success, "Advert deleted successfully", advert);
+            var advert = new Advert()
+            {
+                Title = model.Title,
+                Price = model.Price,
+                Meters = model.Meters,
+                Location = model.Location,
+                HouseType = model.HouseType,
+                ExtraAttributes = model.ExtraAttributes,
+                District = model.District,
+                Description = model.Description,
+                BedroomNumber = model.BedroomNumber,
+                BathroomNumber = model.BathroomNumber,
+                AdvertType = model.AdvertType,
+            };
+
+            //Save image to wwwroot/image
+            string wwwRootPath = _hostEnvironment.WebRootPath;
+            string fileName = Path.GetFileNameWithoutExtension(model.ImageFile.ImageFile.FileName);
+            string extension = Path.GetExtension(model.ImageFile.ImageFile.FileName);
+            model.ImageFile.ImageName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+            string path = Path.Combine(wwwRootPath + "/Uploads/img/", fileName);
+            using (var fileStream = new FileStream(path, FileMode.Create))
+            {
+                await model.ImageFile.ImageFile.CopyToAsync(fileStream);
+            }
+
+            var _accessor = new HttpContextAccessor();
+            var webEnv = _accessor.HttpContext.RequestServices.GetRequiredService<IWebHostEnvironment>();
+            var webRoot = webEnv.WebRootPath;
+
+            advert.ImageFile = model.ImageFile;
+            await UnitOfWork.Adverts.InsertAsync(advert);
+            await UnitOfWork.SaveAsync();
+            return new DataResult<Advert>(ResultStatusEnum.Success, "Advert deleted successfully", advert);
+
+        }
+
+        catch (Exception ex)
+        {
+            throw;
+        }
+
+
+
     }
 
     public async Task<IDataResult<bool>> DeleteAdvert(int id)
@@ -113,7 +153,7 @@ public class AdvertService : BaseService, IAdvertService
         if (!string.IsNullOrEmpty(model.AdvertType))
         {
             int.TryParse(model.AdvertType, out int num);
-            AdvertTypeEnum types = (AdvertTypeEnum) num;
+            AdvertTypeEnum types = (AdvertTypeEnum)num;
             data = types switch
             {
                 AdvertTypeEnum.Satilik => data.Where(x => x.AdvertType == AdvertTypeEnum.Satilik),
@@ -126,7 +166,7 @@ public class AdvertService : BaseService, IAdvertService
         if (!string.IsNullOrEmpty(model.HouseType))
         {
             int.TryParse(model.HouseType, out int num);
-            HouseTypeEnum types = (HouseTypeEnum) num;
+            HouseTypeEnum types = (HouseTypeEnum)num;
             data = types switch
             {
                 HouseTypeEnum.Apartman => data.Where(x => x.HouseType == HouseTypeEnum.Apartman),
@@ -139,7 +179,7 @@ public class AdvertService : BaseService, IAdvertService
         if (!string.IsNullOrEmpty(model.Location))
         {
             int.TryParse(model.Location, out int num);
-            LocationEnum types = (LocationEnum) num;
+            LocationEnum types = (LocationEnum)num;
             data = types switch
             {
                 LocationEnum.Istanbul => data = data.Where(x => x.Location == LocationEnum.Istanbul),
@@ -200,7 +240,6 @@ public class AdvertService : BaseService, IAdvertService
             Location = x.Location,
             Meters = x.Meters,
             Price = x.Price,
-            Title = x.Title,
             IsFeatured = x.IsFeatured,
         });
 
@@ -208,4 +247,6 @@ public class AdvertService : BaseService, IAdvertService
         // .OrderBy(x=);
         return await PagedList<AdvertGetDto>.ToPagedList(advertGetDtos, filter.PageNumber, filter.PageSize);
     }
+
+
 }

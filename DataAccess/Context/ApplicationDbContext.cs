@@ -23,6 +23,7 @@ public class ApplicationDbContext : IdentityDbContext<UserEntity, IdentityRoleEn
     }
     
     DbSet<Advert> Adverts { get; set; }
+    DbSet<Image> Images { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

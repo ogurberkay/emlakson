@@ -241,7 +241,7 @@ namespace Web.Controllers
             try { 
             var data = _advertService.GetAllAdverts().Result.Data;
 
-                return Ok(new { data = data, status = 200 });
+                return Ok(new { data =  data, status = 200 });
             }
             catch (Exception e) {
                 Console.WriteLine(e);
@@ -268,11 +268,13 @@ namespace Web.Controllers
         }
 
         [HttpPost("AddAdvertApi")]
-        public async Task<IActionResult> AddAdvertApi(Advert modal)
+        public async Task<IActionResult> AddAdvertApi([FromForm] Advert modal)
         {
             try
             {
                 var data = _advertService.AddAdvert(modal).Result.Data;
+
+
                 return Ok(data);
             }
             catch (Exception e)

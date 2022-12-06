@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221123113635_initial")]
-    partial class initial
+    [Migration("20221204122834_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -85,14 +85,14 @@ namespace DataAccess.Migrations
                         new
                         {
                             Id = 1,
-                            ConcurrencyStamp = "e25d5bf5-1042-453b-9a97-f6507ab619ad",
+                            ConcurrencyStamp = "648099de-ba8d-4ede-8ad1-691acaff940b",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = 2,
-                            ConcurrencyStamp = "8ed35e80-953a-4896-954b-648bfe1d30d4",
+                            ConcurrencyStamp = "c3de45c2-1223-4bcd-8405-30d63a9a871d",
                             Name = "SuperAdmin",
                             NormalizedName = "SUPER_ADMIN"
                         });
@@ -200,13 +200,10 @@ namespace DataAccess.Migrations
                     b.Property<int?>("BedroomNumber")
                         .HasColumnType("integer");
 
-                    b.Property<int?>("CreatedByImpId")
+                    b.Property<int?>("CreatedById")
                         .HasColumnType("integer");
 
-                    b.Property<DateTime>("DateCreated")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<DateTime?>("DateModified")
+                    b.Property<DateTime>("CreatedDate")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Description")
@@ -221,6 +218,9 @@ namespace DataAccess.Migrations
                     b.Property<int?>("HouseType")
                         .HasColumnType("integer");
 
+                    b.Property<int>("ImageFileImageId")
+                        .HasColumnType("integer");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("boolean");
 
@@ -233,10 +233,7 @@ namespace DataAccess.Migrations
                     b.Property<int?>("Meters")
                         .HasColumnType("integer");
 
-                    b.Property<int>("ModifiedById")
-                        .HasColumnType("integer");
-
-                    b.Property<int?>("ModifiedByImpId")
+                    b.Property<int?>("ModifiedById")
                         .HasColumnType("integer");
 
                     b.Property<decimal?>("Price")
@@ -245,163 +242,14 @@ namespace DataAccess.Migrations
                     b.Property<string>("Title")
                         .HasColumnType("text");
 
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("timestamp with time zone");
+
                     b.HasKey("Id");
 
-                    b.ToTable("Adverts");
+                    b.HasIndex("ImageFileImageId");
 
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            AdvertType = 3,
-                            BathroomNumber = 2,
-                            BedroomNumber = 1,
-                            DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "testtest",
-                            District = "District",
-                            ExtraAttributes = new[] { 0, 1, 2 },
-                            HouseType = 2,
-                            IsDeleted = false,
-                            IsFeatured = false,
-                            Location = 2,
-                            Meters = 500,
-                            ModifiedById = 0,
-                            Price = 230000m,
-                            Title = "Ev title"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            AdvertType = 3,
-                            BathroomNumber = 2,
-                            BedroomNumber = 1,
-                            DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "testtest",
-                            District = "District",
-                            ExtraAttributes = new[] { 0, 1, 2 },
-                            HouseType = 2,
-                            IsDeleted = false,
-                            IsFeatured = false,
-                            Location = 2,
-                            Meters = 500,
-                            ModifiedById = 0,
-                            Price = 230000m,
-                            Title = "Ev title"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            AdvertType = 3,
-                            BathroomNumber = 2,
-                            BedroomNumber = 1,
-                            DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "testtest",
-                            District = "District",
-                            ExtraAttributes = new[] { 0, 1, 2 },
-                            HouseType = 2,
-                            IsDeleted = false,
-                            IsFeatured = false,
-                            Location = 2,
-                            Meters = 500,
-                            ModifiedById = 0,
-                            Price = 230000m,
-                            Title = "Ev title"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            AdvertType = 3,
-                            BathroomNumber = 2,
-                            BedroomNumber = 1,
-                            DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "testtest",
-                            District = "District",
-                            ExtraAttributes = new[] { 0, 1, 2 },
-                            HouseType = 2,
-                            IsDeleted = false,
-                            IsFeatured = false,
-                            Location = 2,
-                            Meters = 500,
-                            ModifiedById = 0,
-                            Price = 230000m,
-                            Title = "Ev title"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            AdvertType = 3,
-                            BathroomNumber = 2,
-                            BedroomNumber = 1,
-                            DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "testtest",
-                            District = "District",
-                            ExtraAttributes = new[] { 0, 1, 2 },
-                            HouseType = 2,
-                            IsDeleted = false,
-                            IsFeatured = false,
-                            Location = 2,
-                            Meters = 500,
-                            ModifiedById = 0,
-                            Price = 230000m,
-                            Title = "Ev title"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            AdvertType = 3,
-                            BathroomNumber = 2,
-                            BedroomNumber = 1,
-                            DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "testtest",
-                            District = "District",
-                            ExtraAttributes = new[] { 0, 1, 2 },
-                            HouseType = 2,
-                            IsDeleted = false,
-                            IsFeatured = false,
-                            Location = 2,
-                            Meters = 500,
-                            ModifiedById = 0,
-                            Price = 230000m,
-                            Title = "Ev title"
-                        },
-                        new
-                        {
-                            Id = 7,
-                            AdvertType = 3,
-                            BathroomNumber = 2,
-                            BedroomNumber = 1,
-                            DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "testtest",
-                            District = "District",
-                            ExtraAttributes = new[] { 0, 1, 2 },
-                            HouseType = 2,
-                            IsDeleted = false,
-                            IsFeatured = false,
-                            Location = 2,
-                            Meters = 500,
-                            ModifiedById = 0,
-                            Price = 230000m,
-                            Title = "Ev title"
-                        },
-                        new
-                        {
-                            Id = 8,
-                            AdvertType = 3,
-                            BathroomNumber = 2,
-                            BedroomNumber = 1,
-                            DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "testtest",
-                            District = "District",
-                            ExtraAttributes = new[] { 0, 1, 2 },
-                            HouseType = 2,
-                            IsDeleted = false,
-                            IsFeatured = false,
-                            Location = 2,
-                            Meters = 500,
-                            ModifiedById = 0,
-                            Price = 230000m,
-                            Title = "Ev title"
-                        });
+                    b.ToTable("Adverts");
                 });
 
             modelBuilder.Entity("Data.Entities.Models.UserEntity", b =>
@@ -419,6 +267,12 @@ namespace DataAccess.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("text");
 
+                    b.Property<int?>("CreatedById")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<string>("Email")
                         .HasMaxLength(256)
                         .HasColumnType("character varying(256)");
@@ -426,11 +280,21 @@ namespace DataAccess.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("boolean");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("boolean");
+
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("boolean");
 
                     b.Property<DateTimeOffset?>("LockoutEnd")
                         .HasColumnType("timestamp with time zone");
+
+                    b.Property<int>("ModifiedById")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)
@@ -452,8 +316,15 @@ namespace DataAccess.Migrations
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("text");
 
+                    b.Property<string>("Surname")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("boolean");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("UserName")
                         .HasMaxLength(256)
@@ -469,6 +340,27 @@ namespace DataAccess.Migrations
                         .HasDatabaseName("UserNameIndex");
 
                     b.ToTable("Users", "aid");
+                });
+
+            modelBuilder.Entity("Image", b =>
+                {
+                    b.Property<int>("ImageId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("ImageId"));
+
+                    b.Property<string>("ImageName")
+                        .IsRequired()
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("varchar(50)");
+
+                    b.HasKey("ImageId");
+
+                    b.ToTable("Image");
                 });
 
             modelBuilder.Entity("Data.Entities.Identity.IdentityRoleClaimEntity", b =>
@@ -528,6 +420,17 @@ namespace DataAccess.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Data.Entities.Models.Advert", b =>
+                {
+                    b.HasOne("Image", "ImageFile")
+                        .WithMany()
+                        .HasForeignKey("ImageFileImageId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ImageFile");
                 });
 #pragma warning restore 612, 618
         }

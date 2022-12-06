@@ -32,6 +32,7 @@ namespace Web.Extensions
 
         public static void ConfigureServiceManager(this IServiceCollection services)
         {
+
             services.AddScoped<IAdvertService, AdvertService>();
         }
            
