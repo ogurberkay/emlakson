@@ -1,4 +1,6 @@
-@model IList<AdvertGetDto>
+@using X.PagedList.Mvc.Core;
+@using X.PagedList;
+@model IPagedList<AdvertGetDto>
 @{
     Layout = "_LayoutList";
 }
@@ -55,6 +57,7 @@
                     </div>
                 </section>
                 <!-- Search Form -->
+                <form id="listForm"  action="~/Home/List" method="get">
                 <div class="col-12 px-0 parallax-searchs">
                     <div class="banner-search-wrap">
                         <div class="tab-content">
@@ -62,17 +65,17 @@
                                 <div class="rld-main-search">
                                     <div class="row">
                                         <div class="rld-single-input">
-                                            <input id="SearchText" type="text" placeholder="İlan Ara">
+                                            <input id="SearchText" type="text" placeholder="İlan Ara" name="SearchKeyWord">
                                         </div>
                                         <div class="rld-single-select ml-22">
-                                            <select id="HouseType" class="select single-select">
+                                            <select id="HouseType" class="select single-select" name="HouseType" >
                                                 <option value="1">Ev tipi</option>
                                                 <option value="2">Müstakil</option>
                                                 <option value="3">Apartman</option>
                                             </select>
                                         </div>
                                         <div class="rld-single-select">
-                                            <select id="LocationType" class="select single-select mr-0">
+                                            <select id="LocationType" class="select single-select mr-0" name="Location">
                                                 <option value="1">Lokasyon</option>
                                                 <option value="2">İstanbul</option>
                                                 <option value="3">İzmir</option>
@@ -81,61 +84,66 @@
                                         </div>
                                         <div class="dropdown-filter"><span>Gelişmiş Arama</span></div>
                                         <div class="col-xl-2 col-lg-2 col-md-4 pl-0">
-                                            <a class="btn btn-yellow" href="#" id="SearchButton">Ara</a>
+                                            <button type="submit" class="btn btn-yellow" href="#" id="SearchButton">Ara</button>
                                         </div>
                                         <div class="explore__form-checkbox-list full-filter">
                                             <div class="row">
                                                 <div class="col-lg-4 col-md-6 py-1 pr-30 pl-0">
                                                     <!-- Form Property Status -->
-                                                    <div class="form-group categories">
-                                                        <div class="nice-select form-control wide" tabindex="0"><span class="current"><i class="fa fa-home"></i>İlan Tipi</span>
-                                                            <ul class="list" id="AdvertType">
-                                                                <li data-value="1" class="option selected ">İlan tipi seçiniz</li>
-                                                                <li data-value="2" class="option ">Satılık</li>
-                                                                <li data-value="3" class="option">Kiralık</li>
-                                                            </ul>
-                                                        </div>
+                                                      <div class="rld-single-select">
+                                                        <select  class="select single-select mr-0 wide" name="AdvertType">
+                                                           <option value="1">İlan tipi seçiniz</option>
+                                                            <option value="2">Satılık</option>
+                                                            <option value="3">Kiralık</option>
+
+                                                       </select>
                                                     </div>
                                                     <!--/ End Form Property Status -->
                                                 </div>
                                                 <div class="col-lg-4 col-md-6 py-1 pr-30 pl-0 ">
                                                     <!-- Form Yatak Odası -->
-                                                    <div class="form-group beds">
-                                                        <div class="nice-select form-control wide" tabindex="0"><span class="current"><i class="fa fa-bed" aria-hidden="true"></i> Yatak Odayısı Sayısı</span>
-                                                            <ul class="list" id="BedroomNumber">
-                                                                <li data-value="1" class="option selected">1</li>
-                                                                <li data-value="2" class="option">2</li>
-                                                                <li data-value="3" class="option">3</li>
-                                                                <li data-value="3" class="option">4</li>
-                                                                <li data-value="3" class="option">5</li>
-                                                                <li data-value="3" class="option">6</li>
-                                                                <li data-value="3" class="option">7</li>
-                                                                <li data-value="3" class="option">8</li>
-                                                                <li data-value="3" class="option">9</li>
-                                                                <li data-value="3" class="option">10</li>
-                                                            </ul>
-                                                        </div>
+                                                    <div class="rld-single-select">
+                                                        <select  class="select single-select mr-0 wide" name="BedroomNumber">
+                                                           <option data-value="-1" class="option selected">Yatak Odayısı Sayısı</option>
+                                                                <option value="0" class="option">0</option>
+                                                                <option value="1" class="option">1</option>
+                                                                <option value="2" class="option">2</option>
+                                                                <option value="3" class="option">3</option>
+                                                                <option value="4" class="option">4</option>
+                                                                <option value="5" class="option">5</option>
+                                                                <option value="6" class="option">6</option>
+                                                                <option value="7" class="option">7</option>
+                                                                <option value="8" class="option">8</option>
+                                                                <option value="9" class="option">9</option>
+                                                                <option value="10" class="option">10</option>
+
+                                                       </select>
                                                     </div>
+
+
                                                     <!--/ End Form Yatak Odası -->
                                                 </div>
                                                 <div class="col-lg-4 col-md-6 py-1 pl-0 pr-0">
                                                     <!-- Form Banyo -->
-                                                    <div class="form-group bath">
-                                                        <div class="nice-select form-control wide" tabindex="0"><span class="current"><i class="fa fa-bath" aria-hidden="true"></i> Banyo Sayısı</span>
-                                                            <ul class="list" id="BathroomNumber">
-                                                                <li data-value="1" class="option selected">1</li>
-                                                                <li data-value="2" class="option">2</li>
-                                                                <li data-value="3" class="option">3</li>
-                                                                <li data-value="3" class="option">4</li>
-                                                                <li data-value="3" class="option">5</li>
-                                                                <li data-value="3" class="option">6</li>
-                                                                <li data-value="3" class="option">7</li>
-                                                                <li data-value="3" class="option">8</li>
-                                                                <li data-value="3" class="option">9</li>
-                                                                <li data-value="3" class="option">10</li>
-                                                            </ul>
-                                                        </div>
+
+                                                    <div class="rld-single-select" >
+                                                        <select  class="select single-select mr-0 wide" name="BathroomNumber">
+                                                           <option data-value="-1" class="option selected">Banyo Sayısı</option>
+                                                                <option value="0" class="option">0</option>
+                                                                <option value="1" class="option">1</option>
+                                                                <option value="2" class="option">2</option>
+                                                                <option value="3" class="option">3</option>
+                                                                <option value="4" class="option">4</option>
+                                                                <option value="5" class="option">5</option>
+                                                                <option value="6" class="option">6</option>
+                                                                <option value="7" class="option">7</option>
+                                                                <option value="8" class="option">8</option>
+                                                                <option value="9" class="option">9</option>
+                                                                <option value="10" class="option">10</option>
+
+                                                       </select>
                                                     </div>
+
                                                     <!--/ End Form Banyo -->
                                                 </div>
                                                 <div class="col-lg-5 col-md-12 col-sm-12 py-1 pr-30 mr-5 sld">
@@ -154,6 +162,7 @@
                                                             <div id="price-range" data-min="0" data-max="600000" data-unit="₺"></div>
                                                             <div class="clearfix"></div>
                                                         </div>
+                                                            
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-3 col-md-6 col-sm-12 py-1 pr-30">
@@ -196,6 +205,7 @@
                         </div>
                     </div>
                 </div>
+                </form>
                 <!--/ End Search Form -->
                 <section class="headings-2 pt-0">
                     <div class="pro-wrapper">
@@ -210,18 +220,18 @@
                             <div class="input-group border rounded input-group-lg w-auto mr-4">
                                 <label class="input-group-text bg-transparent border-0 text-uppercase letter-spacing-093 pr-1 pl-3" for="inputGroupSelect01"><i class="fas fa-align-left fs-16 pr-2"></i>Sırala:</label>
                                 <select class="form-control border-0 bg-transparent shadow-none p-0 selectpicker sortby" data-style="bg-transparent border-0 font-weight-600 btn-lg pl-0 pr-3" id="inputGroupSelect01" name="sortby">
-                                    <option selected>En Son Eklenenler</option>
-                                    <option value="1">Fiyat(Azalarak)</option>
-                                    <option value="2">Fiyat(Artarak)</option>
+                                    <option value="1" selected>En Son Eklenenler</option>
+                                    <option value="2">Fiyat(Azalarak)</option>
+                                    <option value="3">Fiyat(Artarak)</option>
                                 </select>
                             </div>
                         </div>
                     </div>
                 </section>
                 <!-- Block heading end -->
-                <div class="row featured portfolio-items">
+                <div id="listDiv"  class="row featured portfolio-items">
                    
-                    @foreach(var item in Model){
+@foreach(var item in Model){
                      <div class="item col-lg-4 col-md-6 col-xs-12 people landscapes sale">
                         <div class="project-single" data-aos="fade-up">
                             <div class="project-inner project-head">
@@ -300,7 +310,8 @@
                         </div>
                     </div>
                     }
-                   @*
+
+                   @*                    
                     <div class="item col-lg-4 col-md-6 col-xs-12 landscapes sale">
                         <div class="project-single" data-aos="fade-up">
                             <div class="project-inner project-head">
@@ -960,21 +971,24 @@
                     </div>*@
                 </div>
                 <nav aria-label="..." class="pt-3">
-                    <ul class="pagination grid-3">
-                        <li class="page-item disabled">
-                            <a class="page-link" href="#" tabindex="-1">Önceki</a>
-                        </li>
-                        <li class="page-item active">
-                            <a class="page-link" href="#">1 <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#">5</a></li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">İleri</a>
-                        </li>
-                    </ul>
+                           @Html.PagedListPager( Model, page => Url.Action("List",null, 
+                           new { page,
+                               SearchKeyWord = ViewBag.SearchKeyWord,
+                               AdvertType = ViewBag.AdvertType, 
+                               BedroomNumber = ViewBag.BedroomNumber,
+                               BathroomNumber = ViewBag.BathroomNumber,
+                               ExtraAttributes = ViewBag.ExtraAttributes,
+                               PricesStartValue = ViewBag.PricesStartValue,
+                               PricesEndValue = ViewBag.PricesEndValue,
+                               MetresStartValue = ViewBag.MetresStartValue,
+                               MetresEndValue = ViewBag.MetresEndValue
+                           }),new X.PagedList.Web.Common.PagedListRenderOptions{
+                               UlElementClasses = new string[]{"pagination","grid-3"},
+                               LiElementClasses = new string[]{"page-item","page-link"},
+                               ActiveLiElementClass = "active"
+                           } )
+
+
                 </nav>
             </div>
         </section>
@@ -1074,50 +1088,48 @@
         </script>
     
     <script>
-    $( "#SearchButton" ).click(function() {
-        let searchText = $("#SearchText").val()
-        let houseType = ($('#HouseType option:selected').val())
-        let locationType = ($('#LocationType option:selected').val())
-        let advertType = $('#AdvertType .selected').data("value")
-        let bedroomNumber = $('#BedroomNumber .selected').data("value")
-        let bathroomNumber = $('#Bathroom .selected').data("value")
+    $( "#listForm" ).submit(function() {
+
+
+
         let extraAttributes = []
          $.each($("input[name='extraAtt']:checked"), function () {    
             extraAttributes.push($(this).next().text());        
         });
+
+        console.log(extraAttributes)
+      $("<input />").attr("type", "hidden")
+          .attr("name", "ExtraAttributes")
+          .attr("value", extraAttributes)
+          .appendTo("#listForm");
+
         let metresStartValue = $("#MetresRange").next().children().val().split(" ")[0]
         let metresEndValue = $("#MetresRange").next().children().next().val().split(" ")[0]
-        let pricesStartValue = $("#priceRange").next().children().val().slice(1)
-        let pricesEndValue = $("#priceRange").next().children().next().val().slice(1)
-                        var data = new FormData();
-                        data.append("SearchKeyWord", searchText);
-                        data.append("HouseType",houseType );
-                        data.append("Location", locationType);
-                        data.append("AdvertType", advertType);
-                        data.append("BedroomNumber", bedroomNumber);
-                        data.append("BathroomNumber", bathroomNumber);
-                        data.append("MetresStartValue",metresStartValue );
-                        data.append("MetresEndValue", metresEndValue );
-                        data.append("PricesStartValue", pricesStartValue.replace(',',''));
-                        data.append("PricesEndValue", pricesEndValue.replace(',',''));
-                        data.append("ExtraAttributes", extraAttributes);
-                        $.ajax({
-                            type: "POST",
-                            enctype: 'multipart/form-data',
-                            url: "https://localhost:7048/AdvertsPaginated?orderBy=Latest",
-                            data: data,
-                            processData: false,
-                            contentType: false,
-                            cache: false,
-                            timeout: 800000,
-                            success: function (data) {
-                                console.log("SUCCESS : ", data);
-                            },
-                            error: function (e) {
-                                console.log("ERROR : ", e);
-                            }
-                        });
+        let pricesStartValue = $("#priceRange").next().children().val().slice(1).replaceAll(',', '');
+        let pricesEndValue = $("#priceRange").next().children().next().val().slice(1).replaceAll(',', '');
 
+            $("<input />").attr("type", "hidden")
+          .attr("name", "PricesStartValue")
+          .attr("value", pricesStartValue)
+          .appendTo("#listForm");
+     
+      $("<input />").attr("type", "hidden")
+          .attr("name", "PricesEndValue")
+          .attr("value", pricesEndValue)
+          .appendTo("#listForm");
+
+        $("<input />").attr("type", "hidden")
+          .attr("name", "MetresStartValue")
+          .attr("value", metresStartValue)
+          .appendTo("#listForm");
+     
+      $("<input />").attr("type", "hidden")
+          .attr("name", "MetresEndValue")
+          .attr("value", metresEndValue)
+          .appendTo("#listForm");
+
+
+      return true;
     });
     </script>
 

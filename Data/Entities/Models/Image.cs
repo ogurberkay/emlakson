@@ -19,4 +19,7 @@ public class Image
     [NotMapped]
     [DisplayName("Upload File")]
     public IFormFile ImageFile { get; set; }
+
+    public string ImagePath { get; set; }
+
 }

@@ -34,17 +34,15 @@
 @* HEADER *@
         <!-- Header Container
         ================================================== -->
-        <header id="header-container" class="header head-tr" style="line-height: unset;font-weight: 700;position: unset">
+       <header id="header-container" class="header head-tr" style="line-height: unset;font-weight: 700;position: unset;">
             <!-- Header -->
-            <div id="header" class="head-tr bottom">
+            <div id="header" class="head-tr bottom ">
                 <div class="container container-header">
                     <!-- Left Side Content -->
-                    <div class="left-side">
+                    <div class="left-side d-flex justify-content-center" style="width:100%">
                         <!-- Logo -->
-                        <div id="logo">
-                            <a href="~/"><img src="/Template1/images/tunca-logo.png" 
-                                                      data-sticky-logo="/Template1/images/tunca-logo.png"
-                                                      alt=""></a>
+                        <div id="logo" style="padding-right:100px;position:absolute;left:100px">
+                            <a href="/"><img src="/Template1/images/tunca-logo.png" data-sticky-logo="/Template1/images/tunca-logo.png" alt=""></a>
                         </div>
                         <!-- Mobile Navigation -->
                         <div class="mmenu-trigger">
@@ -57,22 +55,76 @@
                         <!-- Main Navigation -->
                         <nav id="navigation" class="style-1 head-tr">
                             <ul id="responsive">
-                                <li><a href="~/" style="color: @(ViewBag.NavBarLinkColor ?? "black !important"); font-weight: 700 !important;font-family: 'Nunito Sans', sans-serif !important;"class="clear">Anasayfa</a>
-                                <li><a href="~/list" style="color: @(ViewBag.NavBarLinkColor ?? "black !important"); font-weight: 700 !important;font-family: 'Nunito Sans', sans-serif !important;"class="clear">İlanlar</a></li>
-                                <li><a href="~/contactus" style="color: @(ViewBag.NavBarLinkColor ?? "black !important"); font-weight: 700 !important;font-family: 'Nunito Sans', sans-serif !important;"class="clear">Hakkımızda</a></li>
-                                <li><a href="~/gallery" style="color: @(ViewBag.NavBarLinkColor ?? "black !important"); font-weight: 700 !important;font-family: 'Nunito Sans', sans-serif !important;"class="clear">Galeri</a></li>
-                                <li><a href="~/takim" style="color: @(ViewBag.NavBarLinkColor ?? "black !important"); font-weight: 700 !important;font-family: 'Nunito Sans', sans-serif !important;"class="clear">Danışmanlarımız</a></li>
-                                <li><a href="~/contactusnew" style="color: @(ViewBag.NavBarLinkColor ?? "black !important"); font-weight: 700 !important;font-family: 'Nunito Sans', sans-serif !important;"class="clear">Bize Ulaşın</a></li>
-
+                                <li><a href="~/" style="color: black !important; font-weight: 700 !important;font-family: 'Nunito Sans', sans-serif !important;" class="clear navbar-item-linkk">Anasayfa</a>
+                                </li><li><a href="~/Home/list" style="color: black !important; font-weight: 700 !important;font-family: 'Nunito Sans', sans-serif !important;" class="clear navbar-item-linkk">İlanlar</a></li>
+                                <li><a href="~/contactus" style="color: black !important; font-weight: 700 !important;font-family: 'Nunito Sans', sans-serif !important;" class="clear navbar-item-linkk">Hakkımızda</a></li>
+                                <li><a href="~/gallery" style="color: black !important; font-weight: 700 !important;font-family: 'Nunito Sans', sans-serif !important;" class="clear navbar-item-linkk">Galeri</a></li>
+                                <li><a href="~/takim" style="color: black !important; font-weight: 700 !important;font-family: 'Nunito Sans', sans-serif !important;" class="clear navbar-item-linkk">Danışmanlarımız</a></li>
+                                <li><a href="~/contactusnew" style="color: black !important; font-weight: 700 !important;font-family: 'Nunito Sans', sans-serif !important;" class="clear navbar-item-linkk">Bize Ulaşın</a></li>
 
                                     </ul>
                         </nav>
                         <!-- Main Navigation / End -->
                     </div>
                     <!-- Left Side Content / End -->
-               
+                    <div class="right-side d-none d-none d-lg-none d-xl-flex sign ml-0">
+                        <!-- Header Widget -->
+                        
+                        <!-- Header Widget / End -->
+                    </div>
                     <!-- Right Side Content / End -->
-         
+                    <div class="right-side d-none d-none d-lg-none d-xl-flex sign ml-0" style="margin-right:0px;border-right:unset;">
+                                            <!-- Header Widget -->
+                                            
+                                            <!-- Header Widget / End -->
+                                        </div>
+                    <!-- Right Side Content / End -->
+
+              
+                </div>
+            </div><div id="header" class="head-tr bottom cloned unsticky">
+                <div class="container container-header">
+                    <!-- Left Side Content -->
+                    <div class="left-side d-flex justify-content-center" style="width:100%">
+                        <!-- Logo -->
+                        <div id="logo" style="padding-right:100px">
+                            <a href="/"><img src="/Template1/images/tunca-logo.png" data-sticky-logo="/Template1/images/tunca-logo.png" alt=""></a>
+                        </div>
+                        <!-- Mobile Navigation -->
+                        <div class="mmenu-trigger">
+                            <button class="hamburger hamburger--collapse" type="button">
+                                <span class="hamburger-box">
+							<span class="hamburger-inner"></span>
+                                </span>
+                            </button>
+                        </div>
+                        <!-- Main Navigation -->
+                        <nav id="navigation" class="style-1 head-tr">
+                            <ul id="responsive">
+                                <li><a href="/" style="color: grey !important; font-weight: 700 !important;font-family: 'Nunito Sans', sans-serif !important;" class="clear navbar-item-linkk">Anasayfa</a>
+                                </li><li><a href="Home/list" style="color: grey !important; font-weight: 700 !important;font-family: 'Nunito Sans', sans-serif !important;" class="clear navbar-item-linkk">İlanlar</a></li>
+                                <li><a href="/contactus" style="color: grey !important; font-weight: 700 !important;font-family: 'Nunito Sans', sans-serif !important;" class="clear navbar-item-linkk">Hakkımızda</a></li>
+                                <li><a href="/gallery" style="color: grey !important; font-weight: 700 !important;font-family: 'Nunito Sans', sans-serif !important;" class="clear navbar-item-linkk">Galeri</a></li>
+                                <li><a href="/takim" style="color: grey !important; font-weight: 700 !important;font-family: 'Nunito Sans', sans-serif !important;" class="clear navbar-item-linkk">Danışmanlarımız</a></li>
+                                <li><a href="/contactusnew" style="color: grey !important; font-weight: 700 !important;font-family: 'Nunito Sans', sans-serif !important;" class="clear navbar-item-linkk">Bize Ulaşın</a></li>
+                                <li style="margin-left:100px"><a target="_blank" href="https://www.instagram.com/tuncagayrimenkul" style="color: grey !important; font-weight: 700 !important;font-family: 'Nunito Sans', sans-serif !important;" class="clear navbar-item-linkk"><i class="fab fa-instagram"></i></a></li>
+
+                                    </ul>
+                        </nav>
+                        <!-- Main Navigation / End -->
+                    </div>
+                    <!-- Left Side Content / End -->
+                    <div class="right-side d-none d-none d-lg-none d-xl-flex sign ml-0">
+                        <!-- Header Widget -->
+                        
+                        <!-- Header Widget / End -->
+                    </div>
+                    <!-- Right Side Content / End -->
+                    <div class="right-side d-none d-none d-lg-none d-xl-flex sign ml-0" style="margin-right:0px;border-right:unset;">
+                                            <!-- Header Widget -->
+                                            
+                                            <!-- Header Widget / End -->
+                                        </div>
                     <!-- Right Side Content / End -->
 
               

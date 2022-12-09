@@ -79,7 +79,7 @@
     <!--MODAL-->
     <div>
         <div class="modal fade text-start" id="addAdvertModal" tabindex="-1" aria-labelledby="myModalLabel33" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h4 class="modal-title" id="myModalLabel33">Kullanıcı</h4>
@@ -88,8 +88,9 @@
                         <form action="/admin/AddAdvertApi" method="POST" enctype="multipart/form-data">
                         <div class="modal-body" style="">
                             <input id="EditUserId" type="hidden" class="form-control" name="Id">
-
-                            <label asp-for="Title">İlan başlığı</label>
+                            <div class="row">
+                                    <div class="col-md-6">
+                                       <label asp-for="Title">İlan başlığı</label>
                             <div class="mb-1">
                                             <input id="EditUsername" type="text" placeholder="İlan Adı" class="form-control" asp-for="Title">
                             </div>
@@ -114,16 +115,28 @@
                             <div class="mb-1">
                                 <input type="text" placeholder="Telefon Numarası" class="form-control" asp-for="HouseType">
                             </div>
-
-                            <label asp-for="BedroomNumber">Yatak odası sayısı</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                       <label asp-for="BedroomNumber">Yatak odası sayısı</label>
                             <div class="mb-1">
                                 <input type="text" placeholder="Telefon Numarası" class="form-control" asp-for="BedroomNumber">
                             </div>
                                 <label asp-for="BathroomNumber">Banyo sayısı</label>
                                 <div class="mb-1">
-                                    <input type="text" placeholder="Telefon Numarası" class="form-control" asp-for="BedroomNumber">
+                                    <input type="number" placeholder="Banyo Sayısı" class="form-control" asp-for="BedroomNumber">
                                 </div>
-
+                                <label asp-for="Meters">Metre kare</label>
+                                <div class="mb-1">
+                                    <input type="number" placeholder="Metre Kare" class="form-control" asp-for="Meters">
+                                </div>
+                                <label asp-for="Price">Fiyatı</label>
+                                <div class="mb-1">
+                                    <input type="number" placeholder="Telefon Numarası" class="form-control" asp-for="Price">
+                                </div>
+                                <label asp-for="BathroomNumber">Banyo sayısı</label>
+                                <div class="mb-1">
+                                    <input type="number" placeholder="Telefon Numarası" class="form-control" asp-for="IsFeatured">
+                                </div>
 
 
                                 <div class="mb-1">
@@ -141,6 +154,11 @@
                                             <input asp-for="ImageFile.ImageFile" accept="image/*" />
                                     <span asp-validation-for="ImageFile.ImageFile" class="text-danger"></span>
                                 </div>
+                                    </div>
+                                </div>
+                            
+
+                            
                         </div>
 
                             

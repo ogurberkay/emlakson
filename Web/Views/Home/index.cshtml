@@ -76,12 +76,12 @@
                         <nav id="navigation" class="style-1 head-tr">
                             <ul id="responsive">
                                 <li><a href="~/" style="color: @(ViewBag.NavBarLinkColor ?? "grey !important"); font-weight: 700 !important;font-family: 'Nunito Sans', sans-serif !important;"class="clear navbar-item-linkk">Anasayfa</a>
-                                <li><a href="~/list" style="color: @(ViewBag.NavBarLinkColor ?? "grey !important"); font-weight: 700 !important;font-family: 'Nunito Sans', sans-serif !important;"class="clear navbar-item-linkk">İlanlar</a></li>
+                                <li><a href="~/Home/list" style="color: @(ViewBag.NavBarLinkColor ?? "grey !important"); font-weight: 700 !important;font-family: 'Nunito Sans', sans-serif !important;"class="clear navbar-item-linkk">İlanlar</a></li>
                                 <li><a href="~/contactus" style="color: @(ViewBag.NavBarLinkColor ?? "grey !important"); font-weight: 700 !important;font-family: 'Nunito Sans', sans-serif !important;"class="clear navbar-item-linkk">Hakkımızda</a></li>
                                 <li><a href="~/gallery" style="color: @(ViewBag.NavBarLinkColor ?? "grey !important"); font-weight: 700 !important;font-family: 'Nunito Sans', sans-serif !important;"class="clear navbar-item-linkk">Galeri</a></li>
                                 <li><a href="~/takim" style="color: @(ViewBag.NavBarLinkColor ?? "grey !important"); font-weight: 700 !important;font-family: 'Nunito Sans', sans-serif !important;"class="clear navbar-item-linkk">Danışmanlarımız</a></li>
                                 <li><a href="~/contactusnew" style="color: @(ViewBag.NavBarLinkColor ?? "grey !important"); font-weight: 700 !important;font-family: 'Nunito Sans', sans-serif !important;"class="clear navbar-item-linkk">Bize Ulaşın</a></li>
-                                <li style="margin-left:100px"><a href="~/contactusnew" style="color: @(ViewBag.NavBarLinkColor ?? "grey !important"); font-weight: 700 !important;font-family: 'Nunito Sans', sans-serif !important;"class="clear navbar-item-linkk"><i class="fab fa-instagram"></i></a></li>
+                                <li style="margin-left:100px"><a target="_blank" href="https://www.instagram.com/tuncagayrimenkul" style="color: @(ViewBag.NavBarLinkColor ?? "grey !important"); font-weight: 700 !important;font-family: 'Nunito Sans', sans-serif !important;"class="clear navbar-item-linkk"><i class="fab fa-instagram"></i></a></li>
 
                                     </ul>
                         </nav>
@@ -154,7 +154,7 @@
                                 <h3>Geniş Mülkiyet Alanı</h3><br/>
                             </div>
                             <div class="service-text-p">
-                                <p class="text-center">lorem ipsum dolor sit amet, consectetur pro adipisici consectetur debits adipisicing lacus consectetur Business Directory.</p>
+                                @*<p class="text-center">lorem ipsum dolor sit amet, consectetur pro adipisici consectetur debits adipisicing lacus consectetur Business Directory.</p>*@
                             </div>
                         </div>
                     </article>
@@ -165,7 +165,7 @@
                                 <h3>Binlerce Kişi Tarafından Güvenilen</h3>
                             </div>
                             <div class="service-text-p">
-                                <p class="text-center">lorem ipsum dolor sit amet, consectetur pro adipisici consectetur debits adipisicing lacus consectetur Business Directory.</p>
+                                @*<p class="text-center">lorem ipsum dolor sit amet, consectetur pro adipisici consectetur debits adipisicing lacus consectetur Business Directory.</p>*@
                             </div>
                         </div>
                     </article>
@@ -176,7 +176,7 @@
                                 <h3>Finansman Kolaylığı</h3><br/>
                             </div>
                             <div class="service-text-p">
-                                <p class="text-center">lorem ipsum dolor sit amet, consectetur pro adipisici consectetur debits adipisicing lacus consectetur Business Directory.</p>
+                                @*<p class="text-center">lorem ipsum dolor sit amet, consectetur pro adipisici consectetur debits adipisicing lacus consectetur Business Directory.</p>*@
                             </div>
                         </div>
                     </article>
@@ -189,7 +189,7 @@
      <div class="featured-projects pd-top-60 pd-bottom-70">
            <div class="container">
                <div class="section-title">
-                   <h2 class="title">Popüler İlanlar</h2>
+                   <h2 class="title">Son Eklenen İlanlar</h2>
                </div>
                <div class="featured-slider slider-control-top">
                    <div class="item">
@@ -504,10 +504,13 @@
                 <div class="sec-title">
                     <h2><span>Müşteri </span>Görüşleri</h2>
                     <p>Müşterilerimiz tarafından yapılan yorumlar.</p>
+                    <br />
+                    <br />
+                    <br />
+                    <br />
                 </div>
                 <div class="owl-carousel style1">
                     <div class="test-1 pb-0 pt-0" data-aos="zoom-in">
-                        <img src="~/Template1/images/testimonials/ts-1.jpg" alt="">
                         <h3 class="mt-3 mb-0">Lisa Smith</h3>
                         <h6 class="mt-1">New York</h6>
                         <ul class="starts text-center mb-2">
@@ -525,7 +528,6 @@
                         <p>Lorem ipsum dolor sit amet, ligula magna at etiam aliquip venenatis. Vitae sit felis donec, suscipit tortor et sapien donec.</p>
                     </div>
                     <div class="test-1 pb-0 pt-0">
-                        <img src="~/Template1/images/testimonials/ts-2.jpg" alt="">
                         <h3 class="mt-3 mb-0">Jhon Morris</h3>
                         <h6 class="mt-1">Los Angeles</h6>
                         <ul class="starts text-center mb-2">
@@ -543,7 +545,6 @@
                         <p>Lorem ipsum dolor sit amet, ligula magna at etiam aliquip venenatis. Vitae sit felis donec, suscipit tortor et sapien donec.</p>
                     </div>
                     <div class="test-1 pt-0">
-                        <img src="~/Template1/images/testimonials/ts-3.jpg" alt="">
                         <h3 class="mt-3 mb-0">Mary Deshaw</h3>
                         <h6 class="mt-1">Chicago</h6>
                         <ul class="starts text-center mb-2">
@@ -561,7 +562,6 @@
                         <p>Lorem ipsum dolor sit amet, ligula magna at etiam aliquip venenatis. Vitae sit felis donec, suscipit tortor et sapien donec.</p>
                     </div>
                     <div class="test-1 pt-0">
-                        <img src="~/Template1/images/testimonials/ts-4.jpg" alt="">
                         <h3 class="mt-3 mb-0">Gary Steven</h3>
                         <h6 class="mt-1">Philadelphia</h6>
                         <ul class="starts text-center mb-2">
@@ -579,7 +579,6 @@
                         <p>Lorem ipsum dolor sit amet, ligula magna at etiam aliquip venenatis. Vitae sit felis donec, suscipit tortor et sapien donec.</p>
                     </div>
                     <div class="test-1 pt-0">
-                        <img src="~/Template1/images/testimonials/ts-5.jpg" alt="">
                         <h3 class="mt-3 mb-0">Cristy Mayer</h3>
                         <h6 class="mt-1">San Francisco</h6>
                         <ul class="starts text-center mb-2">
@@ -597,7 +596,6 @@
                         <p>Lorem ipsum dolor sit amet, ligula magna at etiam aliquip venenatis. Vitae sit felis donec, suscipit tortor et sapien donec.</p>
                     </div>
                     <div class="test-1 pt-0">
-                        <img src="~/Template1/images/testimonials/ts-6.jpg" alt="">
                         <h3 class="mt-3 mb-0">Ichiro Tasaka</h3>
                         <h6 class="mt-1">Houston</h6>
                         <ul class="starts text-center mb-2">
@@ -615,7 +613,6 @@
                         <p>Lorem ipsum dolor sit amet, ligula magna at etiam aliquip venenatis. Vitae sit felis donec, suscipit tortor et sapien donec.</p>
                     </div>
                     <div class="test-1 pt-0">
-                        <img src="~/Template1/images/testimonials/ts-6.jpg" alt="">
                         <h3 class="mt-3 mb-0">Ichiro Tasaka</h3>
                         <h6 class="mt-1">Houston</h6>
                         <ul class="starts text-center mb-2">
@@ -772,10 +769,12 @@
                       <div class="container">
                           <p>2021 © Copyright - Tüm hakları Tuncagayrimenkule aittir.</p>
                           <ul class="netsocials">
-                              <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                              <li><a href="https://www.facebook.com/tuncagayrimenkul/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
                               <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
                               <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                              <li><a href="#"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>
+                              <li><a href="#"><i style="width:2.5rem" class="fa fa-youtube" aria-hidden="true"></i></a></li>
+                              <li><a href="https://tuncagayrimenkul.sahibinden.com/" target="_blank"><i class="fab svgClass" ><svg  xmlns="http://www.w3.org/2000/svg" style="width:2.5rem; color: rgb(255, 225, 31);" width="16" height="16" viewBox="0 0 32 32"> 
+                                  <path d="M0 0v32h32v-32zM15.354 6.297c0.75-0.010 1.51-0.005 2.255 0.083 3.214 0.073 6.469 2.906 6.505 6.010h-4.427c0.016-0.922-0.802-2.073-1.703-2.307-1.474-0.359-3.281-0.474-4.573 0.391-0.984 0.594-1.422 2.229-0.125 2.74 3.047 1.448 6.875 1.13 9.63 3.167 2.266 1.609 2.13 4.885 0.365 6.781-2.292 2.453-6.182 2.844-9.464 2.375-3.266-0.156-6.344-2.995-6.427-6.083h4.417c-0.078 1.109 0.849 2.078 1.943 2.427 1.698 0.37 3.635 0.479 5.24-0.25 1.281-0.432 1.37-2.057 0.38-2.807-2.125-1.193-4.75-1.229-7.063-2.021-2.682-0.521-4.854-3.036-4.344-5.599 0.563-3.12 4.167-4.969 7.391-4.906z" fill="#ffe11f"/> </svg></i></a></li>
                           </ul>
                       </div>
                   </div>

@@ -34,15 +34,15 @@ public class AdvertService : BaseService, IAdvertService
 
     }
 
-    public async Task<IDataResult<IList<AdvertGetDto>>> GetAllAdverts()
+    public async Task<IDataResult<List<AdvertGetDto>>> GetAllAdverts()
     {
         var adverts = await UnitOfWork.Adverts.FindBy().Select(x => x.ToDto()).ToListAsync();
         if (adverts is null)
         {
-            return new DataResult<IList<AdvertGetDto>>(ResultStatusEnum.Error, "Adverts not found", null);
+            return new DataResult<List<AdvertGetDto>>(ResultStatusEnum.Error, "Adverts not found", null);
         }
 
-        return new DataResult<IList<AdvertGetDto>>(ResultStatusEnum.Success, adverts);
+        return new DataResult<List<AdvertGetDto>>(ResultStatusEnum.Success, adverts);
     }
 
     public async Task<IDataResult<Advert>> UpdateAdvert(Advert model)
@@ -80,24 +80,26 @@ public class AdvertService : BaseService, IAdvertService
                 BedroomNumber = model.BedroomNumber,
                 BathroomNumber = model.BathroomNumber,
                 AdvertType = model.AdvertType,
+                ImageFile = new Image()
             };
 
             //Save image to wwwroot/image
-            string wwwRootPath = _hostEnvironment.WebRootPath;
-            string fileName = Path.GetFileNameWithoutExtension(model.ImageFile.ImageFile.FileName);
-            string extension = Path.GetExtension(model.ImageFile.ImageFile.FileName);
-            model.ImageFile.ImageName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
-            string path = Path.Combine(wwwRootPath + "/Uploads/img/", fileName);
-            using (var fileStream = new FileStream(path, FileMode.Create))
-            {
-                await model.ImageFile.ImageFile.CopyToAsync(fileStream);
-            }
+            var withoutExtension = Path.GetFileNameWithoutExtension(model.ImageFile.ImageFile.FileName);
+            var uniqueFileName = StringExtensions.GetUniqueFileName(withoutExtension);
 
-            var _accessor = new HttpContextAccessor();
-            var webEnv = _accessor.HttpContext.RequestServices.GetRequiredService<IWebHostEnvironment>();
-            var webRoot = webEnv.WebRootPath;
+            var uploads = Path.Combine(_hostEnvironment.WebRootPath, "uploads", "img", uniqueFileName);
 
-            advert.ImageFile = model.ImageFile;
+            var filePath = Path.Combine(uploads, model.ImageFile.ImageFile.FileName);
+
+            Directory.CreateDirectory(Path.GetDirectoryName(filePath));
+
+            await model.ImageFile.ImageFile.CopyToAsync(new FileStream(filePath, FileMode.Create));
+
+            advert.ImageFile.Title = model.ImageFile.Title;
+            advert.ImageFile.ImageName = model.ImageFile.ImageName;
+            advert.ImageFile.ImageFile = model.ImageFile.ImageFile;
+            advert.ImageFile.ImagePath = filePath;
+
             await UnitOfWork.Adverts.InsertAsync(advert);
             await UnitOfWork.SaveAsync();
             return new DataResult<Advert>(ResultStatusEnum.Success, "Advert deleted successfully", advert);
@@ -139,16 +141,15 @@ public class AdvertService : BaseService, IAdvertService
         return new DataResult<Advert>(ResultStatusEnum.Success, advert);
     }
 
-    public async Task<PagedList<AdvertGetDto>> GetAdvertsPaginated(SearchAdvertRequest model, PaginationFilter filter,
-        string orderBy = "Desc")
+    public async Task<List<AdvertGetDto>> GetAdvertsPaginated(SearchAdvertRequest model, PaginationFilter filter,
+        int orderBy = 1)
     {
         var data = UnitOfWork.Adverts.FindBy();
 
 
         if (!string.IsNullOrEmpty(model.SearchKeyWord))
-            data = data.Where(x => string.Equals(x.Title, model.SearchKeyWord, StringComparison.OrdinalIgnoreCase)
-                                   || string.Equals(x.Description, model.SearchKeyWord,
-                                       StringComparison.OrdinalIgnoreCase));
+            data = data.Where(x => x.Title.Contains(model.SearchKeyWord)
+                                   || x.Description.Contains(model.SearchKeyWord));
         //AdvertType
         if (!string.IsNullOrEmpty(model.AdvertType))
         {
@@ -228,7 +229,19 @@ public class AdvertService : BaseService, IAdvertService
             data = data.Where(x => x.ExtraAttributes != null && x.ExtraAttributes.Contains(item));
         });
 
-        var advertGetDtos = data.Select(x => new AdvertGetDto()
+        ////OrderBy
+        //if (orderBy > 0)
+        //{
+        //    data = orderBy switch
+        //    {
+        //        1 => data.OrderByDescending(x=>x.CreatedDate),
+        //        2 => data = data.OrderByDescending(x => x.Price),
+        //        3 => data = data.OrderBy(x=>x.Price),
+        //        _ => data
+        //    };
+        //}
+
+        var advertGetDtos = await data.Select(x => new AdvertGetDto()
         {
             AdvertType = x.AdvertType,
             BathroomNumber = x.BathroomNumber,
@@ -241,11 +254,10 @@ public class AdvertService : BaseService, IAdvertService
             Meters = x.Meters,
             Price = x.Price,
             IsFeatured = x.IsFeatured,
-        });
+        }).ToListAsync();
 
+        return advertGetDtos;
 
-        // .OrderBy(x=);
-        return await PagedList<AdvertGetDto>.ToPagedList(advertGetDtos, filter.PageNumber, filter.PageSize);
     }
 
 

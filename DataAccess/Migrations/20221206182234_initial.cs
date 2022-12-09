@@ -6,7 +6,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace DataAccess.Migrations
 {
-    public partial class Initial : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -14,17 +14,18 @@ namespace DataAccess.Migrations
                 name: "aid");
 
             migrationBuilder.CreateTable(
-                name: "Image",
+                name: "Images",
                 columns: table => new
                 {
                     ImageId = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Title = table.Column<string>(type: "varchar(50)", nullable: false),
-                    ImageName = table.Column<string>(type: "varchar(100)", nullable: false)
+                    ImageName = table.Column<string>(type: "varchar(100)", nullable: false),
+                    ImagePath = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Image", x => x.ImageId);
+                    table.PrimaryKey("PK_Images", x => x.ImageId);
                 });
 
             migrationBuilder.CreateTable(
@@ -106,9 +107,9 @@ namespace DataAccess.Migrations
                 {
                     table.PrimaryKey("PK_Adverts", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Adverts_Image_ImageFileImageId",
+                        name: "FK_Adverts_Images_ImageFileImageId",
                         column: x => x.ImageFileImageId,
-                        principalTable: "Image",
+                        principalTable: "Images",
                         principalColumn: "ImageId",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -246,8 +247,8 @@ namespace DataAccess.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { 1, "648099de-ba8d-4ede-8ad1-691acaff940b", "Admin", "ADMIN" },
-                    { 2, "c3de45c2-1223-4bcd-8405-30d63a9a871d", "SuperAdmin", "SUPER_ADMIN" }
+                    { 1, "98999423-5acf-45f0-a3e6-651a289594cb", "Admin", "ADMIN" },
+                    { 2, "d66232d3-04eb-4085-bff6-fe90ff84591f", "SuperAdmin", "SUPER_ADMIN" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -332,7 +333,7 @@ namespace DataAccess.Migrations
                 schema: "aid");
 
             migrationBuilder.DropTable(
-                name: "Image");
+                name: "Images");
 
             migrationBuilder.DropTable(
                 name: "UserRoles",

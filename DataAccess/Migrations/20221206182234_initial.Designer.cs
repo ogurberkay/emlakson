@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221204122834_Initial")]
-    partial class Initial
+    [Migration("20221206182234_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -85,14 +85,14 @@ namespace DataAccess.Migrations
                         new
                         {
                             Id = 1,
-                            ConcurrencyStamp = "648099de-ba8d-4ede-8ad1-691acaff940b",
+                            ConcurrencyStamp = "98999423-5acf-45f0-a3e6-651a289594cb",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = 2,
-                            ConcurrencyStamp = "c3de45c2-1223-4bcd-8405-30d63a9a871d",
+                            ConcurrencyStamp = "d66232d3-04eb-4085-bff6-fe90ff84591f",
                             Name = "SuperAdmin",
                             NormalizedName = "SUPER_ADMIN"
                         });
@@ -354,13 +354,17 @@ namespace DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(100)");
 
+                    b.Property<string>("ImagePath")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("varchar(50)");
 
                     b.HasKey("ImageId");
 
-                    b.ToTable("Image");
+                    b.ToTable("Images");
                 });
 
             modelBuilder.Entity("Data.Entities.Identity.IdentityRoleClaimEntity", b =>
