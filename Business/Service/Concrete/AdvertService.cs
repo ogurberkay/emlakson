@@ -55,7 +55,7 @@ public class AdvertService : BaseService, IAdvertService
 
         //advert.AdvertDescription = model.AdvertDescription;
         UnitOfWork.Adverts.Update(advert);
-        await UnitOfWork.SaveAsync();
+        await UnitOfWork.SaveChangesAsync();
         return new DataResult<Advert>(ResultStatusEnum.Success, "Advert deleted successfully", advert);
     }
 
@@ -84,6 +84,7 @@ public class AdvertService : BaseService, IAdvertService
             };
 
             //Save image to wwwroot/image
+            if(model.ImageFile is not null) { 
             var withoutExtension = Path.GetFileNameWithoutExtension(model.ImageFile.ImageFile.FileName);
             var uniqueFileName = StringExtensions.GetUniqueFileName(withoutExtension);
 
@@ -99,9 +100,10 @@ public class AdvertService : BaseService, IAdvertService
             advert.ImageFile.ImageName = model.ImageFile.ImageName;
             advert.ImageFile.ImageFile = model.ImageFile.ImageFile;
             advert.ImageFile.ImagePath = filePath;
+            }
 
             await UnitOfWork.Adverts.InsertAsync(advert);
-            await UnitOfWork.SaveAsync();
+            await UnitOfWork.SaveChangesAsync();
             return new DataResult<Advert>(ResultStatusEnum.Success, "Advert deleted successfully", advert);
 
         }
@@ -110,7 +112,6 @@ public class AdvertService : BaseService, IAdvertService
         {
             throw;
         }
-
 
 
     }
@@ -125,7 +126,7 @@ public class AdvertService : BaseService, IAdvertService
         }
 
         UnitOfWork.Adverts.Delete(advert);
-        await UnitOfWork.SaveAsync();
+        await UnitOfWork.SaveChangesAsync();
         return new DataResult<bool>(ResultStatusEnum.Success, "Advert deleted successfully", true);
     }
 
@@ -259,6 +260,4 @@ public class AdvertService : BaseService, IAdvertService
         return advertGetDtos;
 
     }
-
-
 }

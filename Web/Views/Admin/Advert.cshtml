@@ -15,10 +15,16 @@
     <meta name="description" content="html 5 template">
     <meta name="author" content="">
     <title>Find Houses - HTML5 Template</title>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <!-- FAVICON -->
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 </head>
+<style>
+    #example {
+        table-layout: fixed;
+    }
 
+</style>
 <body>
    
     <div class="app-content content ">
@@ -62,7 +68,8 @@
                 <th>Metrekare</th>
                 <th>Fiyat</th>
                 <th>Diğer özellikleri</th>
-                <th>Öne Çıkarılan?</th>
+                                    <th>Oluşturma Tarihi</th>
+                                    <th>Öne Çıkarılan?</th>
                 <th>Eylemler</th>
             </tr>
         </thead>
@@ -76,13 +83,13 @@
             </div>
         </div>
        
-    <!--MODAL-->
+    <!-- ADD MODAL-->
     <div>
         <div class="modal fade text-start" id="addAdvertModal" tabindex="-1" aria-labelledby="myModalLabel33" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title" id="myModalLabel33">Kullanıcı</h4>
+                        <h4 class="modal-title" id="myModalLabel33">İlan</h4>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                         <form action="/admin/AddAdvertApi" method="POST" enctype="multipart/form-data">
@@ -100,31 +107,34 @@
                             </div>
                             <label>Şehir</label>
                             <div class="mb-1">
-                                <input asp-for="Location" id="EditSurname" type="text" placeholder="Soyisim" class="form-control">
+                            <Select type="text" placeholder="İl" class="form-control" asp-for="Location"
+                                    asp-items="Html.GetEnumSelectList<LocationEnum>()"></Select>
                             </div>
                             <label asp-for="District">İlçe </label>
                             <div class="mb-1">
-                                <input id="EditEmail" type="text" placeholder="Email" class="form-control" asp-for="District">
+                                <input id="" type="text" placeholder="İlçe" class="form-control" asp-for="District">
                             </div>
 
                             <label asp-for="HouseType">Ev Tipi </label>
                             <div class="mb-1">
-                                  <input type="text" placeholder="Telefon Numarası" class="form-control" asp-for="HouseType">
+                                  <Select type="text" placeholder="Telefon Numarası" class="form-control" asp-for="HouseType "
+                                                            asp-items="Html.GetEnumSelectList<HouseTypeEnum>()"></Select>
                             </div>
                                         <label asp-for="AdvertType">İlan Tipi</label>
                             <div class="mb-1">
                                 <input type="text" placeholder="Telefon Numarası" class="form-control" asp-for="HouseType">
                             </div>
+                                                <label asp-for="BedroomNumber">Yatak odası sayısı</label>
+                                                <div class="mb-1">
+                                                    <input type="text" placeholder="Telefon Numarası" class="form-control" asp-for="BedroomNumber">
+                                                </div>
+                                                <label asp-for="BathroomNumber">Banyo sayısı</label>
+                                                <div class="mb-1">
+                                                    <input type="number" placeholder="Banyo Sayısı" class="form-control" asp-for="BedroomNumber">
+                                                </div>
                                     </div>
                                     <div class="col-md-6">
-                                       <label asp-for="BedroomNumber">Yatak odası sayısı</label>
-                            <div class="mb-1">
-                                <input type="text" placeholder="Telefon Numarası" class="form-control" asp-for="BedroomNumber">
-                            </div>
-                                <label asp-for="BathroomNumber">Banyo sayısı</label>
-                                <div class="mb-1">
-                                    <input type="number" placeholder="Banyo Sayısı" class="form-control" asp-for="BedroomNumber">
-                                </div>
+                                      
                                 <label asp-for="Meters">Metre kare</label>
                                 <div class="mb-1">
                                     <input type="number" placeholder="Metre Kare" class="form-control" asp-for="Meters">
@@ -137,21 +147,19 @@
                                 <div class="mb-1">
                                     <input type="number" placeholder="Telefon Numarası" class="form-control" asp-for="IsFeatured">
                                 </div>
-
-
                                 <div class="mb-1">
-                                <label asp-for="ImageFile.Title" class="control-label"></label>
-                                <input asp-for="ImageFile.Title" class="form-control" />
-                                <span asp-validation-for="ImageFile.Title" class="text-danger"></span>
+                                  <Select type="text" placeholder="Telefon Numarası" class="form-control" asp-for="ExtraAttributes"
+                                                            asp-items="Html.GetEnumSelectList<ExtraAttributeEnum>()"></Select>
                                 </div>
+
                                 <div class="mb-1">
-                                <label asp-for="ImageFile.ImageName" class="control-label"></label>
+                                <label asp-for="ImageFile.ImageName" class="control-label">Resim Adı</label>
                                 <input asp-for="ImageFile.ImageName" class="form-control" />
                                 <span asp-validation-for="ImageFile.ImageName" class="text-danger"></span>
                                 </div>
                                 <div class="mb-1">
-                                    <label asp-for="ImageFile.ImageFile" class="control-label"></label>
-                                            <input asp-for="ImageFile.ImageFile" accept="image/*" />
+                                    <label asp-for="ImageFile.ImageFile" class="control-label">Resim Yükle</label>
+                                            <input asp-for="ImageFile.ImageFile" accept="image/*"  />
                                     <span asp-validation-for="ImageFile.ImageFile" class="text-danger"></span>
                                 </div>
                                     </div>
@@ -177,8 +185,29 @@
             </div>
         </div>
     </div>
-    
-    @section Scripts {
+
+                <!-- Edit MODAL-->
+                <div>
+                    <div class="modal fade text-start" id="editAdvertModal" tabindex="-1" aria-labelledby="myModalLabel332">
+                       
+
+                        <div  class="modal-dialog modal-dialog-centered modal-lg">
+                            <div class="modal-content">
+                                <div id="modalContent" >
+                                <div class="modal-header">
+                                    <h4 class="modal-title" id="myModalLabel33">İlan</h4>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="model-body-content"></div>
+                          </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @*<partial name="_AdvertEditPartial" />*@
+
+
+            @section Scripts {
 
        <script>
             $(document).ready(function () {
@@ -189,6 +218,7 @@
                         contentType: "application/json; charset=utf-8",
                     },
                     columns: [
+
                         { data: "title" },
                         { data: "description" },
                         { data: "houseType" },
@@ -197,17 +227,24 @@
                         { data: "advertType" },
                         { data: "meters" },
                         { data: "price" },
+                        { data: "createdDateString" },
                         { data: "extraAttributes" },
-                        { data: "isFeatured" },
+                                    { data: "isFeatured" },
                         {
                             data: "id", render: function (data, type, row, meta) {
                                 console.log(row)
-                                return '<button onclick=Approve('+row.id+') type="button" class="btn btn-outline-primary waves-effect"  style="padding:1.5px 2.5px">' +
-                                    '<span> Onayla</span>' +
-                                    '</button>' 
-                            }
+                                            return '<button type="button" data-url="www.google.com" onclick=Edit(' + row.id + ') data-bs-toggle="modal" data-bs-target="#editAdvertModal"  class="btn btn-outline-primary waves-effect" style="padding:1.5px 2.5px">' +
+                                                '<span>Düzenle</span>' +
+                                                '</button>' +
+                                                '<button onclick=Delete(' + row.id + ') type="button" class="btn btn-outline-primary waves-effect"  style="padding:1.5px 2.5px">' +
+                                                '<span> Sil</span>' +
+                                                '</button>'
+                                        }
                         }
                     ],
+                                responsive: true,
+                                scrollX: true,
+
                     dom: 'Bfrtip',
                     buttons: [{
                         extend: 'copy',
@@ -249,8 +286,42 @@
                 //});
             });
 
-            function Approve(user){
-                console.log(user)
+            function Edit(AdvertId){
+
+                            var url = '/admin/EditAdvert?id=' + AdvertId;
+
+                            $("#modalContent .model-body-content").load(url, function () {
+                                $("#editAdvertLoader").modal("show");
+
+                            })
+
+                /*
+                            $('#editAdvertLoader').show();
+                            $('#editAdvertLoader').addClass('d-flex');
+                            $('#modalContent').hide();
+                            
+                            $.ajax({
+
+                                url: '/admin/EditAdvert?id=' + AdvertId,
+                                type: 'GET',
+                                success: function (data) {
+                                    $('#editAdvertLoader').hide();
+                                    $('#editAdvertLoader').removeClass('d-flex');
+                                    $('#modalContent').show();
+
+                                },
+                                error: function (request, error) {
+                                    Swal.fire({
+                                        title: 'Hata oluştu!',
+                                        text: 'İşlem sırasında bir hata ile karşılaşıldı, lütfen daha sonra tekrar deneyiniz.',
+                                        icon: 'error',
+                                        customClass: {
+                                            confirmButton: 'btn btn-success'
+                                        }
+                                    });
+                                }
+                            });
+                            */
             }
 
             function ReloadTable() {
@@ -282,7 +353,7 @@
                                 Swal.fire({
                                     icon: 'success',
                                     title: 'Silindi!',
-                                    text: 'Kullanıcı başarı ile silindi.',
+                                    text: 'İlan başarı ile silindi.',
                                     customClass: {
                                         confirmButton: 'btn btn-success'
                                     }
@@ -303,7 +374,7 @@
                     } else if (result.dismiss === Swal.DismissReason.cancel) {
                         Swal.fire({
                             title: 'İptal edildi',
-                            text: 'Kullanıcı güvende :)',
+                            text: 'İlan güvende :)',
                             icon: 'error',
                             customClass: {
                                 confirmButton: 'btn btn-success'
@@ -315,12 +386,11 @@
             }
 
 
-            function Edit(user) {
-                
-              console.log(user)
-            }
 </script>
 
+                    <script src="~/AdminTemplate2/vendors/js/extensions/sweetalert2.all.min.js"></script>
+                    <script src="~/AdminTemplate2/vendors/js/extensions/polyfill.min.js"></script>
+                    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 }
  
 </body>

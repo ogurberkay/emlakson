@@ -249,6 +249,38 @@ namespace Web.Controllers
             return NotFound();
         }
 
+        [HttpGet("GetAdvertById")]
+        public async Task<IActionResult> GetAdvertById(int id)
+        {
+            try
+            {
+                var data = _advertService.GetAdvertById(id).Result.Data;
+
+                return Ok(new { data = data, status = 200 });
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+            return NotFound();
+        }
+
+        [HttpGet("EditAdvert")]
+        public async Task<IActionResult> EditAdvert(int id)
+        {
+            try
+            {
+                var data = _advertService.GetAdvertById(id).Result.Data;
+
+                return PartialView("_AdvertEditPartial", data);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+            return NotFound();
+        }
+
         [HttpPost("DeleteAdvertApi")]
         public async Task<IActionResult> DeleteAdvertApi(List<int> ids)
         {

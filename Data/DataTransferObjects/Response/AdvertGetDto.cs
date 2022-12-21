@@ -4,6 +4,7 @@ namespace Data.Entities.DataTransferObjects.Response;
 
 public class AdvertGetDto
 {
+    public int Id { get; set; }
     public string? Title { get; set; }
     public string? Description { get; set; }
     public HouseTypeEnum? HouseType { get; set; }
@@ -16,4 +17,6 @@ public class AdvertGetDto
     public decimal? Price { get; set; }
     public List<ExtraAttributeEnum>? ExtraAttributes { get; set; }
     public bool IsFeatured { get; set; } = false;
+    public DateTime CreatedDate { get; set; }
+    public string CreatedDateString { get; set; }
 }

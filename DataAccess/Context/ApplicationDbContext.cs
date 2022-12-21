@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
+using Microsoft.Extensions.Configuration;
 
 namespace DataAccess.Context;
 
@@ -22,8 +23,8 @@ public class ApplicationDbContext : IdentityDbContext<UserEntity, IdentityRoleEn
     {
     }
     
-    DbSet<Advert> Adverts { get; set; }
-    DbSet<Image> Images { get; set; }
+    public DbSet<Advert> Adverts { get; set; }
+    public DbSet<Image> Images { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -39,22 +40,59 @@ public class ApplicationDbContext : IdentityDbContext<UserEntity, IdentityRoleEn
         modelBuilder.Entity<IdentityUserRoleEntity>().ToTable("UserUserRoles", "aid");
 
     }
+
+    //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    //{
+        
+    //        optionsBuilder.UseNpgsql("Server=localhost;Port=5432;Database=test;User Id=postgres;Password=admin;");
+    //}
+
+    public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+    {
+
+        var now = DateTime.UtcNow;
+
+        foreach (var changedEntity in ChangeTracker.Entries())
+        {
+            if (changedEntity.Entity is IEntity entity)
+            {
+                switch (changedEntity.State)
+                {
+                    case EntityState.Added:
+                        entity.CreatedDate = now;
+                        entity.UpdatedDate = now;
+                        break;
+
+                    case EntityState.Modified:
+                        Entry(entity).Property(x => x.CreatedDate).IsModified = false;
+                        entity.UpdatedDate = now;
+                        break;
+                }
+            }
+        }
+
+        return base.SaveChangesAsync();
+    }
     public override int SaveChanges()
     {
-        var entries = ChangeTracker
-            .Entries()
-            .Where(e => e.Entity is IEntity && (
-                    e.State == EntityState.Added
-                    || e.State == EntityState.Modified));
+        var now = DateTime.UtcNow;
 
-        foreach (var entityEntry in entries)
+        foreach (var changedEntity in ChangeTracker.Entries())
         {
-            ((IEntity)entityEntry.Entity).UpdatedDate = DateTime.Now;
-
-            if (entityEntry.State == EntityState.Added)
+            if (changedEntity.Entity is IEntity entity)
             {
-                ((IEntity)entityEntry.Entity).CreatedDate = DateTime.Now;
-                ((IEntity)entityEntry.Entity).IsDeleted = false;
+                switch (changedEntity.State)
+                {
+                    case EntityState.Added:
+                        entity.CreatedDate = now;
+                        entity.UpdatedDate = now;
+                        break;
+
+                    case EntityState.Modified:
+                        Entry(entity).Property(x => x.CreatedDate).IsModified = false;
+                        entity.UpdatedDate = now;
+                        break;
+                }
             }
         }
 

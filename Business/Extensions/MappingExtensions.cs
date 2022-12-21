@@ -12,6 +12,7 @@ public static class MappingExtensions
     {
         return new AdvertGetDto()
         {
+            Id= entity.Id,
             AdvertType = entity.AdvertType,
             BathroomNumber = entity.BathroomNumber,
             BedroomNumber = entity.BedroomNumber,
@@ -22,6 +23,8 @@ public static class MappingExtensions
             Location = entity.Location,
             Meters = entity.Meters,
             Price = entity.Price,
+            CreatedDate = entity.CreatedDate,
+            CreatedDateString = entity.CreatedDate.ToString("dddd, dd MMMM yyyy HH:mm:ss"),
             Title = entity.Title
         };
     }

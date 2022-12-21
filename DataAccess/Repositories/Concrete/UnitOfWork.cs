@@ -15,9 +15,13 @@ public class UnitOfWork : IUnitOfWork
 
     public IAdvertRepository Adverts => _advertRepository ??= new AdvertRepository(_context);
     
-    public async Task<int> SaveAsync()
+    public async Task<int> SaveChangesAsync()
     {
         return await _context.SaveChangesAsync();
+    }
+    public int SaveChanges()
+    {
+        return _context.SaveChanges();
     }
 
     public async ValueTask DisposeAsync()
