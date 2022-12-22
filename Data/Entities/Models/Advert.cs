@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel;
+using Microsoft.EntityFrameworkCore;
 
 namespace Data.Entities.Models;
 
@@ -18,7 +19,7 @@ public class Advert : BaseEntity
     public int? BathroomNumber { get; set; }
     public int? Meters { get; set; }
     public decimal? Price { get; set; }
-    public List<ExtraAttributeEnum>? ExtraAttributes { get; set; }
+    public List<ExtraAttributeEnum>? ExtraAttributes { get; set; } = new List<String>;
     public bool IsFeatured { get; set; } = false;
     public Image ImageFile { get; set; }
 }

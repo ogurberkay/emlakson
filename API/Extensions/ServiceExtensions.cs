@@ -26,7 +26,7 @@ namespace API.Extensions
 
         public static void ConfigureSqlContext(this IServiceCollection services, IConfiguration configuration) =>
             services.AddDbContext<ApplicationDbContext>(
-                options => options.UseNpgsql(configuration.GetConnectionString("PgCon")));
+                options => options.UseSqlServer(configuration.GetConnectionString("PgCon")));
 
         public static void ConfigureServiceManager(this IServiceCollection services)
         {

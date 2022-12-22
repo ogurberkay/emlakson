@@ -695,6 +695,7 @@
         <PrivateAssets>all</PrivateAssets>
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       </PackageReference>
+      <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.12" />
       <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.11" />
       <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Utils" Version="6.0.11" />
       <PackageReference Include="PagedList.Mvc" Version="4.5.0" />
