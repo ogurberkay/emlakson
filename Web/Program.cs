@@ -15,7 +15,7 @@ builder.Services.ConfigureUnitOfWork();
 builder.Services.ConfigureIdentity();
 
 
-builder.Services.AddIdentity<UserEntity, IdentityRoleEntity>(opt =>
+builder.Services.AddIdentity<UserEntity,IdentityRole>(opt =>
 {
     opt.Password.RequiredLength = 8;
     opt.Password.RequireNonAlphanumeric = false;

@@ -212,7 +212,12 @@
                         <div class="detail-wrapper-body">
                             <div class="listing-title-bar">
                                 <div class="text-heading text-left">
+                                    @if(ViewBag.SearchResult > 0){
                                     <p class="font-weight-bold mb-0 mt-3">@Model.Count Arama sonuçları</p>
+                                    }
+                                    else{
+                                    <p class="font-weight-bold mb-0 mt-3">@Model.Count Arama sonuçları</p>
+                                    }
                                 </div>
                             </div>
                         </div>

@@ -10,7 +10,7 @@ public class Image
     public int ImageId { get; set; }
 
     [Column(TypeName = "varchar(50)")]
-    public string Title { get; set; }
+    public string? Title { get; set; }
 
     [Column(TypeName = "varchar(100)")]
     [DisplayName("Image Name")]

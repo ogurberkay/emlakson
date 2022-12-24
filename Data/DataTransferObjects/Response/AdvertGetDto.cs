@@ -15,7 +15,7 @@ public class AdvertGetDto
     public int? BathroomNumber { get; set; }
     public int? Meters { get; set; }
     public decimal? Price { get; set; }
-    public List<ExtraAttributeEnum>? ExtraAttributes { get; set; }
+    public string? ExtraAttributes { get; set; }
     public bool IsFeatured { get; set; } = false;
     public DateTime CreatedDate { get; set; }
     public string CreatedDateString { get; set; }

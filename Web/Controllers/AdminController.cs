@@ -271,7 +271,7 @@ namespace Web.Controllers
             try
             {
                 var data = _advertService.GetAdvertById(id).Result.Data;
-
+                ViewBag.Test = "asdfadsfdsafadsfdsafadsfasdf";
                 return PartialView("_AdvertEditPartial", data);
             }
             catch (Exception e)

@@ -109,29 +109,9 @@ public class HomeController : Controller
     
         var data = await _advertService.GetAdvertsPaginated(model, filter, orderBy);
         
-        if(data.Count > 0) { 
-        data.Add(data[0]);
-        data.Add(data[0]);
-        data.Add(data[0]);
-        data.Add(data[0]);
-        data.Add(data[0]);
-            data.Add(data[0]);
-        data.Add(data[2]);
-        data.Add(data[2]);
-        data.Add(data[2]);
-        data.Add(data[2]);
-            data.Add(data[2]);
-        data.Add(data[2]);
-        data.Add(data[2]);
-        data.Add(data[1]);
-        data.Add(data[1]);
-        data.Add(data[1]);
-        data.Add(data[1]);
-            data.Add(data[1]);
-        data.Add(data[1]);
-        }
-        var dataPaged = await data.ToPagedListAsync(page ?? 1, 2);
+        var dataPaged = await data.ToPagedListAsync(page ?? 1, 10);
 
+        ViewBag.SearhResult = dataPaged.Count;
         ViewBag.SearchKeyWord = model.SearchKeyWord ?? "";
         ViewBag.Location = model.Location ?? "";
         ViewBag.AdvertType = model.AdvertType ?? "";

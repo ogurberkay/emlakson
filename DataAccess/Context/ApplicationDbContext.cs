@@ -1,4 +1,5 @@
 using Data.Common;
+using Data.Constants;
 using Data.Entities.Configuration;
 using Data.Entities.Identity;
 using Data.Entities.Models;
@@ -10,9 +11,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace DataAccess.Context;
 
-public class ApplicationDbContext : IdentityDbContext<UserEntity, IdentityRoleEntity, int, IdentityUserClaimEntity,
-        IdentityUserRoleEntity,
-        IdentityUserLoginEntity, IdentityRoleClaimEntity, IdentityUserTokenEntity>
+public class ApplicationDbContext : IdentityDbContext<UserEntity>
 {
     public ApplicationDbContext()
     {
@@ -29,21 +28,15 @@ public class ApplicationDbContext : IdentityDbContext<UserEntity, IdentityRoleEn
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
+        
         modelBuilder.ApplyConfiguration(new AdvertConfiguration());
         modelBuilder.ApplyConfiguration(new RoleConfiguration());
-        modelBuilder.Entity<UserEntity>().ToTable("Users", "aid");
-        modelBuilder.Entity<IdentityUserClaimEntity>().ToTable("UserClaims", "aid");
-        modelBuilder.Entity<IdentityRoleEntity>().ToTable("UserRoles", "aid");
-        modelBuilder.Entity<IdentityUserLoginEntity>().ToTable("UserLogins", "aid");
-        modelBuilder.Entity<IdentityRoleClaimEntity>().ToTable("RoleClaims", "aid");
-        modelBuilder.Entity<IdentityUserTokenEntity>().ToTable("UserTokens", "aid");
-        modelBuilder.Entity<IdentityUserRoleEntity>().ToTable("UserUserRoles", "aid");
 
     }
 
     //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     //{
-        
+
     //        optionsBuilder.UseNpgsql("Server=localhost;Port=5432;Database=test;User Id=postgres;Password=admin;");
     //}
 

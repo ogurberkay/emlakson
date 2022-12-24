@@ -19,10 +19,18 @@ public class Advert : BaseEntity
     public int? BathroomNumber { get; set; }
     public int? Meters { get; set; }
     public decimal? Price { get; set; }
-    public List<ExtraAttributeEnum>? ExtraAttributes { get; set; } = new List<String>;
+    public List<ExtraAttributes>? ExtraAttributes { get; set; }
     public bool IsFeatured { get; set; } = false;
     public Image ImageFile { get; set; }
 }
+
+public class ExtraAttributes
+{
+    public int Id { get; set; }
+    public string? AttributeName { get; set; }
+}
+
+
 
 public enum ExtraAttributeEnum
 {

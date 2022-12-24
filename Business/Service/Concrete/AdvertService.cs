@@ -96,7 +96,6 @@ public class AdvertService : BaseService, IAdvertService
 
             await model.ImageFile.ImageFile.CopyToAsync(new FileStream(filePath, FileMode.Create));
 
-            advert.ImageFile.Title = model.ImageFile.Title;
             advert.ImageFile.ImageName = model.ImageFile.ImageName;
             advert.ImageFile.ImageFile = model.ImageFile.ImageFile;
             advert.ImageFile.ImagePath = filePath;
@@ -225,10 +224,11 @@ public class AdvertService : BaseService, IAdvertService
             }
         }
 
-        extraAttributesModel.ForEach(item =>
-        {
-            data = data.Where(x => x.ExtraAttributes != null && x.ExtraAttributes.Contains(item));
-        });
+        //TODO extraAttributes model should be okay
+        //extraAttributesModel.ForEach(item =>
+        //{
+        //    data = data.Where(x => x.ExtraAttributes != null && x.ExtraAttributes.Contains(item));
+        //});
 
         ////OrderBy
         //if (orderBy > 0)
@@ -249,7 +249,7 @@ public class AdvertService : BaseService, IAdvertService
             BedroomNumber = x.BedroomNumber,
             Description = x.Description,
             District = x.District,
-            ExtraAttributes = x.ExtraAttributes,
+            //ExtraAttributes = x.ExtraAttributes,
             HouseType = x.HouseType,
             Location = x.Location,
             Meters = x.Meters,

@@ -9,6 +9,7 @@ namespace Data.Entities.Identity
 {
     public class IdentityRoleClaimEntity : IdentityRoleClaim<int>
     {
+
         public virtual IdentityRoleEntity Role { get; set; }
     }
 }
