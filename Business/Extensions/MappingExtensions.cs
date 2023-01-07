@@ -18,7 +18,6 @@ public static class MappingExtensions
             BedroomNumber = entity.BedroomNumber,
             Description = entity.Description,
             District = entity.District,
-            //ExtraAttributes = String.Join(", ",entity.ExtraAttributes.Select(x=>x.AttributeName)),
             HouseType = entity.HouseType,
             Location = entity.Location,
             Meters = entity.Meters,

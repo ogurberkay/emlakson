@@ -37,6 +37,7 @@ public class AdvertService : BaseService, IAdvertService
     public async Task<IDataResult<List<AdvertGetDto>>> GetAllAdverts()
     {
         var adverts = await UnitOfWork.Adverts.FindBy().Select(x => x.ToDto()).ToListAsync();
+        //adverts.ForEach(x => {);
         if (adverts is null)
         {
             return new DataResult<List<AdvertGetDto>>(ResultStatusEnum.Error, "Adverts not found", null);
@@ -47,7 +48,27 @@ public class AdvertService : BaseService, IAdvertService
 
     public async Task<IDataResult<Advert>> UpdateAdvert(Advert model)
     {
-        var advert = await UnitOfWork.Adverts.FindBy(x => x.Id == model.Id).FirstOrDefaultAsync();
+        var advert = await UnitOfWork.Adverts.FindBy(x => x.Id == model.Id)
+            .Include(x=>x.AdvertExtraAttributes)
+            .Include(x=>x.ImageFile)
+            .FirstOrDefaultAsync();
+
+        try
+        { 
+        advert.AdvertExtraAttributes = model.AdvertExtraAttributes;
+        advert.AdvertType = model.AdvertType;
+        advert.IsFeatured = model.IsFeatured;
+        advert.BathroomNumber = model.BathroomNumber;
+        advert.BedroomNumber = model.BedroomNumber;
+        advert.IsFeatured = model.IsFeatured;
+        advert.Description = model.Description;
+        advert.Location = model.Location;
+        advert.Price = model.Price;
+        advert.Meters = model.Meters;
+        advert.District = model.District;
+        advert.HouseType = model.HouseType;
+        advert.ImageFile= model.ImageFile;
+        advert.Title = model.Title;
         if (advert is null)
         {
             return new DataResult<Advert>(ResultStatusEnum.Error, "Advert not found", null);
@@ -56,7 +77,11 @@ public class AdvertService : BaseService, IAdvertService
         //advert.AdvertDescription = model.AdvertDescription;
         UnitOfWork.Adverts.Update(advert);
         await UnitOfWork.SaveChangesAsync();
-        return new DataResult<Advert>(ResultStatusEnum.Success, "Advert deleted successfully", advert);
+
+        }
+        catch (Exception ex) { }
+            return new DataResult<Advert>(ResultStatusEnum.Success, "Advert deleted successfully", advert);
+
     }
 
     public async Task<IDataResult<Advert>> AddAdvert(Advert model)
@@ -74,7 +99,7 @@ public class AdvertService : BaseService, IAdvertService
                 Meters = model.Meters,
                 Location = model.Location,
                 HouseType = model.HouseType,
-                ExtraAttributes = model.ExtraAttributes,
+                AdvertExtraAttributes = model.AdvertExtraAttributes,
                 District = model.District,
                 Description = model.Description,
                 BedroomNumber = model.BedroomNumber,
@@ -84,21 +109,22 @@ public class AdvertService : BaseService, IAdvertService
             };
 
             //Save image to wwwroot/image
-            if(model.ImageFile is not null) { 
-            var withoutExtension = Path.GetFileNameWithoutExtension(model.ImageFile.ImageFile.FileName);
-            var uniqueFileName = StringExtensions.GetUniqueFileName(withoutExtension);
+            if (model.ImageFile is not null)
+            {
+                var withoutExtension = Path.GetFileNameWithoutExtension(model.ImageFile.ImageFile.FileName);
+                var uniqueFileName = StringExtensions.GetUniqueFileName(withoutExtension);
 
-            var uploads = Path.Combine(_hostEnvironment.WebRootPath, "uploads", "img", uniqueFileName);
+                var uploads = Path.Combine(_hostEnvironment.WebRootPath, "uploads", "img", uniqueFileName);
 
-            var filePath = Path.Combine(uploads, model.ImageFile.ImageFile.FileName);
+                var filePath = Path.Combine(uploads, model.ImageFile.ImageFile.FileName);
 
-            Directory.CreateDirectory(Path.GetDirectoryName(filePath));
+                Directory.CreateDirectory(Path.GetDirectoryName(filePath));
 
-            await model.ImageFile.ImageFile.CopyToAsync(new FileStream(filePath, FileMode.Create));
+                await model.ImageFile.ImageFile.CopyToAsync(new FileStream(filePath, FileMode.Create));
 
-            advert.ImageFile.ImageName = model.ImageFile.ImageName;
-            advert.ImageFile.ImageFile = model.ImageFile.ImageFile;
-            advert.ImageFile.ImagePath = filePath;
+                advert.ImageFile.ImageName = model.ImageFile.ImageName;
+                advert.ImageFile.ImageFile = model.ImageFile.ImageFile;
+                advert.ImageFile.ImagePath = filePath;
             }
 
             await UnitOfWork.Adverts.InsertAsync(advert);

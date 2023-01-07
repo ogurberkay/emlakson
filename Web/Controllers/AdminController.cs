@@ -4,6 +4,7 @@ using Business.Service.Abstract;
 using Data.DataTransferObjects.Request;
 using Data.Entities.Models;
 using DataAccess.Context;
+using DataAccess.Repositories.Abstract;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -11,6 +12,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
+using System.Collections.ObjectModel;
 using System.Security.Claims;
 using System.Text;
 using System.Text.Encodings.Web;
@@ -44,6 +46,7 @@ namespace Web.Controllers
             _signInManager = signInManager;
             _logger = logger;
             _advertService = advertService;
+
         }
 
 
@@ -127,13 +130,16 @@ namespace Web.Controllers
         [HttpGet("Advert")]
         public IActionResult Advert()
         {
+     
+
             return View();
+
         }
 
         [HttpGet("User")]
         public async Task<IActionResult> User()
         {
-                return View();
+            return View();
         }
 
         private UserEntity CreateUser()
@@ -238,12 +244,21 @@ namespace Web.Controllers
         [HttpGet("GetAdvertsApi")]
         public async Task<IActionResult> GetAdvertsApi()
         {
-            try { 
-            var data = _advertService.GetAllAdverts().Result.Data;
+            try
+            {
+                var data = _advertService.GetAllAdverts().Result.Data;
 
-                return Ok(new { data =  data, status = 200 });
+                using (var db = new ApplicationDbContext())
+                {
+                    //data = db.ExtraAttributess
+                }
+
+                return Ok(new { data = data, status = 200 });
             }
-            catch (Exception e) {
+
+
+            catch (Exception e)
+            {
                 Console.WriteLine(e);
             }
             return NotFound();
@@ -271,7 +286,8 @@ namespace Web.Controllers
             try
             {
                 var data = _advertService.GetAdvertById(id).Result.Data;
-                ViewBag.Test = "asdfadsfdsafadsfdsafadsfasdf";
+                ViewBag.Id = id;
+
                 return PartialView("_AdvertEditPartial", data);
             }
             catch (Exception e)
@@ -286,7 +302,8 @@ namespace Web.Controllers
         {
             try
             {
-                foreach(var id in ids) { 
+                foreach (var id in ids)
+                {
                     var data = await _advertService.DeleteAdvert(id);
                 }
                 return Ok();
@@ -300,10 +317,17 @@ namespace Web.Controllers
         }
 
         [HttpPost("AddAdvertApi")]
-        public async Task<IActionResult> AddAdvertApi([FromForm] Advert modal)
+        public async Task<IActionResult> AddAdvertApi([FromForm] Advert modal, List<string> ExtraAttributeIds)
         {
             try
             {
+                modal.AdvertExtraAttributes = new Collection<AdvertExtraAttributes>();
+                ExtraAttributeIds
+                    .Select(x => Int32.Parse(x))
+                    .ToList()
+                    .ForEach(x => {
+                        modal.AdvertExtraAttributes.Add(new AdvertExtraAttributes { ExtraAttributeId = x });
+                    });
                 var data = _advertService.AddAdvert(modal).Result.Data;
 
 
@@ -317,10 +341,19 @@ namespace Web.Controllers
         }
 
         [HttpPost("UpdateAdvertApi")]
-        public async Task<IActionResult> UpdateAdvertApi(Advert modal)
+        public async Task<IActionResult> UpdateAdvertApi(Advert modal,List<string> ExtraAttributeIds)
         {
+            
             try
             {
+                modal.AdvertExtraAttributes = new Collection<AdvertExtraAttributes>();
+                ExtraAttributeIds
+                    .Select(x => Int32.Parse(x))
+                    .ToList()
+                    .ForEach(x => {
+                        modal.AdvertExtraAttributes.Add(new AdvertExtraAttributes { ExtraAttributeId = x,AdvertId=modal.Id });
+                    });
+
                 var data = _advertService.UpdateAdvert(modal).Result.Data;
                 return Ok(data);
             }

@@ -78,4 +78,11 @@ public class GenericRepository<TEntity> : IRepository<TEntity> where TEntity : c
             Update(entity);
             return true;
         }
+    public bool HardDelete(TEntity entity)
+    {
+        if (entity is null)
+            return false;
+        _context.Entry(entity).State = EntityState.Deleted;
+        return true;
+    }
 }

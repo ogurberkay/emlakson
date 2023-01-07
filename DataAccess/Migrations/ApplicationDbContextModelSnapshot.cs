@@ -22,6 +22,29 @@ namespace DataAccess.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
+            modelBuilder.Entity("AdvertExtraAttributes", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
+
+                    b.Property<int>("AdvertId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ExtraAttributeId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("AdvertId");
+
+                    b.HasIndex("ExtraAttributeId");
+
+                    b.ToTable("AdvertExtraAttributess");
+                });
+
             modelBuilder.Entity("Data.Entities.Identity.IdentityRoleEntity", b =>
                 {
                     b.Property<int>("Id")
@@ -47,14 +70,14 @@ namespace DataAccess.Migrations
                         new
                         {
                             Id = 1,
-                            ConcurrencyStamp = "5b10faaa-84f5-465f-9bac-cf1c3a3755bb",
+                            ConcurrencyStamp = "fc16d2c2-87ac-48e2-99d4-004fa34868dd",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = 2,
-                            ConcurrencyStamp = "59f6f056-3eca-439a-8dd0-470030c9fa1b",
+                            ConcurrencyStamp = "840b708d-f489-41db-a37a-c3a920ae415e",
                             Name = "SuperAdmin",
                             NormalizedName = "SUPER_ADMIN"
                         });
@@ -92,7 +115,7 @@ namespace DataAccess.Migrations
                     b.Property<int?>("HouseType")
                         .HasColumnType("int");
 
-                    b.Property<int>("ImageFileImageId")
+                    b.Property<int?>("ImageFileImageId")
                         .HasColumnType("int");
 
                     b.Property<bool>("IsDeleted")
@@ -126,7 +149,7 @@ namespace DataAccess.Migrations
                     b.ToTable("Adverts");
                 });
 
-            modelBuilder.Entity("Data.Entities.Models.ExtraAttributes", b =>
+            modelBuilder.Entity("Data.Entities.Models.ExtraAttribute", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -134,17 +157,13 @@ namespace DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int?>("AdvertId")
-                        .HasColumnType("int");
-
                     b.Property<string>("AttributeName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AdvertId");
-
-                    b.ToTable("ExtraAttributes");
+                    b.ToTable("ExtraAttributess");
                 });
 
             modelBuilder.Entity("Data.Entities.Models.UserEntity", b =>
@@ -244,11 +263,9 @@ namespace DataAccess.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ImageId"), 1L, 1);
 
                     b.Property<string>("ImageName")
-                        .IsRequired()
                         .HasColumnType("varchar(100)");
 
                     b.Property<string>("ImagePath")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
@@ -392,22 +409,32 @@ namespace DataAccess.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("AdvertExtraAttributes", b =>
+                {
+                    b.HasOne("Data.Entities.Models.Advert", "Advert")
+                        .WithMany("AdvertExtraAttributes")
+                        .HasForeignKey("AdvertId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Data.Entities.Models.ExtraAttribute", "ExtraAttribute")
+                        .WithMany()
+                        .HasForeignKey("ExtraAttributeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Advert");
+
+                    b.Navigation("ExtraAttribute");
+                });
+
             modelBuilder.Entity("Data.Entities.Models.Advert", b =>
                 {
                     b.HasOne("Image", "ImageFile")
                         .WithMany()
-                        .HasForeignKey("ImageFileImageId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ImageFileImageId");
 
                     b.Navigation("ImageFile");
-                });
-
-            modelBuilder.Entity("Data.Entities.Models.ExtraAttributes", b =>
-                {
-                    b.HasOne("Data.Entities.Models.Advert", null)
-                        .WithMany("ExtraAttributes")
-                        .HasForeignKey("AdvertId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -463,7 +490,7 @@ namespace DataAccess.Migrations
 
             modelBuilder.Entity("Data.Entities.Models.Advert", b =>
                 {
-                    b.Navigation("ExtraAttributes");
+                    b.Navigation("AdvertExtraAttributes");
                 });
 #pragma warning restore 612, 618
         }

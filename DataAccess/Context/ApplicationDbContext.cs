@@ -7,7 +7,10 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Microsoft.Extensions.Configuration;
+using System.Reflection;
+using System.Runtime.Serialization;
 
 namespace DataAccess.Context;
 
@@ -24,25 +27,27 @@ public class ApplicationDbContext : IdentityDbContext<UserEntity>
     
     public DbSet<Advert> Adverts { get; set; }
     public DbSet<Image> Images { get; set; }
-
+    public DbSet<ExtraAttribute> ExtraAttributess { get; set; }
+    public DbSet<AdvertExtraAttributes> AdvertExtraAttributess { get; set; }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
-        
+
+
+
         modelBuilder.ApplyConfiguration(new AdvertConfiguration());
         modelBuilder.ApplyConfiguration(new RoleConfiguration());
 
     }
 
-    //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    //{
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
 
-    //        optionsBuilder.UseNpgsql("Server=localhost;Port=5432;Database=test;User Id=postgres;Password=admin;");
-    //}
+            optionsBuilder.UseSqlServer("Data Source=DESKTOP-SVIS1U8;Initial Catalog=TestDb;Integrated Security=true");
+    }
 
     public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
     {
-
         var now = DateTime.UtcNow;
 
         foreach (var changedEntity in ChangeTracker.Entries())
@@ -57,7 +62,6 @@ public class ApplicationDbContext : IdentityDbContext<UserEntity>
                         break;
 
                     case EntityState.Modified:
-                        Entry(entity).Property(x => x.CreatedDate).IsModified = false;
                         entity.UpdatedDate = now;
                         break;
                 }

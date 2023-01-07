@@ -6,6 +6,7 @@ using DataAccess.Context;
 using DataAccess.Repositories.Abstract;
 using DataAccess.Repositories.Concrete;
 using Microsoft.AspNetCore.Identity;
+using System.Text.Json.Serialization;
 using Web.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -25,6 +26,10 @@ builder.Services.AddIdentity<UserEntity,IdentityRole>(opt =>
 })
     .AddDefaultTokenProviders()
     .AddEntityFrameworkStores<ApplicationDbContext>();
+
+
+builder.Services.AddControllersWithViews()
+    .AddJsonOptions(options => options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
 // Add services to the container.
 builder.Services.AddRazorPages().AddRazorRuntimeCompilation();  

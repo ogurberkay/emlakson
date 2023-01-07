@@ -1,8 +1,13 @@
 ﻿@using Data.Entities.Models;
+@using DataAccess.Context;
 @model Advert
 
 @{
     Layout = "_LayoutAdmin";
+    List<ExtraAttribute> extraAttributes;
+    using (var db = new ApplicationDbContext())
+        extraAttributes = db.ExtraAttributess.ToList();
+    }
 }
 
 <!DOCTYPE html>
@@ -97,7 +102,6 @@
                             <input id="EditUserId" type="hidden" class="form-control" name="Id">
                             <div class="row">
                                     <div class="col-md-6">
-                                       <label asp-for="Title">İlan başlığı</label>
                             <div class="mb-1">
                                             <input id="EditUsername" type="text" placeholder="İlan Adı" class="form-control" asp-for="Title">
                             </div>
@@ -148,8 +152,14 @@
                                     <input type="number" placeholder="Telefon Numarası" class="form-control" asp-for="IsFeatured">
                                 </div>
                                 <div class="mb-1">
-                                  <Select id="ExtraAttributesEnum" type="text" placeholder="Telefon Numarası" class="form-control" asp-for="ExtraAttributes"
-                                                            asp-items="Html.GetEnumSelectList<ExtraAttributeEnum>()"></Select>
+
+                                                    <Select id="ExtraAttributesEnum" name="ExtraAttributeIds[]" type="text" placeholder="Telefon Numarası" class="form-control" multiple="multiple">
+                                                        @foreach (var item in extraAttributes) {
+                                                        <option value="@item.Id">@item.AttributeName</option>
+                                                    }
+
+                                </Select>
+                               
                                 </div>
 
                                 <div class="mb-1">

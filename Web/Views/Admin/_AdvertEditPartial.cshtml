@@ -1,9 +1,25 @@
 ﻿@using Data.Entities.Models;
+@using DataAccess.Context;
 @model Data.Entities.Models.Advert
+@{
+    Layout = null;
+    
+    List<ExtraAttribute> extraAttributes1;
+    List<int> extraAttributes2;
+
+    var advertId = (int)ViewBag.Id;
+    using (var db = new ApplicationDbContext())
+    {
+        extraAttributes1 = db.ExtraAttributess.ToList();
+
+        extraAttributes2 = db.AdvertExtraAttributess.Where(x => x.AdvertId == advertId).Select(x => x.ExtraAttributeId).ToList();
+
+    }
+ }
 <h4>@ViewBag.Test</h4>
-    <form action="/admin/AddAdvertApi" method="POST" enctype="multipart/form-data">
+    <form action="/admin/UpdateAdvertApi" method="POST" enctype="multipart/form-data">
         <div class="modal-body" style="">
-            <input id="EditUserId" type="hidden" class="form-control" name="Id">
+            <input id="EditUserId" type="hidden" class="form-control" name="Id" value="@Model.Id">
             <div class="row">
                 <div class="col-md-6">
                     <label asp-for="Title">İlan başlığı</label>
@@ -57,9 +73,23 @@
                         <input type="number" placeholder="Telefon Numarası" class="form-control" asp-for="IsFeatured">
                     </div>
                     <div class="mb-1">
-                    <label asp-for="ExtraAttributes" class="control-label">Özellikler</label>
-                        <Select id="extraAttributesSelect2" type="text" placeholder="Telefon Numarası" class="form-control" asp-for="ExtraAttributes"
-                                asp-items="Html.GetEnumSelectList<ExtraAttributeEnum>()"></Select>
+                    <label  class="control-label">Özellikler</label>
+                        <Select id="extraAttributesSelect2" name="ExtraAttributeIds[]" type="text" placeholder="Ekstra Özellikler" class="form-control" multiple="multiple"
+                                >
+                        @foreach (var item in extraAttributes1)
+                        {
+                            @if (extraAttributes2.Contains(item.Id))
+                            {
+                                <option selected value="@item.Id">@item.AttributeName</option>
+                            }
+                            else
+                            {
+                                <option value="@item.Id">@item.AttributeName</option>
+
+                            }
+
+                        }
+                                </Select>
                     </div>
                     <div class="mb-1">
                         <label asp-for="ImageFile.ImageName" class="control-label">Resim Adı</label>
@@ -93,14 +123,15 @@
 
     <script>
 
-    function showTime() {
-        console.log($`@Model.Title.ToString()`)
-    }
+    //function showTime() {
+
+    //    console.log($`extraAttributes`)
+    //}
 
 
     $(document).ready(function () {
+        console.log("ASDFASDFAS")
         $('#extraAttributesSelect2').select2();
-        let display = setInterval(showTime, 2000);
 
     });
     </script>

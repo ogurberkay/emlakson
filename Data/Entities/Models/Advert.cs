@@ -19,16 +19,12 @@ public class Advert : BaseEntity
     public int? BathroomNumber { get; set; }
     public int? Meters { get; set; }
     public decimal? Price { get; set; }
-    public List<ExtraAttributes>? ExtraAttributes { get; set; }
+    public virtual ICollection<AdvertExtraAttributes> AdvertExtraAttributes { get; set; }
     public bool IsFeatured { get; set; } = false;
-    public Image ImageFile { get; set; }
+    public Image? ImageFile { get; set; }
 }
 
-public class ExtraAttributes
-{
-    public int Id { get; set; }
-    public string? AttributeName { get; set; }
-}
+
 
 
 
