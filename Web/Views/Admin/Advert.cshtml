@@ -5,7 +5,7 @@
 @{
     Layout = "_LayoutAdmin";
     List<ExtraAttribute> extraAttributes;
-    using (var db = new ApplicationDbContext())
+    using (var db = new ApplicationDbContext()){
         extraAttributes = db.ExtraAttributess.ToList();
     }
 }
@@ -125,16 +125,17 @@
                                                             asp-items="Html.GetEnumSelectList<HouseTypeEnum>()"></Select>
                             </div>
                                         <label asp-for="AdvertType">İlan Tipi</label>
-                            <div class="mb-1">
-                                <input type="text" placeholder="Telefon Numarası" class="form-control" asp-for="HouseType">
-                            </div>
+                                                <div class="mb-1">
+                                                    <Select type="text" placeholder="İlan Tipi" class="form-control" asp-for="AdvertType"
+                                                            asp-items="Html.GetEnumSelectList<AdvertTypeEnum>()"></Select>
+                                                </div>
                                                 <label asp-for="BedroomNumber">Yatak odası sayısı</label>
                                                 <div class="mb-1">
-                                                    <input type="text" placeholder="Telefon Numarası" class="form-control" asp-for="BedroomNumber">
+                                                    <input type="number" placeholder="Yatak Odası Sayısı" class="form-control" asp-for="BedroomNumber">
                                                 </div>
                                                 <label asp-for="BathroomNumber">Banyo sayısı</label>
                                                 <div class="mb-1">
-                                                    <input type="number" placeholder="Banyo Sayısı" class="form-control" asp-for="BedroomNumber">
+                                                    <input type="number" placeholder="Banyo Sayısı" class="form-control" asp-for="BathroomNumber">
                                                 </div>
                                     </div>
                                     <div class="col-md-6">
@@ -147,13 +148,14 @@
                                 <div class="mb-1">
                                     <input type="number" placeholder="Telefon Numarası" class="form-control" asp-for="Price">
                                 </div>
-                                <label asp-for="BathroomNumber">Banyo sayısı</label>
+                                <label asp-for="IsFeatured">Öne Çıkarılan İlan ?</label>
+                                                <div class="mb-1">
+                                                    <input type="checkbox"
+                                                         asp-for="IsFeatured" />
+                                                </div> 
+                                                <label>Diğer Özellikler</label>
                                 <div class="mb-1">
-                                    <input type="number" placeholder="Telefon Numarası" class="form-control" asp-for="IsFeatured">
-                                </div>
-                                <div class="mb-1">
-
-                                                    <Select id="ExtraAttributesEnum" name="ExtraAttributeIds[]" type="text" placeholder="Telefon Numarası" class="form-control" multiple="multiple">
+                                                    <Select id="ExtraAttributesEnum" name="ExtraAttributeIds[]" type="text" placeholder="Diğer Özellikler" class="form-control" multiple="multiple">
                                                         @foreach (var item in extraAttributes) {
                                                         <option value="@item.Id">@item.AttributeName</option>
                                                     }
@@ -183,7 +185,7 @@
 
                         <div class="d-flex justify-content-around">
                             <div class="modal-footer">
-                                <button type="submit" class="btn btn-primary waves-effect waves-float waves-light" data-bs-dismiss="modal">Düzenle</button>
+                                <button type="submit" class="btn btn-primary waves-effect waves-float waves-light" data-bs-dismiss="modal">Kaydet</button>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-danger waves-effect waves-float waves-light" data-bs-dismiss="modal">İptal</button>
@@ -340,8 +342,7 @@
             }
 
 
-            function Delete(advert) {
-                console.log(advert)
+            function Delete(AdvertId) {
                 Swal.fire({
                     title: 'Emin misiniz ?',
                     text: "Bu işlemi geri alamazsınız, Emin misiniz ?",
@@ -357,7 +358,7 @@
                     if (result.value) {
                         $.ajax({
 
-                            url: '/admin/DeleteAdvertApi?id=' + advert.id,
+                            url: '/admin/DeleteAdvertApi?id=' + AdvertId,
                             type: 'Post',
                             success: function (data) {
                                 Swal.fire({

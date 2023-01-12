@@ -15,4 +15,5 @@ public interface IRepository<TEntity> where TEntity : IEntity
     IQueryable<TEntity> FindBy(params string[] includeParams);
     IQueryable<TEntity> FindBy(Expression<Func<TEntity, bool>> expression, params string[] includeParams);
     bool Delete(TEntity entity);
+    bool HardDelete(TEntity entity);
 }

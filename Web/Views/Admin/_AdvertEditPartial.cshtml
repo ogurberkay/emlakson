@@ -3,7 +3,7 @@
 @model Data.Entities.Models.Advert
 @{
     Layout = null;
-    
+
     List<ExtraAttribute> extraAttributes1;
     List<int> extraAttributes2;
 
@@ -15,67 +15,68 @@
         extraAttributes2 = db.AdvertExtraAttributess.Where(x => x.AdvertId == advertId).Select(x => x.ExtraAttributeId).ToList();
 
     }
- }
+}
 <h4>@ViewBag.Test</h4>
-    <form action="/admin/UpdateAdvertApi" method="POST" enctype="multipart/form-data">
-        <div class="modal-body" style="">
-            <input id="EditUserId" type="hidden" class="form-control" name="Id" value="@Model.Id">
-            <div class="row">
-                <div class="col-md-6">
-                    <label asp-for="Title">İlan başlığı</label>
-                    <div class="mb-1">
-                        <input id="EditUsername" type="text" placeholder="İlan Adı" class="form-control" asp-for="Title">
-                    </div>
-                    <label asp-for="Description">İlan Açıklaması </label>
-                    <div class="mb-1">
-                        <input id="EditName" type="text" placeholder="İlan Açıklaması" class="form-control" asp-for="Description">
-                    </div>
-                    <label>Şehir</label>
-                    <div class="mb-1">
-                        <Select type="text" placeholder="İl" class="form-control" asp-for="Location"
-                                asp-items="Html.GetEnumSelectList<LocationEnum>()"></Select>
-                    </div>
-                    <label asp-for="District">İlçe </label>
-                    <div class="mb-1">
-                        <input id="" type="text" placeholder="İlçe" class="form-control" asp-for="District">
-                    </div>
-
-                    <label asp-for="HouseType">Ev Tipi </label>
-                    <div class="mb-1">
-                        <Select type="text" placeholder="Telefon Numarası" class="form-control" asp-for="HouseType "
-                                asp-items="Html.GetEnumSelectList<HouseTypeEnum>()"></Select>
-                    </div>
-                    <label asp-for="AdvertType">İlan Tipi</label>
-                    <div class="mb-1">
-                        <input type="text" placeholder="Telefon Numarası" class="form-control" asp-for="HouseType">
-                    </div>
-                    <label asp-for="BedroomNumber">Yatak odası sayısı</label>
-                    <div class="mb-1">
-                        <input type="text" placeholder="Telefon Numarası" class="form-control" asp-for="BedroomNumber">
-                    </div>
-                    <label asp-for="BathroomNumber">Banyo sayısı</label>
-                    <div class="mb-1">
-                        <input type="number" placeholder="Banyo Sayısı" class="form-control" asp-for="BedroomNumber">
-                    </div>
+<form action="/admin/UpdateAdvertApi" method="POST" enctype="multipart/form-data">
+    <div class="modal-body" style="">
+        <input id="EditUserId" type="hidden" class="form-control" name="Id" value="@Model.Id">
+        <div class="row">
+            <div class="col-md-6">
+                <label asp-for="Title">İlan başlığı</label>
+                <div class="mb-1">
+                    <input id="EditUsername" type="text" placeholder="İlan Adı" class="form-control" asp-for="Title">
                 </div>
-                <div class="col-md-6">
+                <label asp-for="Description">İlan Açıklaması </label>
+                <div class="mb-1">
+                    <input id="EditName" type="text" placeholder="İlan Açıklaması" class="form-control" asp-for="Description">
+                </div>
+                <label>Şehir</label>
+                <div class="mb-1">
+                    <Select type="text" placeholder="İl" class="form-control" asp-for="Location"
+                            asp-items="Html.GetEnumSelectList<LocationEnum>()"></Select>
+                </div>
+                <label asp-for="District">İlçe </label>
+                <div class="mb-1">
+                    <input id="" type="text" placeholder="İlçe" class="form-control" asp-for="District">
+                </div>
 
-                    <label asp-for="Meters">Metre kare</label>
-                    <div class="mb-1">
-                        <input type="number" placeholder="Metre Kare" class="form-control" asp-for="Meters">
-                    </div>
-                    <label asp-for="Price">Fiyatı</label>
-                    <div class="mb-1">
-                        <input type="number" placeholder="Telefon Numarası" class="form-control" asp-for="Price">
-                    </div>
-                    <label asp-for="BathroomNumber">Banyo sayısı</label>
-                    <div class="mb-1">
-                        <input type="number" placeholder="Telefon Numarası" class="form-control" asp-for="IsFeatured">
-                    </div>
-                    <div class="mb-1">
-                    <label  class="control-label">Özellikler</label>
-                        <Select id="extraAttributesSelect2" name="ExtraAttributeIds[]" type="text" placeholder="Ekstra Özellikler" class="form-control" multiple="multiple"
-                                >
+                <label asp-for="HouseType">Ev Tipi </label>
+                <div class="mb-1">
+                    <Select type="text" placeholder="Telefon Numarası" class="form-control" asp-for="HouseType "
+                            asp-items="Html.GetEnumSelectList<HouseTypeEnum>()"></Select>
+                </div>
+                <label asp-for="AdvertType">İlan Tipi</label>
+                <div class="mb-1">
+                    <Select type="text" placeholder="İlan Tipi" class="form-control" asp-for="AdvertType"
+                            asp-items="Html.GetEnumSelectList<AdvertTypeEnum>()"></Select>
+                </div>
+                <label asp-for="BedroomNumber">Yatak odası sayısı</label>
+                <div class="mb-1">
+                    <input type="text" placeholder="Telefon Numarası" class="form-control" asp-for="BedroomNumber">
+                </div>
+                <label asp-for="BathroomNumber">Banyo sayısı</label>
+                <div class="mb-1">
+                    <input type="number" placeholder="Banyo Sayısı" class="form-control" asp-for="BathroomNumber">
+                </div>
+            </div>
+            <div class="col-md-6">
+
+                <label asp-for="Meters">Metre kare</label>
+                <div class="mb-1">
+                    <input type="number" placeholder="Metre Kare" class="form-control" asp-for="Meters">
+                </div>
+                <label asp-for="Price">Fiyatı</label>
+                <div class="mb-1">
+                    <input type="number" placeholder="Fiyatı" class="form-control" asp-for="Price">
+                </div>
+                <label asp-for="IsFeatured">Öne Çıkarılan İlan ?</label>
+                <div class="mb-1">
+                    <input type="checkbox"
+                           asp-for="IsFeatured" />
+                </div>
+                <div class="mb-1">
+                    <label class="control-label">Özellikler</label>
+                    <Select id="extraAttributesSelect2" name="ExtraAttributeIds[]" type="text" placeholder="Ekstra Özellikler" class="form-control" multiple="multiple">
                         @foreach (var item in extraAttributes1)
                         {
                             @if (extraAttributes2.Contains(item.Id))
@@ -89,39 +90,44 @@
                             }
 
                         }
-                                </Select>
-                    </div>
-                    <div class="mb-1">
-                        <label asp-for="ImageFile.ImageName" class="control-label">Resim Adı</label>
-                        <input asp-for="ImageFile.ImageName" class="form-control" />
-                        <span asp-validation-for="ImageFile.ImageName" class="text-danger"></span>
-                    </div>
-                    <div class="mb-1">
-                        <label asp-for="ImageFile.ImageFile" class="control-label">Resim Yükle</label>
-                        <input asp-for="ImageFile.ImageFile" accept="image/*" />
-                        <span asp-validation-for="ImageFile.ImageFile" class="text-danger"></span>
-                    </div>
+                    </Select>
+                </div>
+                <div class="mb-1">
+                    <strong>Şuanki resim:<span>@ViewBag.ImageName</span></strong>
+
+                </div>
+
+                <div class="mb-1">
+                    <label asp-for="ImageFile.ImageName" class="control-label">Resim Adı</label>
+                    <input asp-for="ImageFile.ImageName" class="form-control" />
+                    <span asp-validation-for="ImageFile.ImageName" class="text-danger"></span>
+                </div>
+                <div class="mb-1">
+                    <label asp-for="ImageFile.ImageFile" class="control-label">Yeni Resim Yükle</label>
+                    <input asp-for="ImageFile.ImageFile" accept="image/*" />
+                    <span asp-validation-for="ImageFile.ImageFile" class="text-danger"></span>
                 </div>
             </div>
-
-
-
         </div>
 
 
 
-        <div class="d-flex justify-content-around">
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-primary waves-effect waves-float waves-light" data-bs-dismiss="modal">Düzenle</button>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger waves-effect waves-float waves-light" data-bs-dismiss="modal">İptal</button>
-            </div>
+    </div>
+
+
+
+    <div class="d-flex justify-content-around">
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-primary waves-effect waves-float waves-light" data-bs-dismiss="modal">Düzenle</button>
         </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-danger waves-effect waves-float waves-light" data-bs-dismiss="modal">İptal</button>
+        </div>
+    </div>
 
-    </form>
+</form>
 
-    <script>
+<script>
 
     //function showTime() {
 
@@ -134,7 +140,7 @@
         $('#extraAttributesSelect2').select2();
 
     });
-    </script>
+</script>
 
 @section Scripts {
     @{

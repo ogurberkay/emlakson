@@ -67,7 +67,9 @@ public class AdvertService : BaseService, IAdvertService
         advert.Meters = model.Meters;
         advert.District = model.District;
         advert.HouseType = model.HouseType;
-        advert.ImageFile= model.ImageFile;
+            advert.ImageFile.ImageName = model.ImageFile?.ImageName;
+            advert.ImageFile.ImagePath = model.ImageFile?.ImagePath ?? advert.ImageFile.ImagePath;
+            advert.ImageFile.ImageFile = model.ImageFile?.ImageFile;
         advert.Title = model.Title;
         if (advert is null)
         {
@@ -105,25 +107,24 @@ public class AdvertService : BaseService, IAdvertService
                 BedroomNumber = model.BedroomNumber,
                 BathroomNumber = model.BathroomNumber,
                 AdvertType = model.AdvertType,
+                IsFeatured = model.IsFeatured,
                 ImageFile = new Image()
             };
 
             //Save image to wwwroot/image
-            if (model.ImageFile is not null)
+            if (model.ImageFile?.ImageFile is not null && model.ImageFile?.ImageName is not null)
             {
-                var withoutExtension = Path.GetFileNameWithoutExtension(model.ImageFile.ImageFile.FileName);
-                var uniqueFileName = StringExtensions.GetUniqueFileName(withoutExtension);
+                var withoutExtension = Path.GetFileNameWithoutExtension(model.ImageFile?.ImageFile?.FileName);
+                var uniqueFileName = StringExtensions.GetUniqueFileName(withoutExtension)+ Path.GetExtension(model.ImageFile?.ImageFile?.FileName);
 
-                var uploads = Path.Combine(_hostEnvironment.WebRootPath, "uploads", "img", uniqueFileName);
-
-                var filePath = Path.Combine(uploads, model.ImageFile.ImageFile.FileName);
+                var filePath = Path.Combine(_hostEnvironment.WebRootPath, "uploads", "img", uniqueFileName);
 
                 Directory.CreateDirectory(Path.GetDirectoryName(filePath));
 
                 await model.ImageFile.ImageFile.CopyToAsync(new FileStream(filePath, FileMode.Create));
 
-                advert.ImageFile.ImageName = model.ImageFile.ImageName;
-                advert.ImageFile.ImageFile = model.ImageFile.ImageFile;
+                advert.ImageFile.ImageName = model.ImageFile?.ImageName;
+                advert.ImageFile.ImageFile = model.ImageFile?.ImageFile;
                 advert.ImageFile.ImagePath = filePath;
             }
 
@@ -150,14 +151,17 @@ public class AdvertService : BaseService, IAdvertService
             return new DataResult<bool>(ResultStatusEnum.Error, "Advert not found", false);
         }
 
-        UnitOfWork.Adverts.Delete(advert);
+        UnitOfWork.Adverts.HardDelete(advert);
         await UnitOfWork.SaveChangesAsync();
         return new DataResult<bool>(ResultStatusEnum.Success, "Advert deleted successfully", true);
     }
 
     public async Task<IDataResult<Advert>> GetAdvertById(int id)
     {
-        var advert = await UnitOfWork.Adverts.FindBy(x => x.Id == id).FirstOrDefaultAsync();
+        var advert = await UnitOfWork.Adverts.FindBy(x => x.Id == id)
+            .Include(x=>x.ImageFile)
+            .Include(x=>x.AdvertExtraAttributes)
+            .FirstOrDefaultAsync();
 
         if (advert is null)
         {

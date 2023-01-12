@@ -14,7 +14,7 @@ using System.Runtime.Serialization;
 
 namespace DataAccess.Context;
 
-public class ApplicationDbContext : IdentityDbContext<UserEntity>
+public class ApplicationDbContext : IdentityDbContext<UserEntity,IdentityRole<int>,int>
 {
     public ApplicationDbContext()
     {
@@ -33,6 +33,9 @@ public class ApplicationDbContext : IdentityDbContext<UserEntity>
     {
         base.OnModelCreating(modelBuilder);
 
+        //modelBuilder.Entity<Advert>().HasQueryFilter(p => !p.IsDeleted);
+        //modelBuilder.Entity<UserEntity>().HasQueryFilter(p => !p.IsDeleted);
+
 
 
         modelBuilder.ApplyConfiguration(new AdvertConfiguration());
@@ -43,7 +46,8 @@ public class ApplicationDbContext : IdentityDbContext<UserEntity>
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
 
-            optionsBuilder.UseSqlServer("Data Source=DESKTOP-SVIS1U8;Initial Catalog=TestDb;Integrated Security=true");
+        //optionsBuilder.UseSqlServer("Data Source=DESKTOP-SVIS1U8;Initial Catalog=TestDb;Integrated Security=true");
+        optionsBuilder.UseSqlServer("Data Source=DESKTOP-9SDA81J;Initial Catalog=TestDb;Integrated Security=true");
     }
 
     public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
@@ -161,3 +165,4 @@ if (entry.CurrentValues.Properties.Any(c => c.Name == fieldName))
 }
 */
 }
+

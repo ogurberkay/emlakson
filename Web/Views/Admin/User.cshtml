@@ -165,13 +165,14 @@
 
                         {
                             data: "id", render: function (data, type, row, meta) {
-                                return '<button onclick=Approve(' + JSON.stringify(row) + ') type="button" class="btn btn-outline-primary waves-effect"  style="padding:1.5px 2.5px">' +
+                                console.log(row)
+                                return '<button onclick=Approve(' + row.id + ') type="button" class="btn btn-outline-primary waves-effect"  style="padding:1.5px 2.5px">' +
                                     '<span> Onayla</span>' +
                                     '</button>' +
                                     '<button type="button" onclick=Edit(' + JSON.stringify(row) + ') data-bs-toggle="modal" data-bs-target="#editUserForm"  class="btn btn-outline-primary waves-effect" style="padding:1.5px 2.5px">' +
                                     '<span>Düzenle</span>' +
                                     '</button>' +
-                                    '<button id="confirm-text" onclick=Delete(' + JSON.stringify(row) + ') type="button" class="btn btn-outline-primary waves-effect" style="padding:1.5px 2.5px">' +
+                                    '<button id="confirm-text" onclick=Delete(' + row.id + ') type="button" class="btn btn-outline-primary waves-effect" style="padding:1.5px 2.5px">' +
                                     '<span>Sil</span>' +
                                     '</button>'
                             }
@@ -222,8 +223,8 @@
             }
 
 
-            function Delete(user) {
-                console.log(user)
+            function Delete(userId) {
+                alert(userId)
                 Swal.fire({
                     title: 'Emin misiniz ?',
                     text: "Bu işlemi geri alamazsınız, Emin misiniz ?",
@@ -239,7 +240,7 @@
                     if (result.value) {
                         $.ajax({
 
-                            url: '/admin/DeleteUserApi?id=' + user.id,
+                            url: '/admin/DeleteUserApi?id=' + userId,
                             type: 'Post',
                             success: function (data) {
                                 Swal.fire({
@@ -299,7 +300,7 @@
                 //    }
                 //});
             }
-            function Approve(user) {
+            function Approve(userId) {
                 Swal.fire({
                     title: 'Emin misiniz ?',
                     text: "Kullanıcıyı onaylamak istediğinize emin misiniz ?",
@@ -315,7 +316,7 @@
                     if (result.value) {
                         $.ajax({
 
-                            url: '/admin/ApproveUserApi?id=' + user.id,
+                            url: '/admin/ApproveUserApi?id=' + userId,
                             type: 'Post',
                             success: function (data) {
                                 Swal.fire({

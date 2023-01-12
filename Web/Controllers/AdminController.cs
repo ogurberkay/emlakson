@@ -181,12 +181,13 @@ namespace Web.Controllers
             try
             {
                 var user = await _userManager.FindByIdAsync(id.ToString());
+                if(user is not null) {
+                    user.IsDeleted = false;
+                    await _userManager.UpdateAsync(user);
+                    return Ok();
+                }
+                return NotFound();
 
-                user.IsDeleted = true;
-
-                await _userManager.UpdateAsync(user);
-
-                return View("~/Views/Admin/User.cshtml");
             }
             catch (Exception ex)
             {
@@ -287,6 +288,7 @@ namespace Web.Controllers
             {
                 var data = _advertService.GetAdvertById(id).Result.Data;
                 ViewBag.Id = id;
+                ViewBag.ImageName = data.ImageFile?.ImageName +'.'+ data.ImageFile?.ImagePath?.Split('.')[^1];
 
                 return PartialView("_AdvertEditPartial", data);
             }
@@ -297,15 +299,14 @@ namespace Web.Controllers
             return NotFound();
         }
 
+
+
         [HttpPost("DeleteAdvertApi")]
-        public async Task<IActionResult> DeleteAdvertApi(List<int> ids)
+        public async Task<IActionResult> DeleteAdvertApi(int id)
         {
             try
             {
-                foreach (var id in ids)
-                {
-                    var data = await _advertService.DeleteAdvert(id);
-                }
+               var data = _advertService.DeleteAdvert(id).Result.Data;
                 return Ok();
 
             }

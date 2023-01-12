@@ -74,7 +74,7 @@ public class GenericRepository<TEntity> : IRepository<TEntity> where TEntity : c
         {
             if (entity is null)
                 return false;
-            entity.IsDeleted = true;
+            //entity.IsDeleted = true;
             Update(entity);
             return true;
         }
