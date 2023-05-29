@@ -39,6 +39,7 @@ namespace Web.Extensions
         public static void ConfigureUnitOfWork(this IServiceCollection services)
         {
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+
         }
         public static void ConfigureIdentity(this IServiceCollection services)
         {

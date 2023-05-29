@@ -36,14 +36,23 @@ public class AdvertService : BaseService, IAdvertService
 
     public async Task<IDataResult<List<AdvertGetDto>>> GetAllAdverts()
     {
-        var adverts = await UnitOfWork.Adverts.FindBy().Select(x => x.ToDto()).ToListAsync();
-        //adverts.ForEach(x => {);
-        if (adverts is null)
+        try
         {
-            return new DataResult<List<AdvertGetDto>>(ResultStatusEnum.Error, "Adverts not found", null);
+            var adverts = await UnitOfWork.Adverts.FindBy().Select(x => x.ToDto()).ToListAsync();
+            //adverts.ForEach(x => {);
+            if (adverts is null)
+            {
+                return new DataResult<List<AdvertGetDto>>(ResultStatusEnum.Error, "Adverts not found", null);
+            }
+            return new DataResult<List<AdvertGetDto>>(ResultStatusEnum.Success, adverts);
+
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
         }
 
-        return new DataResult<List<AdvertGetDto>>(ResultStatusEnum.Success, adverts);
     }
 
     public async Task<IDataResult<Advert>> UpdateAdvert(Advert model)
@@ -76,6 +85,22 @@ public class AdvertService : BaseService, IAdvertService
             return new DataResult<Advert>(ResultStatusEnum.Error, "Advert not found", null);
         }
 
+        if (model.ImageFile?.ImageFile is not null )
+        {
+            var withoutExtension = Path.GetFileNameWithoutExtension(model.ImageFile?.ImageFile?.FileName);
+            var uniqueFileName = StringExtensions.GetUniqueFileName(withoutExtension)+ Path.GetExtension(model.ImageFile?.ImageFile?.FileName);
+
+            var filePath = Path.Combine(_hostEnvironment.WebRootPath, "uploads", "img", uniqueFileName);
+
+            Directory.CreateDirectory(Path.GetDirectoryName(filePath));
+
+            await model.ImageFile.ImageFile.CopyToAsync(new FileStream(filePath, FileMode.Create));
+
+            advert.ImageFile.ImageName = withoutExtension;
+            advert.ImageFile.ImageFile = model.ImageFile?.ImageFile;
+            advert.ImageFile.ImagePath = filePath;
+        }
+        
         //advert.AdvertDescription = model.AdvertDescription;
         UnitOfWork.Adverts.Update(advert);
         await UnitOfWork.SaveChangesAsync();
@@ -112,7 +137,7 @@ public class AdvertService : BaseService, IAdvertService
             };
 
             //Save image to wwwroot/image
-            if (model.ImageFile?.ImageFile is not null && model.ImageFile?.ImageName is not null)
+            if (model.ImageFile?.ImageFile is not null )
             {
                 var withoutExtension = Path.GetFileNameWithoutExtension(model.ImageFile?.ImageFile?.FileName);
                 var uniqueFileName = StringExtensions.GetUniqueFileName(withoutExtension)+ Path.GetExtension(model.ImageFile?.ImageFile?.FileName);
@@ -123,7 +148,7 @@ public class AdvertService : BaseService, IAdvertService
 
                 await model.ImageFile.ImageFile.CopyToAsync(new FileStream(filePath, FileMode.Create));
 
-                advert.ImageFile.ImageName = model.ImageFile?.ImageName;
+                advert.ImageFile.ImageName = withoutExtension;
                 advert.ImageFile.ImageFile = model.ImageFile?.ImageFile;
                 advert.ImageFile.ImagePath = filePath;
             }
@@ -171,11 +196,11 @@ public class AdvertService : BaseService, IAdvertService
         return new DataResult<Advert>(ResultStatusEnum.Success, advert);
     }
 
-    public async Task<List<AdvertGetDto>> GetAdvertsPaginated(SearchAdvertRequest model, PaginationFilter filter,
-        int orderBy = 1)
+    public async Task<List<AdvertGetDto>> GetAdvertsPaginated(SearchAdvertRequest model, PaginationFilter filter)
     {
-        var data = UnitOfWork.Adverts.FindBy();
-
+        var data = UnitOfWork.Adverts.FindBy()
+            .Include(x => x.ImageFile)
+            .AsQueryable();
 
         if (!string.IsNullOrEmpty(model.SearchKeyWord))
             data = data.Where(x => x.Title.Contains(model.SearchKeyWord)
@@ -260,34 +285,47 @@ public class AdvertService : BaseService, IAdvertService
         //    data = data.Where(x => x.ExtraAttributes != null && x.ExtraAttributes.Contains(item));
         //});
 
-        ////OrderBy
-        //if (orderBy > 0)
-        //{
-        //    data = orderBy switch
-        //    {
-        //        1 => data.OrderByDescending(x=>x.CreatedDate),
-        //        2 => data = data.OrderByDescending(x => x.Price),
-        //        3 => data = data.OrderBy(x=>x.Price),
-        //        _ => data
-        //    };
-        //}
+            data = model.OrderBy switch
+            {
+                1 => data.OrderByDescending(x=>x.CreatedDate),
+                2 => data = data.OrderByDescending(x => x.Price),
+                3 => data = data.OrderBy(x=>x.Price),
+                _ => data
+            };
 
-        var advertGetDtos = await data.Select(x => new AdvertGetDto()
+        var dataObjects = await data.ToListAsync();
+
+        var advertGetDtos = dataObjects.Select(x => new AdvertGetDto
         {
+            Title = x.Title,
             AdvertType = x.AdvertType,
             BathroomNumber = x.BathroomNumber,
             BedroomNumber = x.BedroomNumber,
             Description = x.Description,
             District = x.District,
-            //ExtraAttributes = x.ExtraAttributes,
             HouseType = x.HouseType,
             Location = x.Location,
             Meters = x.Meters,
             Price = x.Price,
             IsFeatured = x.IsFeatured,
-        }).ToListAsync();
+            ImageWebPath = GetImagePath(x.ImageFile?.ImagePath),
+            CreatedDate = x.CreatedDate,
+        }).ToList();
+
 
         return advertGetDtos;
 
+    }
+    
+    string? GetImagePath(string? imagePath)
+    {
+        if (imagePath == null)
+        {
+            var defaultImagePath = "uploads/img/defaultImage.jpg";
+            return defaultImagePath;
+        }
+
+        var splitPath = imagePath.Split(new string[] { "wwwroot\\" }, StringSplitOptions.None);
+        return splitPath.Length > 1 ? splitPath[1] : null;
     }
 }

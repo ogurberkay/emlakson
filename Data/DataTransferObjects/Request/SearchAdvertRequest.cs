@@ -13,5 +13,6 @@ public class SearchAdvertRequest
     public int PricesStartValue { get; set; }
     public int PricesEndValue { get; set; } = 1000000000;
     public string? ExtraAttributes { get; set; }
-    
+    public int OrderBy { get; set; } = 1;
+
 }

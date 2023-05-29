@@ -16,7 +16,7 @@ public interface IAdvertService
     public Task<IDataResult<Advert>> UpdateAdvert(Advert model);
     public Task<IDataResult<Advert>> AddAdvert(Advert model);
     public Task<IDataResult<bool>> DeleteAdvert(int id);
-    public Task<List<AdvertGetDto>> GetAdvertsPaginated(SearchAdvertRequest model,PaginationFilter filter,int orderBy);
-
+    public Task<List<AdvertGetDto>> GetAdvertsPaginated(SearchAdvertRequest model,PaginationFilter filter);
+    public Task<bool> SendEmail();
 
 }

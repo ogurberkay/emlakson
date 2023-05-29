@@ -1,49 +1,35 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\berkay.ogur\\source\\repos\\emlakson\\DataAccess\\DataAccess.csproj": {}
+    "C:\\Users\\rizam\\OneDrive\\Masaüstü\\MyDevNotes\\emlak\\emlakson\\DataAccess\\DataAccess.csproj": {}
   },
   "projects": {
-    "C:\\Users\\berkay.ogur\\source\\repos\\emlakson\\Core\\Core.csproj": {
+    "C:\\Users\\rizam\\OneDrive\\Masaüstü\\MyDevNotes\\emlak\\emlakson\\Core\\Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\berkay.ogur\\source\\repos\\emlakson\\Core\\Core.csproj",
+        "projectUniqueName": "C:\\Users\\rizam\\OneDrive\\Masaüstü\\MyDevNotes\\emlak\\emlakson\\Core\\Core.csproj",
         "projectName": "Core",
-        "projectPath": "C:\\Users\\berkay.ogur\\source\\repos\\emlakson\\Core\\Core.csproj",
-        "packagesPath": "C:\\Users\\berkay.ogur\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\berkay.ogur\\source\\repos\\emlakson\\Core\\obj\\",
+        "projectPath": "C:\\Users\\rizam\\OneDrive\\Masaüstü\\MyDevNotes\\emlak\\emlakson\\Core\\Core.csproj",
+        "packagesPath": "C:\\Users\\rizam\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\rizam\\OneDrive\\Masaüstü\\MyDevNotes\\emlak\\emlakson\\Core\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\DevExpress 20.2\\Components\\Offline Packages",
-          "C:\\Program Files (x86)\\DevExpress 21.2\\Components\\Offline Packages",
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\berkay.ogur\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 19.1.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 20.2.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 21.2.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\rizam\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\DevExpress 19.1\\Components\\System\\Components\\Packages": {},
-          "C:\\Program Files (x86)\\DevExpress 20.2\\Components\\System\\Components\\Packages": {},
-          "C:\\Program Files (x86)\\DevExpress 21.2\\Components\\System\\Components\\Packages": {},
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://nuget.devexpress.com/b9daLUMqXXICjaMK8UnQAWO3OHbLgQmwBH1XnWPITVFfA9FiBD/api": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\berkay.ogur\\source\\repos\\emlakson\\Data\\Data.csproj": {
-                "projectPath": "C:\\Users\\berkay.ogur\\source\\repos\\emlakson\\Data\\Data.csproj"
+              "C:\\Users\\rizam\\OneDrive\\Masaüstü\\MyDevNotes\\emlak\\emlakson\\Data\\Data.csproj": {
+                "projectPath": "C:\\Users\\rizam\\OneDrive\\Masaüstü\\MyDevNotes\\emlak\\emlakson\\Data\\Data.csproj"
               }
             }
           }
@@ -60,7 +46,7 @@
           "dependencies": {
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[6.0.7, )"
+              "version": "[6.0.12, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
@@ -85,53 +71,39 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files (x86)\\dotnet\\sdk\\6.0.403\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\berkay.ogur\\source\\repos\\emlakson\\DataAccess\\DataAccess.csproj": {
+    "C:\\Users\\rizam\\OneDrive\\Masaüstü\\MyDevNotes\\emlak\\emlakson\\DataAccess\\DataAccess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\berkay.ogur\\source\\repos\\emlakson\\DataAccess\\DataAccess.csproj",
+        "projectUniqueName": "C:\\Users\\rizam\\OneDrive\\Masaüstü\\MyDevNotes\\emlak\\emlakson\\DataAccess\\DataAccess.csproj",
         "projectName": "DataAccess",
-        "projectPath": "C:\\Users\\berkay.ogur\\source\\repos\\emlakson\\DataAccess\\DataAccess.csproj",
-        "packagesPath": "C:\\Users\\berkay.ogur\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\berkay.ogur\\source\\repos\\emlakson\\DataAccess\\obj\\",
+        "projectPath": "C:\\Users\\rizam\\OneDrive\\Masaüstü\\MyDevNotes\\emlak\\emlakson\\DataAccess\\DataAccess.csproj",
+        "packagesPath": "C:\\Users\\rizam\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\rizam\\OneDrive\\Masaüstü\\MyDevNotes\\emlak\\emlakson\\DataAccess\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\DevExpress 20.2\\Components\\Offline Packages",
-          "C:\\Program Files (x86)\\DevExpress 21.2\\Components\\Offline Packages",
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\berkay.ogur\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 19.1.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 20.2.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 21.2.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\rizam\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\DevExpress 19.1\\Components\\System\\Components\\Packages": {},
-          "C:\\Program Files (x86)\\DevExpress 20.2\\Components\\System\\Components\\Packages": {},
-          "C:\\Program Files (x86)\\DevExpress 21.2\\Components\\System\\Components\\Packages": {},
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://nuget.devexpress.com/b9daLUMqXXICjaMK8UnQAWO3OHbLgQmwBH1XnWPITVFfA9FiBD/api": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\berkay.ogur\\source\\repos\\emlakson\\Core\\Core.csproj": {
-                "projectPath": "C:\\Users\\berkay.ogur\\source\\repos\\emlakson\\Core\\Core.csproj"
+              "C:\\Users\\rizam\\OneDrive\\Masaüstü\\MyDevNotes\\emlak\\emlakson\\Core\\Core.csproj": {
+                "projectPath": "C:\\Users\\rizam\\OneDrive\\Masaüstü\\MyDevNotes\\emlak\\emlakson\\Core\\Core.csproj"
               },
-              "C:\\Users\\berkay.ogur\\source\\repos\\emlakson\\Data\\Data.csproj": {
-                "projectPath": "C:\\Users\\berkay.ogur\\source\\repos\\emlakson\\Data\\Data.csproj"
+              "C:\\Users\\rizam\\OneDrive\\Masaüstü\\MyDevNotes\\emlak\\emlakson\\Data\\Data.csproj": {
+                "projectPath": "C:\\Users\\rizam\\OneDrive\\Masaüstü\\MyDevNotes\\emlak\\emlakson\\Data\\Data.csproj"
               }
             }
           }
@@ -146,25 +118,41 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Ardalis.SmartEnum": {
+              "target": "Package",
+              "version": "[2.1.0, )"
+            },
+            "EntityFramework": {
+              "target": "Package",
+              "version": "[6.4.4, )"
+            },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
               "version": "[6.0.7, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[6.0.7, )"
+              "version": "[6.0.12, )"
             },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[6.0.7, )"
+              "version": "[6.0.12, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[6.0.12, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
               "version": "[6.0.7, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[6.0.8, )"
             }
           },
           "imports": [
@@ -183,43 +171,29 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files (x86)\\dotnet\\sdk\\6.0.403\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\berkay.ogur\\source\\repos\\emlakson\\Data\\Data.csproj": {
+    "C:\\Users\\rizam\\OneDrive\\Masaüstü\\MyDevNotes\\emlak\\emlakson\\Data\\Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\berkay.ogur\\source\\repos\\emlakson\\Data\\Data.csproj",
+        "projectUniqueName": "C:\\Users\\rizam\\OneDrive\\Masaüstü\\MyDevNotes\\emlak\\emlakson\\Data\\Data.csproj",
         "projectName": "Data",
-        "projectPath": "C:\\Users\\berkay.ogur\\source\\repos\\emlakson\\Data\\Data.csproj",
-        "packagesPath": "C:\\Users\\berkay.ogur\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\berkay.ogur\\source\\repos\\emlakson\\Data\\obj\\",
+        "projectPath": "C:\\Users\\rizam\\OneDrive\\Masaüstü\\MyDevNotes\\emlak\\emlakson\\Data\\Data.csproj",
+        "packagesPath": "C:\\Users\\rizam\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\rizam\\OneDrive\\Masaüstü\\MyDevNotes\\emlak\\emlakson\\Data\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\DevExpress 20.2\\Components\\Offline Packages",
-          "C:\\Program Files (x86)\\DevExpress 21.2\\Components\\Offline Packages",
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\berkay.ogur\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 19.1.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 20.2.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 21.2.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\rizam\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\DevExpress 19.1\\Components\\System\\Components\\Packages": {},
-          "C:\\Program Files (x86)\\DevExpress 20.2\\Components\\System\\Components\\Packages": {},
-          "C:\\Program Files (x86)\\DevExpress 21.2\\Components\\System\\Components\\Packages": {},
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://nuget.devexpress.com/b9daLUMqXXICjaMK8UnQAWO3OHbLgQmwBH1XnWPITVFfA9FiBD/api": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
@@ -237,13 +211,25 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Ardalis.SmartEnum": {
+              "target": "Package",
+              "version": "[2.1.0, )"
+            },
+            "Microsoft.AspNetCore.Http.Features": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
               "version": "[6.0.7, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[6.0.7, )"
+              "version": "[6.0.12, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[6.0.12, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
@@ -251,9 +237,9 @@
               "target": "Package",
               "version": "[6.0.7, )"
             },
-            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+            "Newtonsoft.Json": {
               "target": "Package",
-              "version": "[6.0.5, )"
+              "version": "[13.0.1, )"
             }
           },
           "imports": [
@@ -272,7 +258,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files (x86)\\dotnet\\sdk\\6.0.403\\RuntimeIdentifierGraph.json"
         }
       }
     }

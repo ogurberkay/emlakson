@@ -8,109 +8,125 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Web
 build_property.RootNamespace = Web
-build_property.ProjectDir = C:\Users\berkay.ogur\source\repos\emlakson\Web\
+build_property.ProjectDir = C:\Users\rizam\OneDrive\Masaüstü\MyDevNotes\emlak\emlakson\Web\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = true
-build_property.MSBuildProjectDirectory = C:\Users\berkay.ogur\source\repos\emlakson\Web
+build_property.MSBuildProjectDirectory = C:\Users\rizam\OneDrive\Masaüstü\MyDevNotes\emlak\emlakson\Web
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/berkay.ogur/source/repos/emlakson/Web/Views/Admin/Advert.cshtml]
+[C:/Users/rizam/OneDrive/Masaüstü/MyDevNotes/emlak/emlakson/Web/Views/Admin/Advert.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWR2ZXJ0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/berkay.ogur/source/repos/emlakson/Web/Views/Admin/Home.cshtml]
+[C:/Users/rizam/OneDrive/Masaüstü/MyDevNotes/emlak/emlakson/Web/Views/Admin/Gallery.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cR2FsbGVyeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/rizam/OneDrive/Masaüstü/MyDevNotes/emlak/emlakson/Web/Views/Admin/Home.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSG9tZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/berkay.ogur/source/repos/emlakson/Web/Views/Admin/index.cshtml]
+[C:/Users/rizam/OneDrive/Masaüstü/MyDevNotes/emlak/emlakson/Web/Views/Admin/index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5caW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/berkay.ogur/source/repos/emlakson/Web/Views/Admin/Login.cshtml]
+[C:/Users/rizam/OneDrive/Masaüstü/MyDevNotes/emlak/emlakson/Web/Views/Admin/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cTG9naW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/berkay.ogur/source/repos/emlakson/Web/Views/Admin/Register.cshtml]
+[C:/Users/rizam/OneDrive/Masaüstü/MyDevNotes/emlak/emlakson/Web/Views/Admin/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cUmVnaXN0ZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/berkay.ogur/source/repos/emlakson/Web/Views/Admin/User.cshtml]
+[C:/Users/rizam/OneDrive/Masaüstü/MyDevNotes/emlak/emlakson/Web/Views/Admin/User.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVXNlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/berkay.ogur/source/repos/emlakson/Web/Views/Home/Asis.cshtml]
+[C:/Users/rizam/OneDrive/Masaüstü/MyDevNotes/emlak/emlakson/Web/Views/Admin/_AdvertEditPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cX0FkdmVydEVkaXRQYXJ0aWFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/rizam/OneDrive/Masaüstü/MyDevNotes/emlak/emlakson/Web/Views/Admin/_GalleryImagePartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cX0dhbGxlcnlJbWFnZVBhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/rizam/OneDrive/Masaüstü/MyDevNotes/emlak/emlakson/Web/Views/Home/Asis.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBc2lzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/berkay.ogur/source/repos/emlakson/Web/Views/Home/ContactUs.cshtml]
+[C:/Users/rizam/OneDrive/Masaüstü/MyDevNotes/emlak/emlakson/Web/Views/Home/ContactUs.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDb250YWN0VXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/berkay.ogur/source/repos/emlakson/Web/Views/Home/ContactUsNew.cshtml]
+[C:/Users/rizam/OneDrive/Masaüstü/MyDevNotes/emlak/emlakson/Web/Views/Home/ContactUsNew.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDb250YWN0VXNOZXcuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/berkay.ogur/source/repos/emlakson/Web/Views/Home/Gallery.cshtml]
+[C:/Users/rizam/OneDrive/Masaüstü/MyDevNotes/emlak/emlakson/Web/Views/Home/Gallery.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxHYWxsZXJ5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/berkay.ogur/source/repos/emlakson/Web/Views/Home/index.cshtml]
+[C:/Users/rizam/OneDrive/Masaüstü/MyDevNotes/emlak/emlakson/Web/Views/Home/index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxpbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/berkay.ogur/source/repos/emlakson/Web/Views/Home/kayar.cshtml]
+[C:/Users/rizam/OneDrive/Masaüstü/MyDevNotes/emlak/emlakson/Web/Views/Home/kayar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxrYXlhci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/berkay.ogur/source/repos/emlakson/Web/Views/Home/List.cshtml]
+[C:/Users/rizam/OneDrive/Masaüstü/MyDevNotes/emlak/emlakson/Web/Views/Home/List.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxMaXN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/berkay.ogur/source/repos/emlakson/Web/Views/Home/NotFound.cshtml]
+[C:/Users/rizam/OneDrive/Masaüstü/MyDevNotes/emlak/emlakson/Web/Views/Home/ListPartialView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxMaXN0UGFydGlhbFZpZXcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/rizam/OneDrive/Masaüstü/MyDevNotes/emlak/emlakson/Web/Views/Home/NotFound.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxOb3RGb3VuZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/berkay.ogur/source/repos/emlakson/Web/Views/Home/Privacy.cshtml]
+[C:/Users/rizam/OneDrive/Masaüstü/MyDevNotes/emlak/emlakson/Web/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/berkay.ogur/source/repos/emlakson/Web/Views/Home/Takım.cshtml]
+[C:/Users/rizam/OneDrive/Masaüstü/MyDevNotes/emlak/emlakson/Web/Views/Home/Takım.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxUYWvEsW0uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/berkay.ogur/source/repos/emlakson/Web/Views/Home/test.cshtml]
+[C:/Users/rizam/OneDrive/Masaüstü/MyDevNotes/emlak/emlakson/Web/Views/Home/test.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVx0ZXN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/berkay.ogur/source/repos/emlakson/Web/Views/Home/Video.cshtml]
+[C:/Users/rizam/OneDrive/Masaüstü/MyDevNotes/emlak/emlakson/Web/Views/Home/Video.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxWaWRlby5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/berkay.ogur/source/repos/emlakson/Web/Views/Shared/Error.cshtml]
+[C:/Users/rizam/OneDrive/Masaüstü/MyDevNotes/emlak/emlakson/Web/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/berkay.ogur/source/repos/emlakson/Web/Views/Shared/_LayoutAdmin.cshtml]
+[C:/Users/rizam/OneDrive/Masaüstü/MyDevNotes/emlak/emlakson/Web/Views/Shared/_LayoutAdmin.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXRBZG1pbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/berkay.ogur/source/repos/emlakson/Web/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/rizam/OneDrive/Masaüstü/MyDevNotes/emlak/emlakson/Web/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/berkay.ogur/source/repos/emlakson/Web/Views/_ViewImports.cshtml]
+[C:/Users/rizam/OneDrive/Masaüstü/MyDevNotes/emlak/emlakson/Web/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/berkay.ogur/source/repos/emlakson/Web/Views/_ViewStart.cshtml]
+[C:/Users/rizam/OneDrive/Masaüstü/MyDevNotes/emlak/emlakson/Web/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/berkay.ogur/source/repos/emlakson/Web/Views/Shared/_Layout.cshtml]
+[C:/Users/rizam/OneDrive/Masaüstü/MyDevNotes/emlak/emlakson/Web/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-lzldzk1rll
 
-[C:/Users/berkay.ogur/source/repos/emlakson/Web/Views/Shared/_LayoutList.cshtml]
+[C:/Users/rizam/OneDrive/Masaüstü/MyDevNotes/emlak/emlakson/Web/Views/Shared/_LayoutList.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXRMaXN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = b-7k59jegks1

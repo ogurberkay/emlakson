@@ -24,7 +24,8 @@ public static class MappingExtensions
             Price = entity.Price,
             CreatedDate = entity.CreatedDate,
             CreatedDateString = entity.CreatedDate.ToString("dddd, dd MMMM yyyy HH:mm:ss"),
-            Title = entity.Title
+            Title = entity.Title ?? "Belirtilmemiş",
+            ImageWebPath = entity.ImageFile?.ImagePath?.Split("wwwroot\\")[1]
         };
     }
     public static UserGetDto ToDto(this UserEntity entity)

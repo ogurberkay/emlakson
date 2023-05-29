@@ -31,9 +31,26 @@ public class HomeController : Controller
     }
 
 
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
-        return View();
+         var data = await _advertService.GetAdvertsPaginated(new SearchAdvertRequest(), new PaginationFilter());
+         if (data.Count < 12)
+         {
+             var i = data.Count;
+             while(i< 12){
+                 for (int j = 0; j < i; j++)
+                 {
+                     data.Add(data[j]);
+                 }
+
+                 i = data.Count;
+             }
+         }
+         var dataPaged = await data.ToPagedListAsync(1, 12);
+
+    
+        return View("~/Views/Home/index.cshtml", dataPaged);
+
     }
     
     
@@ -50,19 +67,11 @@ public class HomeController : Controller
         return View();
     }
     
-    //[HttpGet("List")]
-    //public async Task<IActionResult> List()
-    //{
-    //    var data = await _advertService.GetAllAdverts();
-    //    var dataPaged = await data.Data.ToPagedListAsync(1,10);
-
-    //    return View(dataPaged);
-    //}
     
     [HttpGet("404")]
     public IActionResult Admin()
     {
-        return View();
+        return View("~/Views/Admin/Index.cshtml");
     }
     [HttpGet("404")]
     public IActionResult NotFound()
@@ -104,10 +113,10 @@ public class HomeController : Controller
         return View(new ErrorViewModel {RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier});
     }
     [HttpGet("Home/List")]
-    public async Task<IActionResult> ListPaginated(SearchAdvertRequest model,[FromQuery] PaginationFilter filter, int? page, int orderBy = 1)
+    public async Task<IActionResult> ListPaginated(SearchAdvertRequest model,[FromQuery] PaginationFilter filter, int? page)
     {
     
-        var data = await _advertService.GetAdvertsPaginated(model, filter, orderBy);
+        var data = await _advertService.GetAdvertsPaginated(model, filter);
         
         var dataPaged = await data.ToPagedListAsync(page ?? 1, 10);
 

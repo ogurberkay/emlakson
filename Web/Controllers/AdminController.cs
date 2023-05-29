@@ -16,29 +16,30 @@ using System.Collections.ObjectModel;
 using System.Security.Claims;
 using System.Text;
 using System.Text.Encodings.Web;
+using Core.Extensions;
+using Data.Enum;
 
 namespace Web.Controllers
 {
-
     [Route("[controller]")]
     public class AdminController : Controller
     {
-
         private readonly SignInManager<UserEntity> _signInManager;
         private readonly UserManager<UserEntity> _userManager;
         private readonly IUserStore<UserEntity> _userStore;
         private readonly IUserEmailStore<UserEntity> _emailStore;
         private readonly ILogger<AdminController> _logger;
         private readonly IAdvertService _advertService;
-
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly IWebHostEnvironment _hostEnvironment;
 
 
         public AdminController(
-      UserManager<UserEntity> userManager,
-      IUserStore<UserEntity> userStore,
-      SignInManager<UserEntity> signInManager,
-      ILogger<AdminController> logger,
-      IAdvertService advertService)
+            UserManager<UserEntity> userManager,
+            IUserStore<UserEntity> userStore,
+            SignInManager<UserEntity> signInManager,
+            ILogger<AdminController> logger,
+            IAdvertService advertService, IUnitOfWork unitOfWork, IWebHostEnvironment hostEnvironment)
         {
             _userManager = userManager;
             _userStore = userStore;
@@ -46,7 +47,8 @@ namespace Web.Controllers
             _signInManager = signInManager;
             _logger = logger;
             _advertService = advertService;
-
+            _unitOfWork = unitOfWork;
+            _hostEnvironment = hostEnvironment;
         }
 
 
@@ -73,9 +75,9 @@ namespace Web.Controllers
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
-                    return View("~/Views/Home/Index.cshtml");
-
+                    return RedirectToAction("Index", "Home");
                 }
+
                 if (result.IsLockedOut)
                 {
                     _logger.LogWarning("User account locked out.");
@@ -89,7 +91,7 @@ namespace Web.Controllers
                 }
             }
 
-            return View("~/Views/Home/Index.cshtml");
+            return RedirectToAction("Index", "Home");
         }
 
         [HttpGet("register")]
@@ -101,7 +103,6 @@ namespace Web.Controllers
         [HttpPost("register")]
         public async Task<IActionResult> RegisterPost(string firstName, string lastName, string email, string password)
         {
-
             if (ModelState.IsValid)
             {
                 var user = CreateUser();
@@ -118,22 +119,17 @@ namespace Web.Controllers
 
                     await _signInManager.SignInAsync(user, isPersistent: false);
 
-                    return View("~/Views/Home/Index.cshtml");
-
+                    return RedirectToAction("Index", "Home");
                 }
-
-
             }
-            return View("~/Views/Home/Index.cshtml");
+
+            return RedirectToAction("Index", "Home");
         }
 
         [HttpGet("Advert")]
         public IActionResult Advert()
         {
-     
-
             return View();
-
         }
 
         [HttpGet("User")]
@@ -141,6 +137,13 @@ namespace Web.Controllers
         {
             return View();
         }
+
+        [HttpGet("Gallery")]
+        public async Task<IActionResult> Gallery()
+        {
+            return View();
+        }
+
 
         private UserEntity CreateUser()
         {
@@ -160,18 +163,17 @@ namespace Web.Controllers
             {
                 throw new NotSupportedException("Error Occur, please contact with admin.");
             }
-            return (IUserEmailStore<UserEntity>)_userStore;
+
+            return (IUserEmailStore<UserEntity>) _userStore;
         }
 
         [HttpGet("GetUsersApi")]
         public async Task<IActionResult> GetUsersApi(int Id)
         {
-
             using (var context = new ApplicationDbContext())
             {
-
                 var users = await _userManager.Users.ToListAsync();
-                return Ok(new { data = users, status = 200 });
+                return Ok(new {data = users, status = 200});
             }
         }
 
@@ -181,41 +183,159 @@ namespace Web.Controllers
             try
             {
                 var user = await _userManager.FindByIdAsync(id.ToString());
-                if(user is not null) {
+                if (user is not null)
+                {
                     user.IsDeleted = false;
                     await _userManager.UpdateAsync(user);
-                    return Ok();
+                    return RedirectToAction("User");
                 }
-                return NotFound();
-
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex);
             }
+
             return NotFound();
         }
 
 
-        [HttpPost("ApproveUserApi")]
-        public async Task<IActionResult> ApproveUserApi(int id)
+        [HttpPost("AddImageApi")]
+        public async Task<IActionResult> AddImageApi([FromForm] GalleryImage modal)
         {
             try
             {
-                var user = await _userManager.FindByIdAsync(id.ToString());
+                // Calculate the size of the image in megabytes
+                modal.Size = (decimal?) modal.ImageFile?.ImageFile?.Length / (1024 * 1024);
+                
+           
+                if (modal.ImageFile is not null)
+                {
 
-                user.EmailConfirmed = true;
+                        var withoutExtension = Path.GetFileNameWithoutExtension(modal.ImageFile?.ImageFile?.FileName);
+                        var uniqueFileName = StringExtensions.GetUniqueFileName(withoutExtension)
+                                             + Path.GetExtension(modal.ImageFile?.ImageFile?.FileName);
+                        modal.ImageName = withoutExtension;
+                        var filePath = Path.Combine(_hostEnvironment.WebRootPath, "uploads", "img", uniqueFileName);
 
-                await _userManager.UpdateAsync(user);
+                        Directory.CreateDirectory(Path.GetDirectoryName(filePath));
 
-                return View("~/Views/Admin/User.cshtml");
+                        await modal.ImageFile.ImageFile.CopyToAsync(new FileStream(filePath, FileMode.Create));
+
+                        modal.ImageFile.ImageName = withoutExtension;
+                        modal.ImageFile.ImageFile = modal.ImageFile?.ImageFile;
+                        modal.ImageFile.ImagePath = filePath;
+                    
+                    
+                    await _unitOfWork.Repository<GalleryImage>().InsertAsync(modal);
+
+                    await _unitOfWork.SaveChangesAsync();
+                    return RedirectToAction("Gallery");
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+
+            return NotFound();
+        }
+        
+        [HttpGet("SeeImage")]
+        public async Task<IActionResult> SeeImage(int id)
+        {
+            try
+            {
+                var data = await _unitOfWork.Repository<GalleryImage>().FindBy(x => x.Id == id)
+                    .Include(x => x.ImageFile)
+                    .FirstOrDefaultAsync();
+                ViewBag.Id = id;
+                ViewBag.ImageName = data.ImageFile?.ImageName + '.' + data.ImageFile?.ImagePath?.Split('.')[^1];
+
+                return PartialView("_GalleryImagePartial", data);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+
+            return NotFound();
+        }
+
+        // [HttpPost("EditImageApi")]
+        // public async Task<IActionResult> EditImageApi(GalleryImage modal)
+        // {
+        //     try
+        //     {
+        //         var galleryImage = await _unitOfWork.Repository<GalleryImage>()
+        //             .FindBy(x => modal.Id == x.Id)
+        //             .FirstOrDefaultAsync();
+        //         if (galleryImage is null)
+        //             return NotFound();
+        //
+        //         if ((modal.ImageFile?.ImageFile is not null) && (modal.ImageFile.ImagePath is not null))
+        //         {
+        //             var withoutExtension = Path.GetFileNameWithoutExtension(modal.ImageFile?.ImageFile?.FileName);
+        //             var uniqueFileName = StringExtensions.GetUniqueFileName(withoutExtension)
+        //                                  + Path.GetExtension(modal.ImageFile?.ImageFile?.FileName);
+        //
+        //             var filePath = Path.Combine(_hostEnvironment.WebRootPath, "uploads", "img", uniqueFileName);
+        //
+        //             Directory.CreateDirectory(Path.GetDirectoryName(filePath));
+        //
+        //             await modal.ImageFile.ImageFile.CopyToAsync(new FileStream(filePath, FileMode.Create));
+        //
+        //             galleryImage.ImageFile.ImageName = withoutExtension;
+        //             galleryImage.ImageFile.ImageFile = modal.ImageFile?.ImageFile;
+        //             galleryImage.ImageFile.ImagePath = filePath;
+        //
+        //         }
+        //
+        //         //advert.AdvertDescription = model.AdvertDescription;
+        //         _unitOfWork.Repository<GalleryImage>().Update(galleryImage);
+        //         await _unitOfWork.SaveChangesAsync();
+        //         return View("~/Views/Admin/Gallery.cshtml");
+        //     }
+        //     catch (Exception ex)
+        //     {
+        //         Console.WriteLine(ex);
+        //     }
+        //
+        //     return View("~/Views/Admin/Gallery.cshtml");
+        // }
+
+        [HttpGet("GetImagesApi")]
+        public async Task<IActionResult> GetImagesApi()
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                var images = await _unitOfWork.Repository<GalleryImage>().FindBy().ToListAsync();
+                images.ForEach(x => x.Size = x.Size != null ? Math.Round(x.Size ?? 0,2) : null);
+                return Ok(new {data = images, status = 200});
+            }
+        }
+
+        [HttpPost("DeleteImageApi")]
+        public async Task<IActionResult> DeleteImageApi(int id)
+        {
+            try
+            {
+                var image = await _unitOfWork.Repository<GalleryImage>().FindBy(x => x.Id == id)
+                    .FirstOrDefaultAsync();
+                if (image is not null)
+                {
+                    _unitOfWork.Repository<GalleryImage>().HardDelete(image);
+                    await _unitOfWork.SaveChangesAsync();
+                    return RedirectToAction("Gallery");
+                }
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex);
             }
+
             return NotFound();
         }
+
 
         [HttpPost("EditUserApi")]
         public async Task<IActionResult> GetUsersApi(UserEntity modal)
@@ -238,9 +358,30 @@ namespace Web.Controllers
             {
                 Console.WriteLine(ex);
             }
+
             return NotFound();
         }
 
+        [HttpPost("ApproveUserApi")]
+        public async Task<IActionResult> ApproveUserApi(int id)
+        {
+            try
+            {
+                var user = await _userManager.FindByIdAsync(id.ToString());
+
+                user.EmailConfirmed = true;
+
+                await _userManager.UpdateAsync(user);
+
+                return View("~/Views/Admin/User.cshtml");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+
+            return NotFound();
+        }
 
         [HttpGet("GetAdvertsApi")]
         public async Task<IActionResult> GetAdvertsApi()
@@ -254,7 +395,7 @@ namespace Web.Controllers
                     //data = db.ExtraAttributess
                 }
 
-                return Ok(new { data = data, status = 200 });
+                return Ok(new {data = data, status = 200});
             }
 
 
@@ -262,6 +403,7 @@ namespace Web.Controllers
             {
                 Console.WriteLine(e);
             }
+
             return NotFound();
         }
 
@@ -272,12 +414,13 @@ namespace Web.Controllers
             {
                 var data = _advertService.GetAdvertById(id).Result.Data;
 
-                return Ok(new { data = data, status = 200 });
+                return Ok(new {data = data, status = 200});
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
             }
+
             return NotFound();
         }
 
@@ -288,7 +431,7 @@ namespace Web.Controllers
             {
                 var data = _advertService.GetAdvertById(id).Result.Data;
                 ViewBag.Id = id;
-                ViewBag.ImageName = data.ImageFile?.ImageName +'.'+ data.ImageFile?.ImagePath?.Split('.')[^1];
+                ViewBag.ImageName = data.ImageFile?.ImageName + '.' + data.ImageFile?.ImagePath?.Split('.')[^1];
 
                 return PartialView("_AdvertEditPartial", data);
             }
@@ -296,9 +439,9 @@ namespace Web.Controllers
             {
                 Console.WriteLine(e);
             }
+
             return NotFound();
         }
-
 
 
         [HttpPost("DeleteAdvertApi")]
@@ -306,14 +449,15 @@ namespace Web.Controllers
         {
             try
             {
-               var data = _advertService.DeleteAdvert(id).Result.Data;
-                return Ok();
-
+                var data = await _advertService.DeleteAdvert(id);
+                if (data.ResultStatus == ResultStatusEnum.Success)
+                    return RedirectToAction("Advert");
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
             }
+
             return NotFound();
         }
 
@@ -326,45 +470,48 @@ namespace Web.Controllers
                 ExtraAttributeIds
                     .Select(x => Int32.Parse(x))
                     .ToList()
-                    .ForEach(x => {
-                        modal.AdvertExtraAttributes.Add(new AdvertExtraAttributes { ExtraAttributeId = x });
+                    .ForEach(x =>
+                    {
+                        modal.AdvertExtraAttributes.Add(new AdvertExtraAttributes {ExtraAttributeId = x});
                     });
-                var data = _advertService.AddAdvert(modal).Result.Data;
+                var data = await _advertService.AddAdvert(modal);
 
-
-                return Ok(data);
+                if (data.ResultStatus == ResultStatusEnum.Success)
+                    return RedirectToAction("Advert");
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
             }
+
             return NotFound();
         }
 
         [HttpPost("UpdateAdvertApi")]
-        public async Task<IActionResult> UpdateAdvertApi(Advert modal,List<string> ExtraAttributeIds)
+        public async Task<IActionResult> UpdateAdvertApi(Advert modal, List<string> ExtraAttributeIds)
         {
-            
             try
             {
                 modal.AdvertExtraAttributes = new Collection<AdvertExtraAttributes>();
                 ExtraAttributeIds
                     .Select(x => Int32.Parse(x))
                     .ToList()
-                    .ForEach(x => {
-                        modal.AdvertExtraAttributes.Add(new AdvertExtraAttributes { ExtraAttributeId = x,AdvertId=modal.Id });
+                    .ForEach(x =>
+                    {
+                        modal.AdvertExtraAttributes.Add(new AdvertExtraAttributes
+                            {ExtraAttributeId = x, AdvertId = modal.Id});
                     });
 
-                var data = _advertService.UpdateAdvert(modal).Result.Data;
-                return Ok(data);
+                var data = await _advertService.UpdateAdvert(modal);
+                if (data.ResultStatus == ResultStatusEnum.Success)
+                    return RedirectToAction("Advert");
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
             }
+
             return NotFound();
         }
-
-
     }
 }

@@ -1,0 +1,51 @@
+@using Data.Entities.Models;
+@using DataAccess.Context;
+@model Data.Entities.Models.GalleryImage
+@{
+    Layout = null;
+
+    List<ExtraAttribute> extraAttributes1;
+    List<int> extraAttributes2;
+    
+    var imagePath = Model.ImageFile.ImagePath;
+    var webPath = imagePath?.Split("wwwroot\\")[1];
+    var advertId = (int) ViewBag.Id;
+}
+<h4>@ViewBag.Test</h4>
+<form action="/admin/UpdateAdvertApi" method="POST" enctype="multipart/form-data">
+    <div class="modal-body" style="">
+        <input id="EditUserId" type="hidden" class="form-control" name="Id" value="@Model.Id">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <div class="mb-1">
+                    <img src="@Url.Content($"~/{webPath}")" alt="Mevcut Resim" style="width: 250px; height: 250px;"/> <!-- Mevcut resmi gösterir -->
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+    
+</form>
+
+<script>
+
+    //function showTime() {
+
+    //    console.log($`extraAttributes`)
+    //}
+
+
+    $(document).ready(function () {
+        console.log("ASDFASDFAS")
+        $('#extraAttributesSelect2').select2();
+
+    });
+</script>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,293 @@
+﻿@using Data.Entities.Models
+@model GalleryImage
+
+@{
+    Layout = "_LayoutAdmin";
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="html 5 template">
+    <meta name="author" content="">
+    <title>Tunca Gayrimenkul</title>
+    <!-- FAVICON -->
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+</head>
+
+<body>
+
+<div class="app-content content ">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper container-xxl p-0">
+        <div class="content-header row">
+            <div class="content-header-left col-md-9 col-12 mb-2">
+                <div class="row breadcrumbs-top">
+                    <div class="col-12">
+                        <h2 class="content-header-title float-start mb-0">İlanlar</h2>
+                        <div class="breadcrumb-wrapper">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item">
+                                    <a href="index.html">Anasayfa</a>
+                                </li>
+                                <li class="breadcrumb-item active">
+                                    Galeri Resimleri
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="content-body">
+            <!-- Kick start -->
+            <div class="card">
+                <div class="card-header">
+
+                    <h4 class="card-title">Galeri Resimleri Tablosu</h4>
+                </div>
+                <div class="card-body">
+
+                    <table id="example" class="display" style="width:100%">
+                        <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Resimin Adı</th>
+                            <th>Resmin Boyutu</th>
+                            <th>Oluşturulma Tarihi</th>
+                            <th>Eylemler</th>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+      <!-- ADD MODAL-->
+<div>
+    <div class="modal fade text-start" id="addImageModal" tabindex="-1" aria-labelledby="myModalLabel33" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel33">İlan</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="/admin/AddImageApi" method="POST" enctype="multipart/form-data">
+                    <div class="modal-body" style="">
+                        <input id="EditUserId" type="hidden" class="form-control" name="Id">
+                        <div class="row">
+                            <div class="col-md-12">
+                                
+                                <div class="mb-1">
+                                    <label asp-for="ImageFile.ImageFile" class="control-label">Resim Yükle</label>
+                                    <input asp-for="ImageFile.ImageFile" accept="image/*"  />
+                                    <span asp-validation-for="ImageFile.ImageFile" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                            
+
+                            
+                    </div>
+
+                            
+
+                    <div class="d-flex justify-content-around">
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary waves-effect waves-float waves-light" data-bs-dismiss="modal">Kaydet</button>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger waves-effect waves-float waves-light" data-bs-dismiss="modal">İptal</button>
+                        </div>
+                    </div>
+                        
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--MODAL-->
+  <!-- Edit MODAL-->
+            <div>
+                <div class="modal fade text-start" id="editAdvertModal" tabindex="-1" aria-labelledby="myModalLabel332">
+                       
+
+                    <div  class="modal-dialog modal-dialog-centered modal-lg">
+                        <div class="modal-content">
+                            <div id="modalContent" >
+                                <div class="modal-header">
+                                    <h4 class="modal-title" id="myModalLabel33">İlan</h4>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="model-body-content"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    @section Scripts {
+
+        <script>
+            $(document).ready(function () {
+                var table = $('#example').DataTable({
+                    ajax: {
+                        url: '/admin/getImagesapi',
+                        type: "GET",
+                        contentType: "application/json; charset=utf-8"
+                    },
+                    columns: [
+                        { data: "id" },
+                        { data: "imageName" },
+                        { data: "size" },
+                        { data: "createdDateString" },
+
+                        {
+                            data: "id", render: function (data, type, row, meta) {
+                                console.log(row)
+                                return '<button type="button" data-url="www.google.com" onclick=Edit(' + row.id + ') data-bs-toggle="modal" data-bs-target="#editAdvertModal"  class="btn btn-outline-primary waves-effect" style="padding:1.5px 2.5px">' +
+                               '<span>Resmi gör</span>' +
+                               '</button>' +
+                                '<button id="confirm-text" onclick=Delete(' + row.id + ') type="button" class="btn btn-outline-primary waves-effect" style="padding:1.5px 2.5px">' +
+                                    '<span>Sil</span>' +
+                                    '</button>'
+                            }
+                        }
+                    ],
+                    dom: 'Bfrtip',
+                    buttons: [{
+                        extend: 'copy',
+                        className: 'copyButton'
+                    },
+                    {
+                        extend: 'csv',
+                        className: 'csvButton'
+                    },
+                    {
+                        extend: 'excel',
+                        className: 'excelButton'
+                    },
+                    {
+                        extend: 'print',
+                        className: 'printButton'
+                    },
+                     { 
+                         text: 'Yeni Resim Ekle',
+                         attr: {
+                             'data-bs-toggle': 'modal',
+                             'data-bs-target' : '#addImageModal'
+                         },
+                         action: function (e, dt, node, config) {
+                         }
+                     }
+                    ],
+                    columnDefs: [{
+                        target: 0,
+                        visible: false,
+                        searchable: false,
+                    },
+
+                    ],
+                    language: {
+                        url: 'https://cdn.datatables.net/plug-ins/1.13.1/i18n/tr.json',
+                    },
+                });
+                //Selection table
+                //$('#example tbody').on('click', 'tr', function () {
+                //    $(this).toggleClass('selected');
+                //});
+
+                //$('#button').click(function () {
+                //    alert(table.rows('.selected').data().length + ' row(s) selected');
+                //});
+            });
+
+            function ReloadTable() {
+                $('#example').DataTable().clear();
+                $('#example').DataTable().ajax.reload();
+            }
+ function Edit(AdvertId){
+
+                            var url = '/admin/SeeImage?id=' + AdvertId;
+
+                            $("#modalContent .model-body-content").load(url, function () {
+                                $("#editAdvertLoader").modal("show");
+
+                            })
+
+            }
+
+            function Delete(imageId) {
+                Swal.fire({
+                    title: 'Emin misiniz ?',
+                    text: "Bu işlemi geri alamazsınız, Emin misiniz ?",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Evet, Sil!',
+                    customClass: {
+                        confirmButton: 'btn btn-primary',
+                        cancelButton: 'btn btn-outline-danger ms-1'
+                    },
+                    buttonsStyling: false
+                }).then(function (result) {
+                    if (result.value) {
+                        $.ajax({
+
+                            url: '/admin/DeleteImageApi?id=' + imageId,
+                            type: 'Post',
+                            success: function (data) {
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Silindi!',
+                                    text: 'Resim başarı ile silindi.',
+                                    customClass: {
+                                        confirmButton: 'btn btn-success'
+                                    }
+                                });
+                            },
+                            error: function (request, error) {
+                                Swal.fire({
+                                    title: 'Hata oluştu!',
+                                    text: 'İşlem sırasında bir hata ile karşılaşıldı, lütfen daha sonra tekrar deneyiniz.',
+                                    icon: 'error',
+                                    customClass: {
+                                        confirmButton: 'btn btn-success'
+                                    }
+                                });
+                            }
+                        });
+
+                    } else if (result.dismiss === Swal.DismissReason.cancel) {
+                        Swal.fire({
+                            title: 'İptal edildi',
+                            text: 'Kullanıcı güvende :)',
+                            icon: 'error',
+                            customClass: {
+                                confirmButton: 'btn btn-success'
+                            }
+                        });
+                    }
+                });
+
+            }
+
+
+          
+            </script>
+        <!-- BEGIN: Page Vendor JS-->
+        <script src="~/AdminTemplate2/vendors/js/extensions/sweetalert2.all.min.js"></script>
+        <script src="~/AdminTemplate2/vendors/js/extensions/polyfill.min.js"></script>
+        <!-- END: Page Vendor JS-->
+    }
+
+</body>
+
+</html>

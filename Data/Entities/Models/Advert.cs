@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 
 namespace Data.Entities.Models;
 
@@ -17,7 +18,7 @@ public class Advert : BaseEntity
     public AdvertTypeEnum? AdvertType { get; set; }
     public int? BedroomNumber { get; set; }
     public int? BathroomNumber { get; set; }
-    public int? Meters { get; set; }
+    public int? Meters { get; set; } = 0;
     public decimal? Price { get; set; }
     public virtual ICollection<AdvertExtraAttributes> AdvertExtraAttributes { get; set; }
     public bool IsFeatured { get; set; } = false;

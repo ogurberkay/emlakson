@@ -161,7 +161,7 @@
                         { data: "email" },
                         { data: "phoneNumber" },
                         { data: "emailConfirmed" },
-                        { data: "createdDate" },
+                        { data: "createdDateString" },
 
                         {
                             data: "id", render: function (data, type, row, meta) {
@@ -224,7 +224,6 @@
 
 
             function Delete(userId) {
-                alert(userId)
                 Swal.fire({
                     title: 'Emin misiniz ?',
                     text: "Bu işlemi geri alamazsınız, Emin misiniz ?",

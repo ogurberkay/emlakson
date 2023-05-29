@@ -29,6 +29,7 @@ public class ApplicationDbContext : IdentityDbContext<UserEntity,IdentityRole<in
     public DbSet<Image> Images { get; set; }
     public DbSet<ExtraAttribute> ExtraAttributess { get; set; }
     public DbSet<AdvertExtraAttributes> AdvertExtraAttributess { get; set; }
+    public DbSet<GalleryImage> GalleryImages { get; set; }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
@@ -40,6 +41,7 @@ public class ApplicationDbContext : IdentityDbContext<UserEntity,IdentityRole<in
 
         modelBuilder.ApplyConfiguration(new AdvertConfiguration());
         modelBuilder.ApplyConfiguration(new RoleConfiguration());
+        modelBuilder.ApplyConfiguration(new ExtraAttributeConfiguration());
 
     }
 

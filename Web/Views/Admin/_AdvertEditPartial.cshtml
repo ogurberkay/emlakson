@@ -6,14 +6,15 @@
 
     List<ExtraAttribute> extraAttributes1;
     List<int> extraAttributes2;
-
-    var advertId = (int)ViewBag.Id;
+    
+    var imagePath = Model.ImageFile.ImagePath;
+    var webPath = imagePath?.Split("wwwroot\\")[1];
+    var advertId = (int) ViewBag.Id;
     using (var db = new ApplicationDbContext())
     {
         extraAttributes1 = db.ExtraAttributess.ToList();
 
         extraAttributes2 = db.AdvertExtraAttributess.Where(x => x.AdvertId == advertId).Select(x => x.ExtraAttributeId).ToList();
-
     }
 }
 <h4>@ViewBag.Test</h4>
@@ -33,7 +34,8 @@
                 <label>Şehir</label>
                 <div class="mb-1">
                     <Select type="text" placeholder="İl" class="form-control" asp-for="Location"
-                            asp-items="Html.GetEnumSelectList<LocationEnum>()"></Select>
+                            asp-items="Html.GetEnumSelectList<LocationEnum>()">
+                    </Select>
                 </div>
                 <label asp-for="District">İlçe </label>
                 <div class="mb-1">
@@ -42,13 +44,15 @@
 
                 <label asp-for="HouseType">Ev Tipi </label>
                 <div class="mb-1">
-                    <Select type="text" placeholder="Telefon Numarası" class="form-control" asp-for="HouseType "
-                            asp-items="Html.GetEnumSelectList<HouseTypeEnum>()"></Select>
+                    <Select type="text" placeholder="Telefon Numarası" class="form-control" asp-for="HouseType"
+                            asp-items="Html.GetEnumSelectList<HouseTypeEnum>()">
+                    </Select>
                 </div>
                 <label asp-for="AdvertType">İlan Tipi</label>
                 <div class="mb-1">
                     <Select type="text" placeholder="İlan Tipi" class="form-control" asp-for="AdvertType"
-                            asp-items="Html.GetEnumSelectList<AdvertTypeEnum>()"></Select>
+                            asp-items="Html.GetEnumSelectList<AdvertTypeEnum>()">
+                    </Select>
                 </div>
                 <label asp-for="BedroomNumber">Yatak odası sayısı</label>
                 <div class="mb-1">
@@ -72,7 +76,7 @@
                 <label asp-for="IsFeatured">Öne Çıkarılan İlan ?</label>
                 <div class="mb-1">
                     <input type="checkbox"
-                           asp-for="IsFeatured" />
+                           asp-for="IsFeatured"/>
                 </div>
                 <div class="mb-1">
                     <label class="control-label">Özellikler</label>
@@ -86,34 +90,30 @@
                             else
                             {
                                 <option value="@item.Id">@item.AttributeName</option>
-
                             }
-
                         }
                     </Select>
                 </div>
-                <div class="mb-1">
-                    <strong>Şuanki resim:<span>@ViewBag.ImageName</span></strong>
+                <label asp-for="ImageFile.ImageName" class="control-label">
+                    <strong>Eski Resimin adı: <br/> @Model.ImageFile.ImageName</strong>
+                </label>
 
+                <div class="mb-1">
+                    <label class="control-label">Mevcut Resim</label>
+                    <img src="@Url.Content($"~/{webPath}")" alt="Mevcut Resim" style="width: 100px; height: 100px;"/> <!-- Mevcut resmi gösterir -->
                 </div>
 
+
                 <div class="mb-1">
-                    <label asp-for="ImageFile.ImageName" class="control-label">Resim Adı</label>
-                    <input asp-for="ImageFile.ImageName" class="form-control" />
-                    <span asp-validation-for="ImageFile.ImageName" class="text-danger"></span>
-                </div>
-                <div class="mb-1">
-                    <label asp-for="ImageFile.ImageFile" class="control-label">Yeni Resim Yükle</label>
-                    <input asp-for="ImageFile.ImageFile" accept="image/*" />
+                    <label asp-for="ImageFile.ImageFile" class="control-label">Yeni Resim Yükle(Eski resimi siler)</label>
+                    <input asp-for="ImageFile.ImageFile" accept="image/*"/>
                     <span asp-validation-for="ImageFile.ImageFile" class="text-danger"></span>
                 </div>
             </div>
         </div>
 
 
-
     </div>
-
 
 
     <div class="d-flex justify-content-around">

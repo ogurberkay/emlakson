@@ -66,3 +66,17 @@ C:\Users\berkay.ogur\source\repos\emlakson\Data\obj\Debug\net6.0\refint\Data.dll
 C:\Users\berkay.ogur\source\repos\emlakson\Data\obj\Debug\net6.0\Data.pdb
 C:\Users\berkay.ogur\source\repos\emlakson\Data\obj\Debug\net6.0\Data.genruntimeconfig.cache
 C:\Users\berkay.ogur\source\repos\emlakson\Data\obj\Debug\net6.0\ref\Data.dll
+C:\Users\rizam\OneDrive\Masaüstü\MyDevNotes\emlak\emlakson\Data\bin\Debug\net6.0\Data.deps.json
+C:\Users\rizam\OneDrive\Masaüstü\MyDevNotes\emlak\emlakson\Data\bin\Debug\net6.0\Data.runtimeconfig.json
+C:\Users\rizam\OneDrive\Masaüstü\MyDevNotes\emlak\emlakson\Data\bin\Debug\net6.0\Data.dll
+C:\Users\rizam\OneDrive\Masaüstü\MyDevNotes\emlak\emlakson\Data\bin\Debug\net6.0\Data.pdb
+C:\Users\rizam\OneDrive\Masaüstü\MyDevNotes\emlak\emlakson\Data\obj\Debug\net6.0\Data.csproj.AssemblyReference.cache
+C:\Users\rizam\OneDrive\Masaüstü\MyDevNotes\emlak\emlakson\Data\obj\Debug\net6.0\Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\rizam\OneDrive\Masaüstü\MyDevNotes\emlak\emlakson\Data\obj\Debug\net6.0\Data.AssemblyInfoInputs.cache
+C:\Users\rizam\OneDrive\Masaüstü\MyDevNotes\emlak\emlakson\Data\obj\Debug\net6.0\Data.AssemblyInfo.cs
+C:\Users\rizam\OneDrive\Masaüstü\MyDevNotes\emlak\emlakson\Data\obj\Debug\net6.0\Data.csproj.CoreCompileInputs.cache
+C:\Users\rizam\OneDrive\Masaüstü\MyDevNotes\emlak\emlakson\Data\obj\Debug\net6.0\Data.dll
+C:\Users\rizam\OneDrive\Masaüstü\MyDevNotes\emlak\emlakson\Data\obj\Debug\net6.0\refint\Data.dll
+C:\Users\rizam\OneDrive\Masaüstü\MyDevNotes\emlak\emlakson\Data\obj\Debug\net6.0\Data.pdb
+C:\Users\rizam\OneDrive\Masaüstü\MyDevNotes\emlak\emlakson\Data\obj\Debug\net6.0\Data.genruntimeconfig.cache
+C:\Users\rizam\OneDrive\Masaüstü\MyDevNotes\emlak\emlakson\Data\obj\Debug\net6.0\ref\Data.dll

@@ -255,9 +255,10 @@
                                         else{
                                         <div class="homes-tag button sale rent">Kiralık</div>
                                             }
-
-                                        <div class="homes-price">@item.HouseType</div>
-                                        <img src="~/Template1/images/feature-properties/fp-3.jpg" alt="home-1" class="img-responsive">
+                                        @if(!string.IsNullOrEmpty(@item.HouseType.ToString())){
+                                            <div class="homes-price">@item.HouseType</div>
+                                                                                    }
+                                        <img src="@Url.Content($"~/{@item.ImageWebPath}")" alt="home-1" class="img-responsive">
                                     </a>
                                 </div>
                                 <div class="button-effect">
@@ -277,17 +278,26 @@
                                 </p>
                                 <!-- homes List -->
                                 <ul class="homes-list clearfix pb-3">
+                                    @if(item.BedroomNumber > 0){
                                     <li class="the-icons">
                                         <i class="flaticon-bed mr-2" aria-hidden="true"></i>
                                         <span>@item.BedroomNumber Yatak Odası</span>
                                     </li>
-                                    <li class="the-icons" style="float:right">
-                                        <i class="flaticon-bathtub mr-2" aria-hidden="true"></i>
-                                        <span>@item.BathroomNumber Banyo</span>
-                                    </li>
+                                    }
+                                    @if (@item.BathroomNumber > 0)
+                                    {
+                                        <li class="the-icons" style="float:right">
+                                            <i class="flaticon-bathtub mr-2" aria-hidden="true"></i>
+                                            <span>@item.BathroomNumber Banyo</span>
+                                        </li>
+                                    }
                                     <li class="the-icons">
                                         <i class="flaticon-square mr-2" aria-hidden="true"></i>
                                         <span>@item.Meters m²</span>
+                                    </li>
+                                    <li class="the-icons">
+                                        <i class="flaticon-square mr-2" aria-hidden="true"></i>
+                                        <span>@item.AdvertTypeString</span>
                                     </li>
                                 </ul>
                                 <!-- Price -->
@@ -297,9 +307,6 @@
                                 </h3>
                                     <div class="compare">
                                        
-                                        <a href="#" title="Share">
-                                            <i class="fas fa-share-alt"></i>
-                                        </a>
                                         
                                     </div>
                                 </div>
@@ -308,7 +315,7 @@
                                         <i class="fa fa-user"></i> Tunca Emlak
                                     </a>
                                     <span>
-                                <i class="fa fa-calendar"></i> 1 Ay Önce
+                                <i class="fa fa-calendar"></i> @item.CreatedDate.ToString("dd MMMM yyyy")
                             </span>
                                 </div>
                             </div>
@@ -1093,9 +1100,24 @@
         </script>
     
     <script>
+       $('#inputGroupSelect01').change(function() {
+                let selectedOrderValue = $(this).val();
+                     
+          $("<input />").attr("type", "hidden")
+          .attr("name", "OrderBy")
+          .attr("value", selectedOrderValue)
+          .appendTo("#listForm");
+            $('#listForm').submit();
+
+            });
+       
     $( "#listForm" ).submit(function() {
-
-
+        let selectedOrderValue = $("#inputGroupSelect01").val();
+        
+        $("<input />").attr("type", "hidden")
+          .attr("name", "OrderBy")
+          .attr("value", selectedOrderValue)
+          .appendTo("#listForm");
 
         let extraAttributes = []
          $.each($("input[name='extraAtt']:checked"), function () {    
