@@ -2,13 +2,17 @@ using Data.Entities.Models;
 using Data.Enum;
 using Newtonsoft.Json;
 
-namespace Data.Entities.DataTransferObjects.Response;
+namespace Data.DataTransferObjects.Response;
 
-public class AdvertGetDto
+
+public class CustomerGetDto
 {
     public int Id { get; set; }
-    public string? Title { get; set; }
-    public string? Description { get; set; }
+    public DateTime CreatedDate { get; set; }
+    public DateTime? UpdatedDate { get; set; }
+
+    public string Name { get; set; }
+    public string Surname { get; set; }
     public HouseTypeEnum? HouseType { get; set; }
 
     public string HouseTypeString
@@ -32,15 +36,10 @@ public class AdvertGetDto
         get { return AdvertType?.ToString(); }
     }
     public string? District { get; set; }
-
     public int? BedroomNumber { get; set; }
     public int? BathroomNumber { get; set; }
-    public int? Meters { get; set; }
+    public int? Meters { get; set; } = 0;
     public decimal? Price { get; set; }
     public string? ExtraAttributes { get; set; }
-    public bool IsFeatured { get; set; } = false;
-    public DateTime CreatedDate { get; set; }
     public string CreatedDateString { get; set; }
-    public string? ImageWebPath { get; set; }
 }
-

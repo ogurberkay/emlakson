@@ -1,3 +1,4 @@
+@model Data.Entities.Models.ContactUs
 @{
     ViewBag.BreadCrumb2 = "Bize Ulasın";
     ViewBag.PageHeader = "Bize Ulaşın";
@@ -56,19 +57,20 @@
                     </div>
                 </div>
                 <div class="col-lg-4">
-                    <form class="contact-form-wrap contact-form-bg">
+
+                    <form class="contact-form-wrap contact-form-bg" action="/ContactUsNew" method="post">
                         <h4>Bize Ulaşın</h4>
                         <div class="rld-single-input">
-                            <input type="text" placeholder="İsim">
+                            <input asp-for="Name" type="text" placeholder="İsim">
                         </div>
                         <div class="rld-single-input">
-                            <input type="text" placeholder="Telefon">
+                            <input asp-for="Number" type="number" placeholder="Telefon">
                         </div>
                         <div class="rld-single-input">
-                            <textarea rows="10" placeholder="Mesaj"></textarea>
+                            <textarea asp-for="Text" rows="10" placeholder="Mesaj"></textarea>
                         </div>
                         <div class="btn-wrap text-center">
-                            <button class="btn btn-yellow">GÖNDER</button>
+                            <button type="submit" class="btn btn-yellow">GÖNDER</button>
                         </div>
                     </form>
                 </div>

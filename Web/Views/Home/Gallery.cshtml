@@ -1,6 +1,18 @@
+@model List<Data.Entities.Models.GalleryImage>
 @{
     ViewBag.BreadCrumb2 = "Galeri";
     ViewBag.PageHeader = "Galeri";
+    var urlList = new List<string>();
+
+    foreach (var image in Model)
+    {
+        var imagePath = image?.ImageFile?.ImagePath;
+        var webPath = imagePath?.Split("wwwroot\\")[1];
+        urlList.Add(webPath);
+    }
+    var x = 2342;
+
+
 }
 <!doctype html>
 <html lang="en">
@@ -108,23 +120,17 @@
                      @*<button class="button" data-filter=".universo">İş Yerleri</button>*@
                    </div>
                    
-                   <div class="grid">
-                       <div class="element-item transition coruja" data-category="transition">
-                        <div class="item-image" style="background-image: url('/imgs/tapu_sonrasi1.jpeg')"></div>
-                     </div>
-                     <div class="element-item transition coruja" data-category="transition">
-                        <div class="item-image" style="background-image: url('/imgs/tapu_sonrasi2.jpeg')"></div>
-                     </div>
-                     <div class="element-item transition coruja" data-category="transition">
-                        <div class="item-image" style="background-image: url('/imgs/tapu_sonrasi3.jpeg')"></div>
-                     </div>
-                     <div class="element-item transition coruja" data-category="transition">
-                        <div class="item-image" style="background-image: url('/imgs/tapu_sonrasi4.jpeg')"></div>
-                     </div>
+                    <div class="grid">
+                    @foreach (var imageUrl in urlList)
+                    {
+                        <div class="element-item transition coruja" data-category="transition">
+                            <img src="@Url.Content($"~/{imageUrl}")" alt="Tapu Sonrası 1">
+                        </div>
+                    }
 
 
-                     
-                   </div>
+
+                    </div>
                 </div>
             </div>
      

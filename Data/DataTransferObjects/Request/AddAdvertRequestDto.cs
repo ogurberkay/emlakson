@@ -1,4 +1,5 @@
 using Data.Entities.Models;
+using Data.Enum;
 
 namespace Data.DataTransferObjects.Request;
 

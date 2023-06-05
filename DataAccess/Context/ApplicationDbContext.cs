@@ -27,8 +27,12 @@ public class ApplicationDbContext : IdentityDbContext<UserEntity,IdentityRole<in
     
     public DbSet<Advert> Adverts { get; set; }
     public DbSet<Image> Images { get; set; }
+    public DbSet<Customer> Customers { get; set; }
+    public DbSet<AboutUs> AboutUs { get; set; }
+    public DbSet<ContactUs> ContactUs { get; set; }
     public DbSet<ExtraAttribute> ExtraAttributess { get; set; }
     public DbSet<AdvertExtraAttributes> AdvertExtraAttributess { get; set; }
+    public DbSet<CustomerExtraAttributes> CustomerExtraAttributess { get; set; }
     public DbSet<GalleryImage> GalleryImages { get; set; }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -49,7 +53,7 @@ public class ApplicationDbContext : IdentityDbContext<UserEntity,IdentityRole<in
     {
 
         //optionsBuilder.UseSqlServer("Data Source=DESKTOP-SVIS1U8;Initial Catalog=TestDb;Integrated Security=true");
-        optionsBuilder.UseSqlServer("Data Source=DESKTOP-9SDA81J;Initial Catalog=TestDb;Integrated Security=true");
+        optionsBuilder.UseSqlServer("Data Source=DESKTOP-JLQ9I39\\SQLEXPRESS;Initial Catalog=TestDb;Integrated Security=true");
     }
 
     public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)

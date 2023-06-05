@@ -2,36 +2,34 @@
 @using Data.Enum
 @using DataAccess.Context;
 @using Microsoft.AspNetCore.Mvc.TagHelpers
-@model Data.Entities.Models.Advert
+@model Data.Entities.Models.Customer
 @{
     Layout = null;
 
     List<ExtraAttribute> extraAttributes1;
     List<int> extraAttributes2;
     
-    var imagePath = Model.ImageFile.ImagePath;
-    var webPath = imagePath?.Split("wwwroot\\")[1];
     var advertId = (int) ViewBag.Id;
     using (var db = new ApplicationDbContext())
     {
         extraAttributes1 = db.ExtraAttributess.ToList();
 
-        extraAttributes2 = db.AdvertExtraAttributess.Where(x => x.AdvertId == advertId).Select(x => x.ExtraAttributeId).ToList();
+        extraAttributes2 = db.CustomerExtraAttributess.Where(x => x.CustomerId == advertId).Select(x => x.ExtraAttributeId).ToList();
     }
 }
 <h4>@ViewBag.Test</h4>
-<form action="/admin/UpdateAdvertApi" method="POST" enctype="multipart/form-data">
+<form action="/admin/UpdateCustomerApi" method="POST" enctype="multipart/form-data">
     <div class="modal-body" style="">
         <input id="EditUserId" type="hidden" class="form-control" name="Id" value="@Model.Id">
         <div class="row">
             <div class="col-md-6">
-                <label asp-for="Title">İlan başlığı</label>
+                <label asp-for="Name">Ad</label>
                 <div class="mb-1">
-                    <input id="EditUsername" type="text" placeholder="İlan Adı" class="form-control" asp-for="Title">
+                    <input id="EditUsername" type="text" placeholder="Ad" class="form-control" asp-for="Name">
                 </div>
-                <label asp-for="Description">İlan Açıklaması </label>
+                <label asp-for="Surname">Soyad </label>
                 <div class="mb-1">
-                    <input id="EditName" type="text" placeholder="İlan Açıklaması" class="form-control" asp-for="Description">
+                    <input id="EditName" type="text" placeholder="Soyad" class="form-control" asp-for="Surname">
                 </div>
                 <label>Şehir</label>
                 <div class="mb-1">
@@ -75,11 +73,6 @@
                 <div class="mb-1">
                     <input type="number" placeholder="Fiyatı" class="form-control" asp-for="Price">
                 </div>
-                <label asp-for="IsFeatured">Öne Çıkarılan İlan ?</label>
-                <div class="mb-1">
-                    <input type="checkbox"
-                           asp-for="IsFeatured"/>
-                </div>
                 <div class="mb-1">
                     <label class="control-label">Özellikler</label>
                     <Select id="extraAttributesSelect2" name="ExtraAttributeIds[]" type="text" placeholder="Ekstra Özellikler" class="form-control" multiple="multiple">
@@ -96,21 +89,7 @@
                         }
                     </Select>
                 </div>
-                <label asp-for="ImageFile.ImageName" class="control-label">
-                    <strong>Eski Resimin adı: <br/> @Model.ImageFile.ImageName</strong>
-                </label>
-
-                <div class="mb-1">
-                    <label class="control-label">Mevcut Resim</label>
-                    <img src="@Url.Content($"~/{webPath}")" alt="Mevcut Resim" style="width: 100px; height: 100px;"/> <!-- Mevcut resmi gösterir -->
-                </div>
-
-
-                <div class="mb-1">
-                    <label asp-for="ImageFile.ImageFile" class="control-label">Yeni Resim Yükle(Eski resimi siler)</label>
-                    <input asp-for="ImageFile.ImageFile" accept="image/*"/>
-                    <span asp-validation-for="ImageFile.ImageFile" class="text-danger"></span>
-                </div>
+             
             </div>
         </div>
 

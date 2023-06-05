@@ -17,11 +17,13 @@ using System.Security.Claims;
 using System.Text;
 using System.Text.Encodings.Web;
 using Core.Extensions;
+using Data.Entities.Identity;
 using Data.Enum;
 
 namespace Web.Controllers
 {
     [Route("[controller]")]
+    [Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
         private readonly SignInManager<UserEntity> _signInManager;
@@ -32,14 +34,15 @@ namespace Web.Controllers
         private readonly IAdvertService _advertService;
         private readonly IUnitOfWork _unitOfWork;
         private readonly IWebHostEnvironment _hostEnvironment;
-
+        private readonly RoleManager<IdentityRole<int>> _roleManager;
 
         public AdminController(
             UserManager<UserEntity> userManager,
             IUserStore<UserEntity> userStore,
             SignInManager<UserEntity> signInManager,
             ILogger<AdminController> logger,
-            IAdvertService advertService, IUnitOfWork unitOfWork, IWebHostEnvironment hostEnvironment)
+            IAdvertService advertService, IUnitOfWork unitOfWork, IWebHostEnvironment hostEnvironment,
+            RoleManager<IdentityRole<int>> roleManager)
         {
             _userManager = userManager;
             _userStore = userStore;
@@ -49,40 +52,111 @@ namespace Web.Controllers
             _advertService = advertService;
             _unitOfWork = unitOfWork;
             _hostEnvironment = hostEnvironment;
+            _roleManager = roleManager;
         }
-
 
         [HttpGet]
         public IActionResult Index()
         {
-            return View();
+            return RedirectToAction("Advert");
         }
 
         [HttpGet("login")]
+        [AllowAnonymous]
         public IActionResult Login(string email, string passwordl)
         {
             return View();
         }
 
+        [HttpGet("AboutUs")]
+        public async Task<IActionResult> AboutUs()
+        {
+            var aboutUs = _unitOfWork.Repository<AboutUs>().FindBy().FirstOrDefault();
+            if (aboutUs is null)
+            {
+                aboutUs = new AboutUs();
+                aboutUs.Text =
+                    @"﻿ Tunca Gayrimenkul, 2006 yılında kurulmuş bir emlak şirketidir. Türkiye'nin çeşitli şehirlerinde faaliyet gösteren şirketimiz, müşteri memnuniyetini ilke edinmiştir.
+
+Marmara’nın her geçen gün gelişmekte olan Kocaeli İlinde Gayrimenkul Danışmanlığı alanında güvenli, objektif ve kaliteli bir şekilde işlemlerinizi sonuçlandırmaktan gurur duyarız. İzmit’te bulunmakta olan genel merkezimizde profesyonel kadromuz genç ve dinamik ekibimizke sorunlarınıza hızlı ve kaliteli çözüm sağlıyoruz.
+
+Müşteri memnuniyetini sağlamak için, uzman ekibimiz müşterilerimize en iyi hizmeti vermeyi amaçlar. Özellikle satış, kiralama, değerleme ve danışmanlık alanlarında uzman olan ekibimiz, müşterilerimize en doğru ve güncel bilgileri sunarak, onların ihtiyaçlarını en iyi şekilde karşılamaya çalışır.
+
+Tunca Gayrimenkul olarak, müşteri memnuniyetini ilke edinmiş ve sürekli olarak piyasayı takip eden bir emlak şirketiyiz. Uzman ekibimiz ile müşterilerimize en iyi hizmeti vermeyi hedefleyen şirketimiz, yeni inşaat projelerine yönelik olarak da en avantajlı seçenekleri sunmayı amaçlar.";
+                await _unitOfWork.Repository<AboutUs>().InsertAsync(aboutUs);
+                await _unitOfWork.SaveChangesAsync();
+            }
+
+            return View(aboutUs);
+        }
+
+        public class AboutUsModal
+        {
+            public int Id { get; set; }
+            public string Text { get; set; }
+        }
+
+        [HttpGet("AddOrUpdateAboutUs")]
+        public async Task<IActionResult> AboutUs([FromForm] AboutUsModal modal)
+        {
+            var isExists = true;
+            var aboutUs = await _unitOfWork.Repository<AboutUs>().FindBy().FirstOrDefaultAsync();
+            if (aboutUs is null)
+            {
+                isExists = false;
+                aboutUs = new AboutUs();
+            }
+
+            aboutUs.Text = modal.Text;
+            if (isExists)
+                _unitOfWork.Repository<AboutUs>().Update(aboutUs);
+            else
+                await _unitOfWork.Repository<AboutUs>().InsertAsync(aboutUs);
+
+            await _unitOfWork.SaveChangesAsync();
+
+            return View(aboutUs);
+        }
+
+
+        [HttpGet("Customer")]
+        public IActionResult Customer()
+        {
+            return View();
+        }
+
+        public class UserLoginDto
+        {
+            public string Email { get; set; }
+            public string Password { get; set; }
+        }
+
         [HttpPost("login")]
-        public async Task<IActionResult> LoginPost(string email, string password)
+        [AllowAnonymous]
+        public async Task<IActionResult> LoginPost([FromForm] UserLoginDto modal)
         {
             if (ModelState.IsValid)
             {
                 // This doesn't count login failures towards account lockout
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
-                var result = await _signInManager.PasswordSignInAsync(email, password, false, lockoutOnFailure: false);
+                var user = await _userManager.FindByEmailAsync(modal.Email);
+                if (!user.IsApproved)
+                    return BadRequest(new {message = "Kullanıcının yönetici tarafından onaylanması gerekmetedir."});
+
+                var result =
+                    await _signInManager.PasswordSignInAsync(modal.Email, modal.Password, false,
+                        lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
-                    return RedirectToAction("Index", "Home");
+                    return Ok(new {response = "success"});
                 }
 
                 if (result.IsLockedOut)
                 {
                     _logger.LogWarning("User account locked out.");
                     //Todo add lockout viewbag
-                    return RedirectToPage("./Lockout");
+                    return BadRequest(new {message = "Kullanıcı hesabı kilitlendi"});
                 }
                 else
                 {
@@ -91,39 +165,58 @@ namespace Web.Controllers
                 }
             }
 
-            return RedirectToAction("Index", "Home");
+            return BadRequest(new {message = "Kullanıcı adı veya şifre hatalı"});
+        }
+
+        public class RegisterModel
+        {
+            public string FirstName { get; set; }
+            public string LastName { get; set; }
+            public string Email { get; set; }
+            public string Password { get; set; }
         }
 
         [HttpGet("register")]
+        [AllowAnonymous]
         public IActionResult Register(string email, string password)
         {
             return View();
         }
 
+        [HttpGet("logout")]
+        [AllowAnonymous]
+        public async Task<IActionResult> Register()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Home");
+        }
+
         [HttpPost("register")]
-        public async Task<IActionResult> RegisterPost(string firstName, string lastName, string email, string password)
+        [AllowAnonymous]
+        public async Task<IActionResult> RegisterPost([FromForm] RegisterModel model)
         {
             if (ModelState.IsValid)
             {
                 var user = CreateUser();
 
-                await _userStore.SetUserNameAsync(user, email, CancellationToken.None);
-                await _emailStore.SetEmailAsync(user, email, CancellationToken.None);
-                user.Name = firstName;
-                user.Surname = lastName;
-                var result = await _userManager.CreateAsync(user, password);
+                await _userStore.SetUserNameAsync(user, model.Email, CancellationToken.None);
+                await _emailStore.SetEmailAsync(user, model.Email, CancellationToken.None);
+                user.Name = model.FirstName;
+                user.Surname = model.LastName;
+                var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    await _userManager.AddToRoleAsync(user, "Admin");
                     _logger.LogInformation("User created a new account with password.");
                     var userId = await _userManager.GetUserIdAsync(user);
 
                     await _signInManager.SignInAsync(user, isPersistent: false);
 
-                    return RedirectToAction("Index", "Home");
+                    return Ok(new {success = true});
                 }
             }
 
-            return RedirectToAction("Index", "Home");
+            return BadRequest(new {message = "Bu kullanıcı sisteme kayıtlı başka bir kullanıcı maili kullanınız"});
         }
 
         [HttpGet("Advert")]
@@ -206,26 +299,25 @@ namespace Web.Controllers
             {
                 // Calculate the size of the image in megabytes
                 modal.Size = (decimal?) modal.ImageFile?.ImageFile?.Length / (1024 * 1024);
-                
-           
+
+
                 if (modal.ImageFile is not null)
                 {
+                    var withoutExtension = Path.GetFileNameWithoutExtension(modal.ImageFile?.ImageFile?.FileName);
+                    var uniqueFileName = StringExtensions.GetUniqueFileName(withoutExtension)
+                                         + Path.GetExtension(modal.ImageFile?.ImageFile?.FileName);
+                    modal.ImageName = withoutExtension;
+                    var filePath = Path.Combine(_hostEnvironment.WebRootPath, "uploads", "img", uniqueFileName);
 
-                        var withoutExtension = Path.GetFileNameWithoutExtension(modal.ImageFile?.ImageFile?.FileName);
-                        var uniqueFileName = StringExtensions.GetUniqueFileName(withoutExtension)
-                                             + Path.GetExtension(modal.ImageFile?.ImageFile?.FileName);
-                        modal.ImageName = withoutExtension;
-                        var filePath = Path.Combine(_hostEnvironment.WebRootPath, "uploads", "img", uniqueFileName);
+                    Directory.CreateDirectory(Path.GetDirectoryName(filePath));
 
-                        Directory.CreateDirectory(Path.GetDirectoryName(filePath));
+                    await modal.ImageFile.ImageFile.CopyToAsync(new FileStream(filePath, FileMode.Create));
 
-                        await modal.ImageFile.ImageFile.CopyToAsync(new FileStream(filePath, FileMode.Create));
+                    modal.ImageFile.ImageName = withoutExtension;
+                    modal.ImageFile.ImageFile = modal.ImageFile?.ImageFile;
+                    modal.ImageFile.ImagePath = filePath;
 
-                        modal.ImageFile.ImageName = withoutExtension;
-                        modal.ImageFile.ImageFile = modal.ImageFile?.ImageFile;
-                        modal.ImageFile.ImagePath = filePath;
-                    
-                    
+
                     await _unitOfWork.Repository<GalleryImage>().InsertAsync(modal);
 
                     await _unitOfWork.SaveChangesAsync();
@@ -239,7 +331,7 @@ namespace Web.Controllers
 
             return NotFound();
         }
-        
+
         [HttpGet("SeeImage")]
         public async Task<IActionResult> SeeImage(int id)
         {
@@ -309,7 +401,7 @@ namespace Web.Controllers
             using (var context = new ApplicationDbContext())
             {
                 var images = await _unitOfWork.Repository<GalleryImage>().FindBy().ToListAsync();
-                images.ForEach(x => x.Size = x.Size != null ? Math.Round(x.Size ?? 0,2) : null);
+                images.ForEach(x => x.Size = x.Size != null ? Math.Round(x.Size ?? 0, 2) : null);
                 return Ok(new {data = images, status = 200});
             }
         }
@@ -369,9 +461,10 @@ namespace Web.Controllers
             {
                 var user = await _userManager.FindByIdAsync(id.ToString());
 
-                user.EmailConfirmed = true;
+                user.IsApproved = true;
 
                 await _userManager.UpdateAsync(user);
+                await _unitOfWork.SaveChangesAsync();
 
                 return View("~/Views/Admin/User.cshtml");
             }
@@ -512,6 +605,115 @@ namespace Web.Controllers
             }
 
             return NotFound();
+        }
+
+        [HttpPost("AddCustomerApi")]
+        public async Task<IActionResult> AddCustomer([FromForm] Customer customer, List<string> ExtraAttributeIds)
+        {
+            try
+            {
+                customer.CustomerExtraAttributes = new Collection<CustomerExtraAttributes>();
+                ExtraAttributeIds
+                    .Select(x => Int32.Parse(x))
+                    .ToList()
+                    .ForEach(x =>
+                    {
+                        customer.CustomerExtraAttributes.Add(new CustomerExtraAttributes {ExtraAttributeId = x});
+                    });
+
+                var data = await _advertService.AddCustomer(customer);
+                if (data.ResultStatus == ResultStatusEnum.Success)
+                    return RedirectToAction("Customer");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+
+            return null;
+        }
+
+        [HttpGet("GetCustomersApi")]
+        public async Task<IActionResult> GetCustomers()
+        {
+            var customers = _advertService.GetAllCustomers().Result.Data;
+            return Ok(new {data = customers, status = 200});
+        }
+
+        [HttpGet("GetCustomerByIdApi/{id}")]
+        public async Task<IActionResult> GetCustomerByIdApi(int id)
+        {
+            var customer = _advertService.GetCustomerById(id).Result.Data;
+            if (customer != null)
+            {
+                return Ok(new {data = customer, status = 200});
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
+
+        [HttpPost("UpdateCustomerApi")]
+        public async Task<IActionResult> UpdateCustomerApi([FromForm] Customer customer, List<string> ExtraAttributeIds)
+        {
+            try
+            {
+                customer.CustomerExtraAttributes = new Collection<CustomerExtraAttributes>();
+                ExtraAttributeIds
+                    .Select(x => Int32.Parse(x))
+                    .ToList()
+                    .ForEach(x =>
+                    {
+                        customer.CustomerExtraAttributes.Add(new CustomerExtraAttributes
+                            {ExtraAttributeId = x, CustomerId = customer.Id});
+                    });
+
+                var existingCustomer = _advertService.UpdateCustomer(customer).Result.Data;
+
+                if (existingCustomer != null)
+                    return RedirectToAction("Customer");
+                else
+                    return NotFound();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+
+            return NotFound();
+        }
+
+        [HttpGet("EditCustomer")]
+        public async Task<IActionResult> EditCustomer(int id)
+        {
+            try
+            {
+                var data = _advertService.GetCustomerById(id).Result.Data;
+                ViewBag.Id = id;
+
+                return PartialView("_CustomerEditPartial", data);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+
+            return NotFound();
+        }
+
+        [HttpPost("DeleteCustomerApi")]
+        public async Task<IActionResult> DeleteCustomerApi(int id)
+        {
+            var result = _advertService.DeleteCustomer(id).Result.Data;
+            if (result == true)
+            {
+                return Ok(new {status = 200});
+            }
+            else
+            {
+                return NotFound();
+            }
         }
     }
 }

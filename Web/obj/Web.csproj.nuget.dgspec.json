@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\rizam\\OneDrive\\Masaüstü\\MyDevNotes\\emlak\\emlakson\\Web\\Web.csproj": {}
+    "C:\\Users\\MERT\\Desktop\\Workspace\\Tunca emlak\\emlakson\\Web\\Web.csproj": {}
   },
   "projects": {
-    "C:\\Users\\rizam\\OneDrive\\Masaüstü\\MyDevNotes\\emlak\\emlakson\\Business\\Business.csproj": {
+    "C:\\Users\\MERT\\Desktop\\Workspace\\Tunca emlak\\emlakson\\Business\\Business.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\rizam\\OneDrive\\Masaüstü\\MyDevNotes\\emlak\\emlakson\\Business\\Business.csproj",
+        "projectUniqueName": "C:\\Users\\MERT\\Desktop\\Workspace\\Tunca emlak\\emlakson\\Business\\Business.csproj",
         "projectName": "Business",
-        "projectPath": "C:\\Users\\rizam\\OneDrive\\Masaüstü\\MyDevNotes\\emlak\\emlakson\\Business\\Business.csproj",
-        "packagesPath": "C:\\Users\\rizam\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\rizam\\OneDrive\\Masaüstü\\MyDevNotes\\emlak\\emlakson\\Business\\obj\\",
+        "projectPath": "C:\\Users\\MERT\\Desktop\\Workspace\\Tunca emlak\\emlakson\\Business\\Business.csproj",
+        "packagesPath": "C:\\Users\\MERT\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\MERT\\Desktop\\Workspace\\Tunca emlak\\emlakson\\Business\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\rizam\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\MERT\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -28,11 +28,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\rizam\\OneDrive\\Masaüstü\\MyDevNotes\\emlak\\emlakson\\DataAccess\\DataAccess.csproj": {
-                "projectPath": "C:\\Users\\rizam\\OneDrive\\Masaüstü\\MyDevNotes\\emlak\\emlakson\\DataAccess\\DataAccess.csproj"
+              "C:\\Users\\MERT\\Desktop\\Workspace\\Tunca emlak\\emlakson\\DataAccess\\DataAccess.csproj": {
+                "projectPath": "C:\\Users\\MERT\\Desktop\\Workspace\\Tunca emlak\\emlakson\\DataAccess\\DataAccess.csproj"
               },
-              "C:\\Users\\rizam\\OneDrive\\Masaüstü\\MyDevNotes\\emlak\\emlakson\\Data\\Data.csproj": {
-                "projectPath": "C:\\Users\\rizam\\OneDrive\\Masaüstü\\MyDevNotes\\emlak\\emlakson\\Data\\Data.csproj"
+              "C:\\Users\\MERT\\Desktop\\Workspace\\Tunca emlak\\emlakson\\Data\\Data.csproj": {
+                "projectPath": "C:\\Users\\MERT\\Desktop\\Workspace\\Tunca emlak\\emlakson\\Data\\Data.csproj"
               }
             }
           }
@@ -97,21 +97,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files (x86)\\dotnet\\sdk\\6.0.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.408\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\rizam\\OneDrive\\Masaüstü\\MyDevNotes\\emlak\\emlakson\\Core\\Core.csproj": {
+    "C:\\Users\\MERT\\Desktop\\Workspace\\Tunca emlak\\emlakson\\Core\\Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\rizam\\OneDrive\\Masaüstü\\MyDevNotes\\emlak\\emlakson\\Core\\Core.csproj",
+        "projectUniqueName": "C:\\Users\\MERT\\Desktop\\Workspace\\Tunca emlak\\emlakson\\Core\\Core.csproj",
         "projectName": "Core",
-        "projectPath": "C:\\Users\\rizam\\OneDrive\\Masaüstü\\MyDevNotes\\emlak\\emlakson\\Core\\Core.csproj",
-        "packagesPath": "C:\\Users\\rizam\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\rizam\\OneDrive\\Masaüstü\\MyDevNotes\\emlak\\emlakson\\Core\\obj\\",
+        "projectPath": "C:\\Users\\MERT\\Desktop\\Workspace\\Tunca emlak\\emlakson\\Core\\Core.csproj",
+        "packagesPath": "C:\\Users\\MERT\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\MERT\\Desktop\\Workspace\\Tunca emlak\\emlakson\\Core\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\rizam\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\MERT\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -125,8 +125,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\rizam\\OneDrive\\Masaüstü\\MyDevNotes\\emlak\\emlakson\\Data\\Data.csproj": {
-                "projectPath": "C:\\Users\\rizam\\OneDrive\\Masaüstü\\MyDevNotes\\emlak\\emlakson\\Data\\Data.csproj"
+              "C:\\Users\\MERT\\Desktop\\Workspace\\Tunca emlak\\emlakson\\Data\\Data.csproj": {
+                "projectPath": "C:\\Users\\MERT\\Desktop\\Workspace\\Tunca emlak\\emlakson\\Data\\Data.csproj"
               }
             }
           }
@@ -168,21 +168,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files (x86)\\dotnet\\sdk\\6.0.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.408\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\rizam\\OneDrive\\Masaüstü\\MyDevNotes\\emlak\\emlakson\\DataAccess\\DataAccess.csproj": {
+    "C:\\Users\\MERT\\Desktop\\Workspace\\Tunca emlak\\emlakson\\DataAccess\\DataAccess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\rizam\\OneDrive\\Masaüstü\\MyDevNotes\\emlak\\emlakson\\DataAccess\\DataAccess.csproj",
+        "projectUniqueName": "C:\\Users\\MERT\\Desktop\\Workspace\\Tunca emlak\\emlakson\\DataAccess\\DataAccess.csproj",
         "projectName": "DataAccess",
-        "projectPath": "C:\\Users\\rizam\\OneDrive\\Masaüstü\\MyDevNotes\\emlak\\emlakson\\DataAccess\\DataAccess.csproj",
-        "packagesPath": "C:\\Users\\rizam\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\rizam\\OneDrive\\Masaüstü\\MyDevNotes\\emlak\\emlakson\\DataAccess\\obj\\",
+        "projectPath": "C:\\Users\\MERT\\Desktop\\Workspace\\Tunca emlak\\emlakson\\DataAccess\\DataAccess.csproj",
+        "packagesPath": "C:\\Users\\MERT\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\MERT\\Desktop\\Workspace\\Tunca emlak\\emlakson\\DataAccess\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\rizam\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\MERT\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -196,11 +196,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\rizam\\OneDrive\\Masaüstü\\MyDevNotes\\emlak\\emlakson\\Core\\Core.csproj": {
-                "projectPath": "C:\\Users\\rizam\\OneDrive\\Masaüstü\\MyDevNotes\\emlak\\emlakson\\Core\\Core.csproj"
+              "C:\\Users\\MERT\\Desktop\\Workspace\\Tunca emlak\\emlakson\\Core\\Core.csproj": {
+                "projectPath": "C:\\Users\\MERT\\Desktop\\Workspace\\Tunca emlak\\emlakson\\Core\\Core.csproj"
               },
-              "C:\\Users\\rizam\\OneDrive\\Masaüstü\\MyDevNotes\\emlak\\emlakson\\Data\\Data.csproj": {
-                "projectPath": "C:\\Users\\rizam\\OneDrive\\Masaüstü\\MyDevNotes\\emlak\\emlakson\\Data\\Data.csproj"
+              "C:\\Users\\MERT\\Desktop\\Workspace\\Tunca emlak\\emlakson\\Data\\Data.csproj": {
+                "projectPath": "C:\\Users\\MERT\\Desktop\\Workspace\\Tunca emlak\\emlakson\\Data\\Data.csproj"
               }
             }
           }
@@ -268,21 +268,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files (x86)\\dotnet\\sdk\\6.0.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.408\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\rizam\\OneDrive\\Masaüstü\\MyDevNotes\\emlak\\emlakson\\Data\\Data.csproj": {
+    "C:\\Users\\MERT\\Desktop\\Workspace\\Tunca emlak\\emlakson\\Data\\Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\rizam\\OneDrive\\Masaüstü\\MyDevNotes\\emlak\\emlakson\\Data\\Data.csproj",
+        "projectUniqueName": "C:\\Users\\MERT\\Desktop\\Workspace\\Tunca emlak\\emlakson\\Data\\Data.csproj",
         "projectName": "Data",
-        "projectPath": "C:\\Users\\rizam\\OneDrive\\Masaüstü\\MyDevNotes\\emlak\\emlakson\\Data\\Data.csproj",
-        "packagesPath": "C:\\Users\\rizam\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\rizam\\OneDrive\\Masaüstü\\MyDevNotes\\emlak\\emlakson\\Data\\obj\\",
+        "projectPath": "C:\\Users\\MERT\\Desktop\\Workspace\\Tunca emlak\\emlakson\\Data\\Data.csproj",
+        "packagesPath": "C:\\Users\\MERT\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\MERT\\Desktop\\Workspace\\Tunca emlak\\emlakson\\Data\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\rizam\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\MERT\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -355,21 +355,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files (x86)\\dotnet\\sdk\\6.0.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.408\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\rizam\\OneDrive\\Masaüstü\\MyDevNotes\\emlak\\emlakson\\Web\\Web.csproj": {
+    "C:\\Users\\MERT\\Desktop\\Workspace\\Tunca emlak\\emlakson\\Web\\Web.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\rizam\\OneDrive\\Masaüstü\\MyDevNotes\\emlak\\emlakson\\Web\\Web.csproj",
+        "projectUniqueName": "C:\\Users\\MERT\\Desktop\\Workspace\\Tunca emlak\\emlakson\\Web\\Web.csproj",
         "projectName": "Web",
-        "projectPath": "C:\\Users\\rizam\\OneDrive\\Masaüstü\\MyDevNotes\\emlak\\emlakson\\Web\\Web.csproj",
-        "packagesPath": "C:\\Users\\rizam\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\rizam\\OneDrive\\Masaüstü\\MyDevNotes\\emlak\\emlakson\\Web\\obj\\",
+        "projectPath": "C:\\Users\\MERT\\Desktop\\Workspace\\Tunca emlak\\emlakson\\Web\\Web.csproj",
+        "packagesPath": "C:\\Users\\MERT\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\MERT\\Desktop\\Workspace\\Tunca emlak\\emlakson\\Web\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\rizam\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\MERT\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -383,14 +383,14 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\rizam\\OneDrive\\Masaüstü\\MyDevNotes\\emlak\\emlakson\\Business\\Business.csproj": {
-                "projectPath": "C:\\Users\\rizam\\OneDrive\\Masaüstü\\MyDevNotes\\emlak\\emlakson\\Business\\Business.csproj"
+              "C:\\Users\\MERT\\Desktop\\Workspace\\Tunca emlak\\emlakson\\Business\\Business.csproj": {
+                "projectPath": "C:\\Users\\MERT\\Desktop\\Workspace\\Tunca emlak\\emlakson\\Business\\Business.csproj"
               },
-              "C:\\Users\\rizam\\OneDrive\\Masaüstü\\MyDevNotes\\emlak\\emlakson\\DataAccess\\DataAccess.csproj": {
-                "projectPath": "C:\\Users\\rizam\\OneDrive\\Masaüstü\\MyDevNotes\\emlak\\emlakson\\DataAccess\\DataAccess.csproj"
+              "C:\\Users\\MERT\\Desktop\\Workspace\\Tunca emlak\\emlakson\\DataAccess\\DataAccess.csproj": {
+                "projectPath": "C:\\Users\\MERT\\Desktop\\Workspace\\Tunca emlak\\emlakson\\DataAccess\\DataAccess.csproj"
               },
-              "C:\\Users\\rizam\\OneDrive\\Masaüstü\\MyDevNotes\\emlak\\emlakson\\Data\\Data.csproj": {
-                "projectPath": "C:\\Users\\rizam\\OneDrive\\Masaüstü\\MyDevNotes\\emlak\\emlakson\\Data\\Data.csproj"
+              "C:\\Users\\MERT\\Desktop\\Workspace\\Tunca emlak\\emlakson\\Data\\Data.csproj": {
+                "projectPath": "C:\\Users\\MERT\\Desktop\\Workspace\\Tunca emlak\\emlakson\\Data\\Data.csproj"
               }
             }
           }
@@ -475,7 +475,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files (x86)\\dotnet\\sdk\\6.0.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.408\\RuntimeIdentifierGraph.json"
         }
       }
     }

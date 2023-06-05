@@ -5,18 +5,18 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Data.Entities.Configuration;
 
-public class RoleConfiguration: IEntityTypeConfiguration<IdentityRoleEntity>
+public class RoleConfiguration: IEntityTypeConfiguration<IdentityRole<int>>
 {
-    public void Configure(EntityTypeBuilder<IdentityRoleEntity> builder)
+    public void Configure(EntityTypeBuilder<IdentityRole<int>> builder)
     {
         builder.HasData(
-            new IdentityRoleEntity()
+            new IdentityRole<int>()
             {
                 Id = 1,
                 Name = "Admin",
                 NormalizedName = "ADMIN"
             },
-            new IdentityRoleEntity()
+            new IdentityRole<int>()
             {
                 Id=2,
                 Name = "SuperAdmin",

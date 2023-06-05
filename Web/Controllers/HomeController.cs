@@ -1,21 +1,26 @@
-﻿using System.Diagnostics;
+﻿using System.Data.Entity;
+using System.Diagnostics;
 using Business.Service.Abstract;
 using Core.Results.Filter;
 using Data.DataTransferObjects.Request;
 using Microsoft.AspNetCore.Mvc;
 using Web.Models;
 using Data.Entities.DataTransferObjects.Response;
+using Data.Entities.Models;
+using DataAccess.Repositories.Abstract;
+using Microsoft.EntityFrameworkCore;
 using X.PagedList;
 
 namespace Web.Controllers;
 
 public class HomeController : Controller
 {
-    
+    private readonly IUnitOfWork _unitOfWork;
     private readonly IAdvertService _advertService;
-    public HomeController(IAdvertService advertService)
+    public HomeController(IAdvertService advertService, IUnitOfWork unitOfWork)
     {
         _advertService = advertService;
+        _unitOfWork = unitOfWork;
     }
 
     [HttpGet("Asis")]
@@ -62,10 +67,13 @@ public class HomeController : Controller
     }
 
     [HttpGet("ContactUs")]
-    public IActionResult ContactUs()
+    public async Task<IActionResult> ContactUs()
     {
-        return View();
+        var aboutUs = _unitOfWork.Repository<AboutUs>().FindBy().FirstOrDefault();
+        return View(aboutUs);
     }
+    
+    
     
     
     [HttpGet("404")]
@@ -93,11 +101,43 @@ public class HomeController : Controller
         return View();
     }
     
+    [HttpPost("ContactUsNew")]
+    public IActionResult ContactUsNew([FromForm]ContactUs contactUs)
+    {
+        if (ModelState.IsValid)
+        {
+            try
+            {
+                _unitOfWork.Repository<ContactUs>().Insert(contactUs);
+                _unitOfWork.SaveChangesAsync();
+                return RedirectToAction("ContactUsNew");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
+        return View(contactUs);
+    }
+    
     
     [HttpGet("Gallery")]
     public IActionResult Gallery()
     {
-        return View();
+        try
+        {
+
+            var images = _unitOfWork.Repository<GalleryImage>().FindBy("ImageFile")
+                .ToList();
+            return View(images);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+
     }
     
     [HttpGet("Takim")]

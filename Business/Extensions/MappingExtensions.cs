@@ -40,4 +40,24 @@ public static class MappingExtensions
             CreatedDate= entity.CreatedDate,
         };
     }
+    public static CustomerGetDto ToDto(this Customer entity)
+    {
+        return new CustomerGetDto
+        {
+            Id= entity.Id,
+            Name = entity.Name,
+            Surname = entity.Surname,
+            AdvertType = entity.AdvertType,
+            BathroomNumber = entity.BathroomNumber,
+            BedroomNumber = entity.BedroomNumber,
+            District = entity.District,
+            HouseType = entity.HouseType,
+            Location = entity.Location,
+            Meters = entity.Meters,
+            Price = entity.Price,
+            CreatedDate = entity.CreatedDate,
+            CreatedDateString = entity.CreatedDate.ToString("dddd, dd MMMM yyyy HH:mm:ss"),
+        };
+    }
+
 }

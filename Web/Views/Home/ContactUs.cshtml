@@ -1,3 +1,4 @@
+@model Data.Entities.Models.AboutUs
 @{
     ViewBag.BreadCrumb2 = "Hakkımızda";
     ViewBag.PageHeader = "Hakkımızda";
@@ -52,23 +53,8 @@
                         </div>
                         <div class="pftext">
                             <p>
-                                ﻿
-
-Tunca Gayrimenkul, 2006 yılında kurulmuş bir emlak şirketidir. Türkiye'nin çeşitli şehirlerinde faaliyet gösteren şirketimiz, müşteri memnuniyetini ilke edinmiştir.
-<br />
-<br />
-                                Marmara’nın her geçen gün gelişmekte olan Kocaeli İlinde Gayrimenkul Danışmanlığı alanında güvenli, objektif ve kaliteli bir şekilde işlemlerinizi sonuçlandırmaktan gurur duyarız. İzmit’te bulunmakta olan genel merkezimizde profesyonel kadromuz genç ve dinamik ekibimizke sorunlarınıza hızlı ve kaliteli çözüm sağlıyoruz.
-                                <br />
-                                <br />
-                                Müşteri memnuniyetini sağlamak için, uzman ekibimiz müşterilerimize en iyi hizmeti vermeyi amaçlar. Özellikle satış, kiralama, değerleme ve danışmanlık alanlarında uzman olan ekibimiz, müşterilerimize en doğru ve güncel bilgileri sunarak, onların ihtiyaçlarını en iyi şekilde karşılamaya çalışır.
-<br />
-<br />
-
-
-Tunca Gayrimenkul olarak, müşteri memnuniyetini ilke edinmiş ve sürekli olarak piyasayı takip eden bir emlak şirketiyiz. Uzman ekibimiz ile müşterilerimize en iyi hizmeti vermeyi hedefleyen şirketimiz, yeni inşaat projelerine yönelik olarak da en avantajlı seçenekleri sunmayı amaçlar.
-                                <br />
-                                <br />
-
+                                @Model?.Text
+                            </p>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-12 col-xs-12">

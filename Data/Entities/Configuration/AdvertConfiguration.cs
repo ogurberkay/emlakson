@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
+using Data.Enum;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion; // Bu satırı ekleyin
 
 namespace Data.Entities.Configuration;

@@ -7,6 +7,7 @@ using DataAccess.Repositories.Abstract;
 using DataAccess.Repositories.Concrete;
 using Microsoft.AspNetCore.Identity;
 using System.Text.Json.Serialization;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Web.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -24,9 +25,24 @@ builder.Services.AddIdentity<UserEntity,IdentityRole<int>>(opt =>
     opt.Password.RequireDigit = false;
 
 })
+    .AddRoleManager<RoleManager<IdentityRole<int>>>()
     .AddDefaultTokenProviders()
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.LoginPath = "/Admin/Login";
+    options.AccessDeniedPath = "/";
+
+});
+
+builder.Services.AddAuthorization();
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+    {
+        options.LoginPath = "/Admin/Login";
+        options.LogoutPath = "/logout";
+    });
 
 builder.Services.AddControllersWithViews()
     .AddJsonOptions(options => options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
@@ -49,6 +65,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
